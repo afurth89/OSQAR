@@ -1,13 +1,13 @@
 var mongoose = require("mongoose");
 
 var sessionSchema = new mongoose.Schema({
-  // Look for link to another collection ref
-  test_id: Number,
-  // Link to another collection ref
-  user_id: Number,
+  // Link to Test
+  _test: {type: Schema.Types.ObjectId, ref: 'Test'},
+  // Link to User
+  _user: {type: Schema.Types.ObjectId, ref: 'User'},
   answers: [{
-    // Link to another collection
-    q_id: Number,
+    // Link to Question
+    _question: {type: Schema.Types.ObjectId, ref: 'Question'},
     u_answer: {id: Number, text: String}
 
   }]
