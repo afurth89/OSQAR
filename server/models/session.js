@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
+var Schema = mongoose.Schema
 
-var sessionSchema = new mongoose.Schema({
+var sessionSchema = new Schema({
   // Link to Test
   _test: {type: Schema.Types.ObjectId, ref: 'Test'},
   // Link to User

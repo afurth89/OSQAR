@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
+var Schema = mongoose.Schema
 
-var testSchema = new mongoose.Schema({
+var testSchema = new Schema({
   title: String,
   category: String,
   questions: [{type: Schema.Types.ObjectId, ref: 'Question' }]
