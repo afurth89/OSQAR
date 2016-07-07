@@ -1,7 +1,7 @@
 const express = require("express")
 const app = express();
 const bodyParser = require('body-parser');
-const db = require('./models')
+var db = require('./models')
 const methodOverride = require('method-override')
 const morgan = require('morgan')
 
