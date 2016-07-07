@@ -15,25 +15,24 @@ var seedQuestion = {
 
 db.Question.remove({})
   .then(function(){
-    db.Question.create(seedQuestion, function(){
+    db.Question.create(seedQuestion, function(err, question){
+      var seedTest = {
+        title: "Founding of America",
+        category: "Social Studies",
+        questions: [question]
+      }
       console.log("QUESTION CREATED!")
-    })
+      db.Test.remove({})
+        .then(function() {
+          db.Test.create(seedTest, function() {
+            console.log("TEST CREATED")
+            process.exit(0)
+          })
+        })
+      })
   })
 
-var seedTest = {
-  title: "Founding of America",
-  category: "Social Studies",
-  questions: [{
-    question: seedQuestion._id
-  }]
-}
 
 
-db.Test.remove({})
-  .then(function() {
-    db.Test.create(seedTest, function() {
-      console.log("TEST CREATED")
-      process.exit(0)
-    })
-  })
+
 

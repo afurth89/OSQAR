@@ -10,7 +10,6 @@
       let vm = this;
 
       vm.tests = tests.data
-      debugger
     }
 
 })();

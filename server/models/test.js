@@ -6,10 +6,8 @@ var testSchema = new Schema({
   category: String,
   // questions: [{type: Schema.Types.ObjectId, ref: 'Question' }]
   questions: [{
-    question: {
       type: Schema.Types.ObjectId, 
       ref: 'Question' 
-    }
   }]
 })
 
