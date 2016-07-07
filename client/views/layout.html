@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="osqarApp">
 <head>
   <meta charset="UTF-8">
   <title>OSQAR - Open Source Question/Answer Resource</title>
+  <!-- load Angular -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+  <!-- load Angular Route -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-route.js"></script>
+  <base href="/">
 </head>
 <body>
+  <nav>
+    <a href="/teachers">I'm a Teacher</a>
+  </nav>
   <h1>Hello, I am OSQAR</h1>
+  <div ng-view></div>
+  
+  <script src="/javascripts/app.js"></script>
+  <script src="/javascripts/services.js"></script>
+  <script src="/javascripts/controllers.js"></script>
+  <script src="/javascripts/directives.js"></script>
 </body>
 </html>

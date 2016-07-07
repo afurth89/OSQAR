@@ -1,0 +1,10 @@
+<h1>Here are all the tests</h1>
+<div ng-repeat="tests in vm.tests">
+  <h4>TITLE: {{tests.title}}</h4>
+  <p>Category: {{tests.category}}</p>
+  <p>Questions:</p>
+    <li ng-repeat="question_id in tests.questions">
+      {{question_id}}
+    </li>
+  
+</div>
