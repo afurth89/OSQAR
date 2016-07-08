@@ -3,8 +3,13 @@
   <h4>TITLE: {{tests.title}}</h4>
   <p>Category: {{tests.category}}</p>
   <p>Questions:</p>
-    <li ng-repeat="question_id in tests.questions">
-      {{question_id}}
-    </li>
+    <ul ng-repeat="question in tests.questions">
+      <li>Category: {{question.category}}</li>
+      <li>Question: {{question.text}}</li>
+      <ul ng-repeat="choice in question.choices">
+        <li>Choice: {{choice.text}}</li>
+      </ul>
+      <li>Correct Answer: {{question.correct}}</li>
+    </ul>
   
 </div>
