@@ -71,7 +71,8 @@ seedQuestions.forEach((question) => {
 // Running all Promise sequentially, and THEN 
   // clearing Tests and Creating the new test
 Promise.all(seedQsWithPromises).then((questions) => {
-  console.log("QUESTIONS CREATED -->", questions)
+  // "questions" has no ._id property
+  console.log("QUESTIONS CREATED -->", questions[0]._id)
   var seedTest = {
     title: "Founding of America",
     category: "Social Studies",
@@ -89,13 +90,13 @@ Promise.all(seedQsWithPromises).then((questions) => {
 })
 
 // Function return a Promise
-function saveQuestionAsync(question) {
+function saveQuestionAsync(questionData) {
   return new Promise((resolve,reject) => {
-    db.Question.create(question, function(err) {
+    db.Question.create(questionData, function(err, createdQuestion) {
       if (err) {reject(err)}
       else {
-        console.log("QUESTION CREATED")
-        resolve(question);
+        console.log("QUESTION CREATED: ", createdQuestion)
+        resolve(createdQuestion);
       }
     })
   })
