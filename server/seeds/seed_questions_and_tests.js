@@ -62,25 +62,49 @@ var seedQuestions = [
 var seedQsWithPromises = []
 
 
-// Creating a Promise for each create operation
+// Creating a Promise for each Create operation
 seedQuestions.forEach((question) => {
   seedQsWithPromises.push(saveQuestionAsync(question));
 })
 
+// Function return a Promise that will resolve once question is created
+  // These Promises will be passed as an array into Promise.all
+function saveQuestionAsync(questionData) {
+  return new Promise((resolve,reject) => {
+    // Create a question with object data
+    db.Question.create(questionData, function(err, createdQuestion) {
+      if (err) {reject(err)}
+      else {
+        // createdQuestion returned
+        // CONTAINS '_id' for that question
+        // which is needed to create reference in Test
+        console.log("QUESTION CREATED: ", createdQuestion)
+        resolve(createdQuestion);
+      }
+    })
+  })
+}
 
-// Running all Promise sequentially, and THEN 
-  // clearing Tests and Creating the new test
+
+// Won't resolve until each individual Promise has resolved
+ // 'questions' is an array that contains the 'createdQuestion' 
+ // passed through the 'resolve' callback above
 Promise.all(seedQsWithPromises).then((questions) => {
-  // "questions" has no ._id property
-  console.log("QUESTIONS CREATED -->", questions[0]._id)
+
+  console.log("QUESTIONS CREATED -->", questions)
   var seedTest = {
     title: "Founding of America",
     category: "Social Studies",
+    // Array of created questions (with '_id')
+      // Without '_id' reference in Test could not be made
+      // 'CastError' would occur
     questions: questions
   }
+  // Remove any existing tests
   db.Test.remove({})
     .then(function() {
-      console.log("SEED TEST:  ", seedTest.questions[0].choices)
+      console.log("SEED TEST:  ", seedTest)
+      // Create new test with reference to questions
       db.Test.create(seedTest, function(err) {
         if (err) console.log("ERROR", err.errors)
         console.log("TEST CREATED")
@@ -89,18 +113,6 @@ Promise.all(seedQsWithPromises).then((questions) => {
     })
 })
 
-// Function return a Promise
-function saveQuestionAsync(questionData) {
-  return new Promise((resolve,reject) => {
-    db.Question.create(questionData, function(err, createdQuestion) {
-      if (err) {reject(err)}
-      else {
-        console.log("QUESTION CREATED: ", createdQuestion)
-        resolve(createdQuestion);
-      }
-    })
-  })
-}
 
 
 
