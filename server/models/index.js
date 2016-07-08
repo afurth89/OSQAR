@@ -1,4 +1,5 @@
-var mongoose = require("mongoose")
+var Promise = require("bluebird");
+var mongoose = Promise.promisifyAll(require("mongoose"));
 mongoose.connect(process.env.MONGOLAB_URI || "mongodb://localhost/OSQAR")
 mongoose.set("debug", true);
 
