@@ -5,7 +5,7 @@ var db = require('./models')
 const methodOverride = require('method-override')
 const morgan = require('morgan')
 
-const teachers = require('./routes/teachers');
+const tests = require('./routes/tests');
 
 // Configure express.static
 app.use('/javascripts', express.static(__dirname + '/../client/javascripts'))
@@ -20,16 +20,16 @@ app.use(morgan('tiny'));
 // The api prefix is just to distinguish that these are
 // server-side routes that will be requesting and fetching 
 // data
-app.use('/api/teachers', teachers)
+app.use('/api/tests', tests)
 
-app.get('/teachers', (req, res) => {
+app.get('/tests', (req, res) => {
   // This code is FORBIDDEN (Express thinks it could be malicious)
   // res.sendFile(__dirname + '/../client/views/layout.html')
   res.sendFile('layout.html', {root: './client/views'})
 })
 
 app.get('*', (req, res) => {
-  res.redirect('/teachers')
+  res.redirect('/tests')
 })
 
 app.listen(process.env.PORT || 3000, function(){

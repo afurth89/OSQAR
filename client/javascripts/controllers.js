@@ -2,11 +2,11 @@
   
   angular
     .module('osqarApp')
-    .controller('TeacherParentController', TeacherParentController)
+    .controller('TestParentController', TestParentController)
 
-    TeacherParentController.$inject = ['tests']
+    TestParentController.$inject = ['tests']
 
-    function TeacherParentController(tests) {
+    function TestParentController(tests) {
       let vm = this;
 
       vm.tests = tests.data

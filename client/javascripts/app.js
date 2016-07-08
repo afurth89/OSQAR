@@ -7,21 +7,21 @@
 
     function config($routeProvider, $locationProvider) {
       $routeProvider
-        .when('/teachers', {
-          templateUrl: '../views/teachers/index.html',
-          controller: 'TeacherParentController',
+        .when('/tests', {
+          templateUrl: '../views/tests/index.html',
+          controller: 'TestParentController',
           controllerAs: 'vm',
           resolve: {
             tests: getAllTests
           }
         })
-        .otherwise({redirectTo: '/teachers'})
+        .otherwise({redirectTo: '/tests'})
       $locationProvider.html5Mode(true);
     }
 
-    getAllTests.$inject = ['TeacherService']
+    getAllTests.$inject = ['TestService']
 
-    function getAllTests(TeacherService) {
-      return TeacherService.getTests();
+    function getAllTests(TestService) {
+      return TestService.getTests();
     }
 })();

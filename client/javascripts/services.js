@@ -1,18 +1,18 @@
 (function() {
   angular
     .module('osqarApp')
-    .service('TeacherService', TeacherService)
+    .service('TestService', TestService)
 
-    TeacherService.$inject = ['$http']
+    TestService.$inject = ['$http']
 
-    function TeacherService($http) {
-      const teacher_BASE_URL = '/api/teachers/';
+    function TestService($http) {
+      const test_BASE_URL = '/api/tests/';
 
       this.getTests = () => {
-        var foo = $http.get(teacher_BASE_URL)
-        console.log("RESULT", foo)
-        return foo
-        // return $http.get(teacher_BASE_URL)
+        var tests = $http.get(test_BASE_URL)
+        console.log("RESULT", tests)
+        return tests
+        // return $http.get(test_BASE_URL)
       }
     }
 })();
