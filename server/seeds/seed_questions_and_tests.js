@@ -85,33 +85,35 @@ function saveQuestionAsync(questionData) {
   })
 }
 
+db.Question.remove({}).then(() => {
+  // Won't resolve until each individual Promise has resolved
+   // 'questions' is an array that contains the 'createdQuestion' 
+   // passed through the 'resolve' callback above
+  Promise.all(seedQsWithPromises).then((questions) => {
 
-// Won't resolve until each individual Promise has resolved
- // 'questions' is an array that contains the 'createdQuestion' 
- // passed through the 'resolve' callback above
-Promise.all(seedQsWithPromises).then((questions) => {
-
-  console.log("QUESTIONS CREATED -->", questions)
-  var seedTest = {
-    title: "Founding of America",
-    category: "Social Studies",
-    // Array of created questions (with '_id')
-      // Without '_id' reference in Test could not be made
-      // 'CastError' would occur
-    questions: questions
-  }
-  // Remove any existing tests
-  db.Test.remove({})
-    .then(function() {
-      console.log("SEED TEST:  ", seedTest)
-      // Create new test with reference to questions
-      db.Test.create(seedTest, function(err) {
-        if (err) console.log("ERROR", err.errors)
-        console.log("TEST CREATED")
-        process.exit(0)
+    console.log("QUESTIONS CREATED -->", questions)
+    var seedTest = {
+      title: "Founding of America",
+      category: "Social Studies",
+      // Array of created questions (with '_id')
+        // Without '_id' reference in Test could not be made
+        // 'CastError' would occur
+      questions: questions
+    }
+    // Remove any existing tests
+    db.Test.remove({})
+      .then(function() {
+        console.log("SEED TEST:  ", seedTest)
+        // Create new test with reference to questions
+        db.Test.create(seedTest, function(err) {
+          if (err) console.log("ERROR", err.errors)
+          console.log("TEST CREATED")
+          process.exit(0)
+        })
       })
-    })
+  })
 })
+
 
 
 
