@@ -61,6 +61,9 @@ var seedQuestions = [
 
 var seedQsWithPromises = []
 
+//***************************************************************************
+// Promise structure derived from: http://stackoverflow.com/questions/35662618/turning-a-mongoose-seeding-script-into-a-promise
+//***************************************************************************
 
 // Creating a Promise for each Create operation
 seedQuestions.forEach((question) => {
@@ -105,9 +108,9 @@ db.Question.remove({}).then(() => {
       .then(function() {
         console.log("SEED TEST:  ", seedTest)
         // Create new test with reference to questions
-        db.Test.create(seedTest, function(err) {
+        db.Test.create(seedTest, function(err, createdTest) {
           if (err) console.log("ERROR", err.errors)
-          console.log("TEST CREATED")
+          console.log("TEST CREATED", createdTest)
           process.exit(0)
         })
       })
