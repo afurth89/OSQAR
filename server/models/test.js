@@ -6,7 +6,7 @@ var testSchema = new Schema({
   category: String,
   // questions: [{type: Schema.Types.ObjectId, ref: 'Question' }]
   questions: [{
-      type: Schema.Types.ObjectId, 
+      type: Schema.Types.Mixed, 
       ref: 'Question' 
   }]
 })
