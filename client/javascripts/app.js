@@ -15,6 +15,11 @@
             tests: getAllTests
           }
         })
+        .when('/tests/new', {
+          templateUrl: '../views/tests/new.html',
+          controller: 'NewTestController',
+          controllerAs: 'vm'
+        })
         .otherwise({redirectTo: '/tests'})
       $locationProvider.html5Mode(true);
     }
