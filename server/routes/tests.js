@@ -27,7 +27,7 @@ router.route('/')
       })
   })
   .post((req, res) => {
-    console.log("REQUEST --> ", req.body.test)
+    console.log("REQUEST OBJECT TO BE CREATED --> ", req.body.test)
     db.Test.create(req.body.test, (err, createdTest) => {
         if (err) throw err;
         console.log("SUCCESSFUL CREATED TEST --> ", createdTest)
@@ -37,7 +37,7 @@ router.route('/')
 
 router.route('/:id')
   .get((req, res) => {
-    console.log(req.params.id)
+    console.log("ID of test to find is... ", req.params.id)
     // Get a single test
     db.Test.findById(req.params.id).populate('questions')
       .exec((err, test) => {

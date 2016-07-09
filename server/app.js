@@ -28,6 +28,8 @@ app.get('/tests', (req, res) => {
   res.sendFile('layout.html', {root: './client/views'})
 })
 
+// NEEDS TO BE FIXED
+  // So you can reload on any route and not be directed back to Index
 app.get('*', (req, res) => {
   res.redirect('/tests')
 })
