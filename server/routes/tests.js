@@ -10,6 +10,9 @@ router.route('/')
     .find({}).populate('questions')
       .exec((err, tests) => {
         if (err) throw err;
+        
+        // Testing for correct response
+        // DELETE BEFORE PRODUCTION
         console.log("TESTS: ", tests)
         tests.forEach((test) => {
           console.log("Title: ", test.title)
@@ -18,9 +21,17 @@ router.route('/')
           test.questions.forEach((question) => {
             console.log("Question Id: ", question._id)
           })
-
         })
+
         res.send(tests)
+      })
+  })
+  .post((req, res) => {
+    console.log("REQUEST --> ", req.body.test)
+    db.Test.create(req.body.test, (err, createdTest) => {
+        if (err) throw err;
+        console.log("SUCCESSFUL CREATED TEST --> ", createdTest)
+        res.send(createdTest)
       })
   })
 

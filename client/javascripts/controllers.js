@@ -32,9 +32,17 @@
         {id: "4", name: "Science"}
       ]
 
-      vm.addTest = function(test) {
-        debugger
-        console.log(test)
+      vm.addTest = function(newTest) {
+        var req = {
+          test: {
+            title: newTest.title,
+            category: newTest.category.name
+          } 
+        }
+        TestService.createTest(req).then((res) => {
+          console.log("Response from the server is...", res)
+          $location.path('/tests')
+        })
       }
     }
 

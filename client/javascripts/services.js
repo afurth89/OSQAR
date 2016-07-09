@@ -14,5 +14,10 @@
         return tests
         // return $http.get(test_BASE_URL)
       }
+
+      this.createTest = (newTest) => {
+        console.log(newTest)
+        return $http.post(test_BASE_URL, newTest)
+      }
     }
 })();
