@@ -33,6 +33,7 @@
         category: null
       };
 
+      // Categories that display in dropdown when creating test
       vm.availableCategories = [
         {id: "1", name: "Math"},
         {id: "2", name: "English"},
@@ -41,16 +42,28 @@
       ]
 
       vm.addTest = function(newTest) {
-        var req = {
-          test: {
-            title: newTest.title,
-            category: newTest.category.name
-          } 
+        if (newTest.title && newTest.category) {
+          // "req" object becomes 'req.body' in http call to db
+            // 'req.test' is perfectly formatted object for db
+            // Becomes 'req.body.test' when db is ingesting it
+          var req = {
+            test: {
+              title: newTest.title,
+              // Must pull only 'name' attr from category object
+              category: newTest.category.name
+            } 
+          }
+
+          TestService.createTest(req).then((res) => {
+            console.log("Response from the server is...", res)
+            $location.path('/tests')
+          })
+
+        } else {
+          // Provide flash message that title and category cannot be blank
+          alert("Title and category cannot be blank")
         }
-        TestService.createTest(req).then((res) => {
-          console.log("Response from the server is...", res)
-          $location.path('/tests')
-        })
+
       }
     }
 
