@@ -20,6 +20,14 @@
           controller: 'NewTestController',
           controllerAs: 'vm'
         })
+        .when('/tests/:id', {
+          templateUrl: '../views/tests/show.html',
+          controller: 'ShowTestController',
+          controllerAs: 'vm',
+          resolve: {
+            test: getTestById
+          }
+        })
         .otherwise({redirectTo: '/tests'})
       $locationProvider.html5Mode(true);
     }
@@ -28,5 +36,12 @@
 
     function getAllTests(TestService) {
       return TestService.getTests();
+    }
+
+    getTestById.$inject = ['TestService', '$route']
+
+    function getTestById(TestService, $route) {
+      debugger
+      return TestService.getTest($route.current.params.id)
     }
 })();

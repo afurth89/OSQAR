@@ -4,16 +4,24 @@
     .module('osqarApp')
     .controller('TestParentController', TestParentController)
     .controller('NewTestController', NewTestController)
+    .controller('ShowTestController', ShowTestController)
 
-
+    //***************************************************************************
+    // INDEX
+    //***************************************************************************
     TestParentController.$inject = ['tests']
 
     function TestParentController(tests) {
       let vm = this;
 
+      // 'tests.data' is result of 'resolve' property
+      // within TestParentController in app.js
       vm.tests = tests.data
     }
 
+    //***************************************************************************
+    // NEW
+    //***************************************************************************
     NewTestController.$inject = ['TestService', '$location']
 
     function NewTestController(TestService, $location) {
@@ -44,6 +52,14 @@
           $location.path('/tests')
         })
       }
+    }
+
+    ShowTestController.$inject = ['test']
+
+    function ShowTestController(test) {
+      let vm = this;
+
+      vm.test = test.data
     }
 
 })();
