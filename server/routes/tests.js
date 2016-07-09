@@ -35,5 +35,17 @@ router.route('/')
       })
   })
 
+router.route('/:id')
+  .get((req, res) => {
+    console.log(req.params.id)
+    // Get a single test
+    db.Test.findById(req.params.id).populate('questions')
+      .exec((err, test) => {
+        if (err) throw err;
+        console.log("Returned Test is... ", test)
+        res.send(test)
+      }) 
+  })
+
 
 module.exports = router;

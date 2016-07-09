@@ -41,7 +41,7 @@
     getTestById.$inject = ['TestService', '$route']
 
     function getTestById(TestService, $route) {
-      debugger
+      // Pulls the id of test from the $route object
       return TestService.getTest($route.current.params.id)
     }
 })();

@@ -59,6 +59,8 @@
     function ShowTestController(test) {
       let vm = this;
 
+      // 'test.data' is result of 'resolve' property
+      // within ShowTestController in app.js
       vm.test = test.data
     }
 
