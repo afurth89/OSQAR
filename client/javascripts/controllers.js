@@ -20,9 +20,22 @@
 
       let vm = this;
 
-      vm.test = {};
+      vm.test = {
+        title: null,
+        category: null
+      };
 
-      
+      vm.availableCategories = [
+        {id: "1", name: "Math"},
+        {id: "2", name: "English"},
+        {id: "3", name: "Social Studies"},
+        {id: "4", name: "Science"}
+      ]
+
+      vm.addTest = function(test) {
+        debugger
+        console.log(test)
+      }
     }
 
 })();

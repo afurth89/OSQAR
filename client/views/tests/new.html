@@ -2,3 +2,20 @@
 
 <h1>Create a Test</h1>
 
+<div id="newTestForm" class="well">
+  <form ng-submit="vm.addTest(vm.test)">
+    <div class="form-group">
+      <label>Test Name</label>
+      <input ng-model="vm.test.title" type="text" class="form-control" placeholder="Give your test a name...">
+    </div>
+    <div class="form-group">
+      <label for="testCategory">Select a Category:</label>
+      <select name="testCategory" id="testCategorySelector"
+          ng-options="option.name for option in vm.availableCategories track by option.id"
+          ng-model="vm.test.category"></select>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<a class="btn btn-warning" href="/tests">Never mind, go back</a>
