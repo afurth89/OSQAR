@@ -10,15 +10,16 @@
 
       // GET - ALL TESTS
       this.getTests = () => {
-        var tests = $http.get(test_BASE_URL)
-        console.log("RESULT", tests)
-        return tests
-        // return $http.get(test_BASE_URL)
+        // COMMENTS BELOW OUTPUT RESULTS FOR CHECKING
+        // var tests = $http.get(test_BASE_URL)
+        // console.log("RESULT", tests)
+        // return tests
+        return $http.get(test_BASE_URL)
       }
 
       // POST - NEW TEST
       this.createTest = (newTest) => {
-        console.log(newTest)
+        console.log("TEST TO BE CREATED IS... ", newTest)
         return $http.post(test_BASE_URL, newTest)
       }
 
