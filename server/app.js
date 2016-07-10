@@ -6,6 +6,7 @@ const methodOverride = require('method-override')
 const morgan = require('morgan')
 
 const tests = require('./routes/tests');
+const questions = require('./routes/questions');
 
 // Configure express.static
 app.use('/javascripts', express.static(__dirname + '/../client/javascripts'))
@@ -21,6 +22,7 @@ app.use(morgan('tiny'));
 // server-side routes that will be requesting and fetching 
 // data
 app.use('/api/tests', tests)
+app.use('/api/questions', questions)
 
 app.get('*', (req, res) => {
   // This code is FORBIDDEN (Express thinks it could be malicious)
