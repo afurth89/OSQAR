@@ -1,3 +1,10 @@
+<a class="btn btn-primary" href="/questions/new">Create New Questions</a>
 <h1>All Questions</h1>
 
-<p>{{vm.questions}}</p>
+<div ng-repeat="question in vm.questions" class="well">
+  <h4>Text: {{question.text}}</h4>
+  <ul ng-repeat="choice in question.choices">
+    <li>{{choice.id}}. {{choice.text}}</li>
+  </ul>
+  <p>The correct answer is: {{question.correct}}</p>
+</div>
