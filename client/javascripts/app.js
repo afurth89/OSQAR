@@ -50,27 +50,27 @@
             questions: getAllQuestions
           }
         })
-        .when('/questions/new', {
-          templateUrl: '../views/questions/new.html',
-          controller: 'NewQuestionController',
-          controllerAs: 'vm'
-        })
-        .when('/questions/:id', {
-          templateUrl: '../views/questions/show.html',
-          controller: 'ShowQuestionController',
-          controllerAs: 'vm',
-          resolve: {
-            question: getQuestionById
-          }
-        })
-        .when('/questions/:id/edit', {
-          templateUrl: '../views/questions/edit.html',
-          controller: 'EditQuestionController',
-          controllerAs: 'vm',
-          resolve: {
-            question: getQuestionById
-          }
-        })
+        // .when('/questions/new', {
+        //   templateUrl: '../views/questions/new.html',
+        //   controller: 'NewQuestionController',
+        //   controllerAs: 'vm'
+        // })
+        // .when('/questions/:id', {
+        //   templateUrl: '../views/questions/show.html',
+        //   controller: 'ShowQuestionController',
+        //   controllerAs: 'vm',
+        //   resolve: {
+        //     question: getQuestionById
+        //   }
+        // })
+        // .when('/questions/:id/edit', {
+        //   templateUrl: '../views/questions/edit.html',
+        //   controller: 'EditQuestionController',
+        //   controllerAs: 'vm',
+        //   resolve: {
+        //     question: getQuestionById
+        //   }
+        // })
         //***************************************************************************
         // CATCH-ALL
         //***************************************************************************
@@ -104,10 +104,10 @@
       return QuestionService.getQuestions();
     }
 
-    getQuestionById.$inject = ['QuestionService', '$route']
+    // getQuestionById.$inject = ['QuestionService', '$route']
 
-    function getQuestionById(QuestionService, $route) {
-      // Pulls the id of question from the $route object
-      return QuestionService.getQuestion($route.current.params.id)
-    }
+    // function getQuestionById(QuestionService, $route) {
+    //   // Pulls the id of question from the $route object
+    //   return QuestionService.getQuestion($route.current.params.id)
+    // }
 })();

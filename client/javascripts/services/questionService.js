@@ -11,16 +11,13 @@
 
       // GET - ALL TESTS
       this.getQuestions = () => {
-        // COMMENTS BELOW OUTPUT RESULTS FOR CHECKING
-        // var tests = $http.get(test_BASE_URL)
-        // console.log("RESULT", tests)
-        // return tests
+        // See TestService for comments to console.log output
         return $http.get(questions_BASE_URL)
       }
 
       // POST - NEW TEST
-      this.createQuestion = (newTest) => {
-        console.log("QUESTION TO BE CREATED IS... ", newTest)
+      this.createQuestion = (newQuestion) => {
+        console.log("QUESTION TO BE CREATED IS... ", newQuestion)
         return $http.post(questions_BASE_URL, newQuestion)
       }
 
@@ -30,7 +27,7 @@
         return $http.get(questions_BASE_URL+id)
       }
 
-      this.updateQuestion = (id, editedTestData) => {
+      this.updateQuestion = (id, editedQuestiontData) => {
         console.log("The Id of the QUESTION to be updated is... ", id)
         console.log("The updated info this this QUESTION is... ", editedTestData)
         return $http.put(questions_BASE_URL+id, editedQuestiontData)

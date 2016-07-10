@@ -5,7 +5,13 @@ var express = require('express')
 
 router.route('/')
   .get((req, res) => {
-    
+    db.Question.find({})
+      .exec((err, questions) => {
+        if (err) throw err;
+        console.log("The returned questions data is... ", questions)
+        res.send(questions)
+      })
+
   })
   .post((req, res) => {
     

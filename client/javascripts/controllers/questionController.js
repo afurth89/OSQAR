@@ -8,7 +8,7 @@
 
     function QuestionParentController(questions) {
       let vm = this;
-
+      console.log("The resolved questions object is", questions)
       vm.questions = questions.data
     }
 
