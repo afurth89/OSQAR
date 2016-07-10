@@ -5,6 +5,7 @@
     .controller('TestParentController', TestParentController)
     .controller('NewTestController', NewTestController)
     .controller('ShowTestController', ShowTestController)
+    .controller('EditTestController', EditTestController)
 
     //***************************************************************************
     // INDEX
@@ -76,7 +77,7 @@
       // within ShowTestController in app.js
       vm.test = test.data
 
-      vm.test.removeTest = function() {
+      vm.removeTest = function() {
         TestService.deleteTest($route.current.params.id).then((res) => {
           console.log("The response after deleting test is... ", res)
           // TO-DO --> Improve alert
@@ -86,4 +87,26 @@
       }
     }
 
+    EditTestController.$inject = ['test', 'TestService', '$location', "$route"]
+
+    function EditTestController(test, TestService, $location, $route) {
+      let vm = this;
+
+      // 'test.data' is result of 'resolve' property
+      // within EditTestController in app.js
+      vm.test = test.data
+      console.log("The category for this test is...", vm.test.category)
+      // Categories for updating test
+      // TO-DO --> consolidate this with "NewTestController"
+      vm.availableCategories = [
+        {id: "1", name: "Math"},
+        {id: "2", name: "English"},
+        {id: "3", name: "Social Studies"},
+        {id: "4", name: "Science"}
+      ]
+
+      vm.editTest = function(editedTest) {
+
+      }
+    }
 })();

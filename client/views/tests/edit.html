@@ -1,0 +1,25 @@
+<a href="/tests">Back to all Tests</a>
+
+<h1>Create a Test</h1>
+
+<div id="editTestForm" class="well">
+  <form ng-submit="vm.editTest(vm.test)">
+    <div class="form-group">
+      <label>Test Name</label>
+      <input ng-model="vm.test.title" type="text" class="form-control" value="{{vm.test.title}}">
+    </div>
+    <div class="form-group">
+      <label for="testCategory">Select a Category:</label>
+      <select name="testCategory" id="testCategorySelector"
+        ng-model="vm.test.category">
+        <option value="Math">Math</option>  
+        <option value="English">English</option>  
+        <option value="Social Studies">Social Studies</option>  
+        <option value="Science">Science</option>  
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Test</button>
+  </form>
+</div>
+
+<a class="btn btn-warning" href="/tests">Never mind, go back</a>

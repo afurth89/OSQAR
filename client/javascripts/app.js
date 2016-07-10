@@ -28,6 +28,14 @@
             test: getTestById
           }
         })
+        .when('/tests/:id/edit', {
+          templateUrl: '../views/tests/edit.html',
+          controller: 'EditTestController',
+          controllerAs: 'vm',
+          resolve: {
+            test: getTestById
+          }
+        })
         .otherwise({redirectTo: '/tests'})
       $locationProvider.html5Mode(true);
     }
