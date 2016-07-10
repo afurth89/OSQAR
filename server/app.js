@@ -22,7 +22,7 @@ app.use(morgan('tiny'));
 // data
 app.use('/api/tests', tests)
 
-app.get('/tests', (req, res) => {
+app.get('*', (req, res) => {
   // This code is FORBIDDEN (Express thinks it could be malicious)
   // res.sendFile(__dirname + '/../client/views/layout.html')
   res.sendFile('layout.html', {root: './client/views'})
@@ -30,9 +30,9 @@ app.get('/tests', (req, res) => {
 
 // NEEDS TO BE FIXED
   // So you can reload on any route and not be directed back to Index
-app.get('*', (req, res) => {
-  res.redirect('/tests')
-})
+// app.get('*', (req, res) => {
+//   res.redirect('/tests')
+// })
 
 app.listen(process.env.PORT || 3000, function(){
   console.log("Server is listening on port 3000");
