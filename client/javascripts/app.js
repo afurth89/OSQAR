@@ -8,7 +8,7 @@
     function config($routeProvider, $locationProvider) {
       $routeProvider
         //***************************************************************************
-        // TESTS
+        // TESTS ROUTES
         //***************************************************************************
         .when('/tests', {
           templateUrl: '../views/tests/index.html',
@@ -40,7 +40,7 @@
           }
         })
         //***************************************************************************
-        //QUESTIONS
+        //QUESTIONS ROUTES
         //***************************************************************************
         .when('/questions', {
           templateUrl: '../views/questions/index.html',
@@ -78,6 +78,10 @@
       $locationProvider.html5Mode(true);
     }
 
+   
+//***************************************************************************
+// TESTS ON-LOAD FUNCTIONS
+//***************************************************************************
     getAllTests.$inject = ['TestService']
 
     function getAllTests(TestService) {
@@ -89,5 +93,21 @@
     function getTestById(TestService, $route) {
       // Pulls the id of test from the $route object
       return TestService.getTest($route.current.params.id)
+    }
+
+//***************************************************************************
+// QUESTIONS ON-LOAD FUNCTIONS
+//***************************************************************************
+    getAllQuestions.$inject = ['QuestionService']
+
+    function getAllQuestions(QuestionService) {
+      return QuestionService.getQuestions();
+    }
+
+    getQuestionById.$inject = ['QuestionService', '$route']
+
+    function getQuestionById(QuestionService, $route) {
+      // Pulls the id of question from the $route object
+      return QuestionService.getQuestion($route.current.params.id)
     }
 })();
