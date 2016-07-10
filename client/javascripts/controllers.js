@@ -67,14 +67,21 @@
       }
     }
 
-    ShowTestController.$inject = ['test']
+    ShowTestController.$inject = ['test', 'TestService', '$location', "$route"]
 
-    function ShowTestController(test) {
+    function ShowTestController(test, TestService, $location, $route) {
       let vm = this;
 
       // 'test.data' is result of 'resolve' property
       // within ShowTestController in app.js
       vm.test = test.data
+
+      vm.test.removeTest = function() {
+        TestService.deleteTest($route.current.params.id).then((res) => {
+          console.log("The response after deleting test is... ", res)
+          $location.path('tests')
+        })
+      }
     }
 
 })();

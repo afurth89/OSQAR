@@ -1,7 +1,11 @@
 <h1>Show Route</h1>
-
+<a class="btn btn-primary" href="/tests">Back to All Tests</a>
 <div class="well">
-  <h4>TITLE: <a href="/tests/{{tests._id}}">{{vm.test.title}}</a></h4>
+  <span>
+    <h4>TITLE: {{vm.test.title}}</h4>
+    <a class="btn btn-warning" href="/tests/{{vm.test._id}}/edit">Edit Test</a>
+    <a class="btn btn-danger" ng-click="vm.test.removeTest()">Delete Test</a>
+  </span>
   <p>Category: {{vm.test.category}}</p>
   <p>Questions:</p>
     <ul ng-repeat="question in vm.test.questions">

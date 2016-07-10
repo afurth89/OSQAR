@@ -28,5 +28,11 @@
         console.log("TEST ID is...", id)
         return $http.get(test_BASE_URL+id)
       }
+
+      // DELETE - DELETE TEST
+      this.deleteTest = (id) => {
+        console.log("The Id of the test to be deleted is... ", id)
+        return $http.delete(test_BASE_URL+id)
+      }
     }
 })();
