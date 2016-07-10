@@ -50,11 +50,11 @@
             questions: getAllQuestions
           }
         })
-        // .when('/questions/new', {
-        //   templateUrl: '../views/questions/new.html',
-        //   controller: 'NewQuestionController',
-        //   controllerAs: 'vm'
-        // })
+        .when('/questions/new', {
+          templateUrl: '../views/questions/new.html',
+          controller: 'NewQuestionController',
+          controllerAs: 'vm'
+        })
         // .when('/questions/:id', {
         //   templateUrl: '../views/questions/show.html',
         //   controller: 'ShowQuestionController',
