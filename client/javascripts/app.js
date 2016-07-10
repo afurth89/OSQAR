@@ -7,6 +7,9 @@
 
     function config($routeProvider, $locationProvider) {
       $routeProvider
+        //***************************************************************************
+        // TESTS
+        //***************************************************************************
         .when('/tests', {
           templateUrl: '../views/tests/index.html',
           controller: 'TestParentController',
@@ -36,6 +39,41 @@
             test: getTestById
           }
         })
+        //***************************************************************************
+        //QUESTIONS
+        //***************************************************************************
+        .when('/questions', {
+          templateUrl: '../views/questions/index.html',
+          controller: 'QuestionParentController',
+          controllerAs: 'vm',
+          resolve: {
+            questions: getAllQuestions
+          }
+        })
+        .when('/questions/new', {
+          templateUrl: '../views/questions/new.html',
+          controller: 'NewQuestionController',
+          controllerAs: 'vm'
+        })
+        .when('/questions/:id', {
+          templateUrl: '../views/questions/show.html',
+          controller: 'ShowQuestionController',
+          controllerAs: 'vm',
+          resolve: {
+            question: getQuestionById
+          }
+        })
+        .when('/questions/:id/edit', {
+          templateUrl: '../views/questions/edit.html',
+          controller: 'EditQuestionController',
+          controllerAs: 'vm',
+          resolve: {
+            question: getQuestionById
+          }
+        })
+        //***************************************************************************
+        // CATCH-ALL
+        //***************************************************************************
         .otherwise({redirectTo: '/tests'})
       $locationProvider.html5Mode(true);
     }
