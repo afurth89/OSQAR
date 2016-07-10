@@ -106,7 +106,20 @@
       ]
 
       vm.editTest = function(editedTest) {
+        // See NewController for explanation of 'req' object formatting
+        var req = {
+          test: {
+            title: editedTest.title,
+            // Must pull only 'name' attr from category object
+            category: editedTest.category
+          } 
+        }
 
+        TestService.updateTest($route.current.params.id, req).then((res) => {
+          console.log("The updated test is...", res)
+          alert("The test has been updated")
+          $location.path('/tests')
+        })
       }
     }
 })();

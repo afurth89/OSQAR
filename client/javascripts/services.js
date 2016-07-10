@@ -29,6 +29,12 @@
         return $http.get(test_BASE_URL+id)
       }
 
+      this.updateTest = (id, editedTestData) => {
+        console.log("The Id of the test to be updated is... ", id)
+        console.log("The updated info this this test is... ", editedTestData)
+        return $http.put(test_BASE_URL+id, editedTestData)
+      }
+
       // DELETE - DELETE TEST
       this.deleteTest = (id) => {
         console.log("The Id of the test to be deleted is... ", id)
