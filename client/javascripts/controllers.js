@@ -29,18 +29,7 @@
 
       let vm = this;
 
-      vm.test = {
-        title: null,
-        category: null
-      };
-
-      // Categories that display in dropdown when creating test
-      vm.availableCategories = [
-        {id: "1", name: "Math"},
-        {id: "2", name: "English"},
-        {id: "3", name: "Social Studies"},
-        {id: "4", name: "Science"}
-      ]
+      vm.test = {};
 
       vm.addTest = function(newTest) {
         if (newTest.title && newTest.category) {
@@ -51,10 +40,9 @@
             test: {
               title: newTest.title,
               // Must pull only 'name' attr from category object
-              category: newTest.category.name
+              category: newTest.category
             } 
           }
-
           TestService.createTest(req).then((res) => {
             console.log("Response from the server is...", res)
             $location.path('/tests')
