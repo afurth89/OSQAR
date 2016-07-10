@@ -46,6 +46,14 @@ router.route('/:id')
         res.send(test)
       }) 
   })
+  .delete((req, res) => {
+    console.log("ID of test to be deleted is... ", req.params.id)    
+    db.Test.findByIdAndRemove(req.params.id, (err, deletedTest) => {
+      if (err) throw err;
+      console.log("SUCCESSFUL DELETED TEST --> ", deletedTest)
+      res.send(deletedTest)
+    })
+  })
 
 
 module.exports = router;

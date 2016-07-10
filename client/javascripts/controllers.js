@@ -79,7 +79,9 @@
       vm.test.removeTest = function() {
         TestService.deleteTest($route.current.params.id).then((res) => {
           console.log("The response after deleting test is... ", res)
-          $location.path('tests')
+          // TO-DO --> Improve alert
+          alert("The test has been successfully deleted")
+          $location.path('/tests')
         })
       }
     }
