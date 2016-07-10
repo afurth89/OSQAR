@@ -46,6 +46,14 @@ router.route('/:id')
         res.send(test)
       }) 
   })
+  .put((req, res) => {
+    console.log("ID of test to update is... ", req.params.id)    
+    db.Test.findByIdAndUpdate(req.params.id, req.body.test, (err, updatedTest) => {
+      if (err) throw err;
+      console.log("SUCCESSFUL UPDATED TEST --> ", updatedTest)
+      res.send(updatedTest)
+    })
+  })
   .delete((req, res) => {
     console.log("ID of test to be deleted is... ", req.params.id)    
     db.Test.findByIdAndRemove(req.params.id, (err, deletedTest) => {
