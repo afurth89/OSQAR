@@ -14,7 +14,11 @@ router.route('/')
 
   })
   .post((req, res) => {
-    
+    db.Question.create(req.body.question, (err, createdQuestion) => {
+      if (err) throw err;
+      console.log("The created question data is... ", createdQuestion)
+      res.send(createdQuestion)
+    })
   })
 
 router.route('/:id')
