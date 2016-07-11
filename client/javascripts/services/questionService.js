@@ -9,13 +9,13 @@
     function QuestionService($http) {
       const questions_BASE_URL = '/api/questions/';
 
-      // GET - ALL TESTS
+      // GET - ALL QUESTIONS
       this.getQuestions = () => {
         // See TestService for comments to console.log output
         return $http.get(questions_BASE_URL)
       }
 
-      // POST - NEW TEST
+      // POST - NEW QUESTION
       this.createQuestion = (newQuestion) => {
         console.log("QUESTION TO BE CREATED IS... ", newQuestion)
         return $http.post(questions_BASE_URL, newQuestion)

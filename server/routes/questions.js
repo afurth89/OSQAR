@@ -14,6 +14,7 @@ router.route('/')
 
   })
   .post((req, res) => {
+    eval(require('locus'))
     db.Question.create(req.body.question, (err, createdQuestion) => {
       if (err) throw err;
       console.log("The created question data is... ", createdQuestion)

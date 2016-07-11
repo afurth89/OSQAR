@@ -25,7 +25,6 @@
 
     function NewQuestionController(QuestionService) {
       let vm = this;
-      debugger
       vm.question = {
         text: null,
         category: null,
@@ -36,8 +35,7 @@
               {id: 4, text: null}],
         correct: {id: null, text: null}
       }
-      vm.addQuestion = function(newQuestion, $location) {
-        debugger
+      vm.addQuestion = function(newQuestion, testId=false, $location) {
         newQuestion.correct.id = +newQuestion.correct.id
         newQuestion.choices.find((val,idx) => {
           if (val.id === newQuestion.correct.id) {
@@ -46,6 +44,7 @@
           }
         })
 
+        // Are all fields filled in for question?
         if (newQuestion.text && newQuestion.category &&
             newQuestion.choices[0].text &&
             newQuestion.choices[1].text &&
@@ -56,12 +55,16 @@
             // 'req.test' is perfectly formatted object for db
             // Becomes 'req.body.test' when db is ingesting it
           var req = {
-            question: newQuestion 
+            question: newQuestion,
+            testId: testId 
           }
+          console.log("The 'req' object passed to QService is...", req)
           QuestionService.createQuestion(req).then((res) => {
             console.log("Response from the server is...", res)
+            // BUILD IF STATEMENT DEPENDING ON IF QUESTION
+            // WAS ADDED TO A TEST OR NOT
             $location.path('/questions')
-          })
+          })            
 
         } else {
           // Provide flash message that title and category cannot be blank

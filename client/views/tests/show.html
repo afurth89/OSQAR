@@ -20,7 +20,7 @@
   <a class="btn btn-success" ng-click="vm.toggleAddingQuestionsToTest()">{{vm.addQuestionsEnabled.text}} Questions</a>
   
   <div id="newQuestionToTestForm" class="well" ng-show="vm.addQuestionsEnabled.value" ng-controller="NewQuestionController as vmNewQuestion">
-    <form ng-submit="vmNewQuestion.addQuestion(vmNewQuestion.question)">
+    <form ng-submit="vmNewQuestion.addQuestion(vmNewQuestion.question, vm.test._id)">
       <div class="form-group">
         <label>Question Text</label>
         <textarea ng-model="vmNewQuestion.question.text" type="textarea" class="form-control" placeholder="Enter your question..."></textarea>
