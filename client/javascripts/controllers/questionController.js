@@ -4,7 +4,11 @@
     .module('osqarApp')
     .controller("QuestionParentController", QuestionParentController)
     .controller("NewQuestionController", NewQuestionController)
+    .controller("ShowQuestionController", ShowQuestionController)
 
+//***************************************************************************
+// INDEX
+//***************************************************************************
     QuestionParentController.$inject = ['questions']
 
     function QuestionParentController(questions) {
@@ -13,6 +17,9 @@
       vm.questions = questions.data
     }
 
+//***************************************************************************
+// NEW
+//***************************************************************************
     NewQuestionController.$inject = ['QuestionService', '$location']
 
     function NewQuestionController(QuestionService) {
@@ -37,7 +44,6 @@
             newQuestion.correct.text = val.text
             return val
           }
-
         })
 
         if (newQuestion.text && newQuestion.category &&
@@ -65,5 +71,14 @@
       }
     }
 
+//***************************************************************************
+// SHOW
+//***************************************************************************
+  ShowQuestionController.$inject = ['question']
 
+  function ShowQuestionController(question) {
+    let vm = this;
+
+    vm.question = question.data
+  }
 })();

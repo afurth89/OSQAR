@@ -23,7 +23,14 @@ router.route('/')
 
 router.route('/:id')
   .get((req, res) => {
-    
+    console.log("ID of question to find is... ", req.params.id)
+    // Get a single test
+    db.Question.findById(req.params.id)
+      .exec((err, question) => {
+        if (err) throw err;
+        console.log("Returned question is... ", question)
+        res.send(question)
+      })
   })
   .put((req, res) => {
     
