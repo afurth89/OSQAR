@@ -59,9 +59,9 @@
 //***************************************************************************
 // SHOW
 //***************************************************************************
-    ShowTestController.$inject = ['test', 'TestService', '$location', "$route"]
+    ShowTestController.$inject = ['test', 'TestService', '$location', "$route", '$scope']
 
-    function ShowTestController(test, TestService, $location, $route) {
+    function ShowTestController(test, TestService, $location, $route, $scope) {
       let vm = this;
 
       // 'test.data' is result of 'resolve' property
@@ -94,6 +94,16 @@
           $location.path('/tests')
         })
       }
+
+      $scope.$watch(
+        function watchTestData(scope) {
+          return vm.test
+        }, 
+        function handleTestDataChange(newVal, oldVal) {
+          console.log("newVal: ", newVal)
+          console.log("oldVal: ", oldVal)
+        }
+      );
 
 
     }

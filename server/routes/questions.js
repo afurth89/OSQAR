@@ -20,7 +20,9 @@ router.route('/')
       // 2. Add ref to Question to Test
       addQuestionToTest(testId, createdQuestion).then((test) => {
         // Send back the updated Test
-        res.send(test)
+        populateTest(test._id).then((populatedTest) => {
+          res.send(populatedTest)
+        })
       }) 
     })
   });
@@ -79,6 +81,17 @@ function addQuestionToTest(testId, question) {
     })
   })
 }
+
+function populateTest(testId) {
+  return new Promise((resolve) => {
+    db.Test.findById(testId).populate('questions')
+      .exec((err, populatedTest) => {
+        if (err) throw err;
+        console.log("Returned Test is... ", populatedTest)
+        resolve(populatedTest)
+      })
+  })
+}  
 
 
 

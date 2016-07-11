@@ -21,10 +21,12 @@
 //***************************************************************************
 // NEW
 //***************************************************************************
-    NewQuestionController.$inject = ['QuestionService', '$location']
+    NewQuestionController.$inject = ['QuestionService', '$location', '$scope']
 
-    function NewQuestionController(QuestionService) {
+    function NewQuestionController(QuestionService, $location, $scope) {
       let vm = this;
+
+      console.log("$scope.$parent is...", $scope.$parent.vm.test)
       vm.question = {
         text: null,
         category: null,
@@ -35,7 +37,7 @@
               {id: 4, text: null}],
         correct: {id: null, text: null}
       }
-      vm.addQuestion = function(newQuestion, testId=false, $location) {
+      vm.addQuestion = function(newQuestion, testId=false) {
         newQuestion.correct.id = +newQuestion.correct.id
         newQuestion.choices.find((val,idx) => {
           if (val.id === newQuestion.correct.id) {
@@ -64,6 +66,9 @@
             // If the response object has 'data.questions',
             // it means that it is a test (which means the question was added to a test)
             if (res.data.questions) {
+              console.log("res.data EQUALS...", res.data)
+              $scope.$parent.vm.test = res.data
+              $scope.$parent.vm.toggleAddingQuestionsToTest()
               // If Q is assigned to test, then redirect to that test's show page
               $location.path('/tests/' + res.data._id)
             } else {
