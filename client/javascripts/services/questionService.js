@@ -29,7 +29,7 @@
 
       this.updateQuestion = (id, editedQuestiontData) => {
         console.log("The Id of the QUESTION to be updated is... ", id)
-        console.log("The updated info this this QUESTION is... ", editedTestData)
+        console.log("The updated info this this QUESTION is... ", editedQuestiontData)
         return $http.put(questions_BASE_URL+id, editedQuestiontData)
       }
 

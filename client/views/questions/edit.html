@@ -1,7 +1,7 @@
 <h1>Edit this Question</h1>
 
 <div id="newQuestionForm" class="well">
-  <form ng-submit="vm.updateQuestion(vm.question)">
+  <form ng-submit="vm.editQuestion(vm.question)">
     <div class="form-group">
       <label>Question Text</label>
       <textarea ng-model="vm.question.text" type="textarea" class="form-control"></textarea>
@@ -31,7 +31,7 @@
       <input type="radio" ng-model="vm.question.correct.id" value="4">
       <input ng-model="vm.question.choices[3].text" type="text" class="form-control" placeholder="Enter Choice D...">
     </div>
-    <button type="submit" class="btn btn-success">Create Question</button>
+    <button type="submit" class="btn btn-success">Update Question</button>
   </form>
 </div>
 

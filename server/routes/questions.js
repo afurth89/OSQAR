@@ -33,7 +33,12 @@ router.route('/:id')
       })
   })
   .put((req, res) => {
-    
+    console.log("ID of question to update is... ", req.params.id)    
+    db.Question.findByIdAndUpdate(req.params.id, req.body.question, (err, updatedQuestion) => {
+      if (err) throw err;
+      console.log("SUCCESSFUL UPDATED QUESTION --> ", updatedQuestion)
+      res.send(updatedQuestion)
+    })
   })
   .delete((req, res) => {
     console.log("ID of question to be deleted is... ", req.params.id)    

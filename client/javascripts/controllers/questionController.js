@@ -102,6 +102,25 @@
 
     vm.question = question.data
 
-    
+    vm.editQuestion = function(editedQuestion) {
+      // See NewController for explanation of 'req' object formatting
+      editedQuestion.correct.id = +editedQuestion.correct.id
+      editedQuestion.choices.find((val,idx) => {
+        if (val.id === editedQuestion.correct.id) {
+          editedQuestion.correct.text = val.text
+          return val
+        }
+      })
+
+      var req = {
+        question: editedQuestion 
+      }
+
+      QuestionService.updateQuestion($route.current.params.id, req).then((res) => {
+        console.log("The updated question is...", res)
+        alert("The question has been updated")
+        $location.path('/questions')
+      })
+    }    
   }
 })();
