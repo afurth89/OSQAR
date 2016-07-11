@@ -68,22 +68,22 @@
       // within ShowTestController in app.js
       vm.test = test.data
 
-      vm.addQuestionsEnabled = {
+      vm.createNewQuestionFormDisplay = {
         value: false,
-        text: "Add"
+        text: "Create New Question"
       }
 
       vm.toggleAddingQuestionsToTest = function() {
-        if (vm.addQuestionsEnabled.value) {
+        if (vm.createNewQuestionFormDisplay.value) {
           // If add question form is shown, hide it
-          vm.addQuestionsEnabled.value = false;
-          vm.addQuestionsEnabled.text = "Add"
+          vm.createNewQuestionFormDisplay.value = false;
+          vm.createNewQuestionFormDisplay.text = "Create New Question"
         } else {
           // If add question form is hidden, show it
-          vm.addQuestionsEnabled.value = true;
-          vm.addQuestionsEnabled.text = "Hide"
+          vm.createNewQuestionFormDisplay.value = true;
+          vm.createNewQuestionFormDisplay.text = "Hide New Question Form"
         }
-        console.log(vm.addQuestionsEnabled)
+        console.log(vm.createNewQuestionFormDisplay)
       }
 
       vm.removeTest = function() {

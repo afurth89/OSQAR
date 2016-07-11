@@ -17,9 +17,9 @@
       <li>Correct Answer: {{question.correct}}</li>
       <li>Tests this question is a part of: {{question.tests}}</li>
     </ul>
-  <a class="btn btn-success" ng-click="vm.toggleAddingQuestionsToTest()">{{vm.addQuestionsEnabled.text}} Questions</a>
+  <a class="btn btn-success" ng-click="vm.toggleAddingQuestionsToTest()">{{vm.createNewQuestionFormDisplay.text}}</a>
   
-  <div id="newQuestionToTestForm" class="well" ng-show="vm.addQuestionsEnabled.value" ng-controller="NewQuestionController as vmNewQuestion">
+  <div id="newQuestionToTestForm" class="well" ng-show="vm.createNewQuestionFormDisplay.value" ng-controller="NewQuestionController as vmNewQuestion">
     <form ng-submit="vmNewQuestion.addQuestion(vmNewQuestion.question, vm.test._id)">
       <div class="form-group">
         <label>Question Text</label>
