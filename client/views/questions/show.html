@@ -1,4 +1,14 @@
 <h1>Show Route</h1>
 <a class="btn btn-primary" href="/questions">Back to All Questions</a>
 
-<p>{{vm.question}}</p>
+<div class="well">
+  <a class="btn btn-warning" href="/questions/{{vm.question._id}}/edit">Edit Question</a>
+  <a class="btn btn-danger" ng-click="vm.removeQuestion()">Delete Question</a>
+  <h4>{{vm.question.text}}</h4>
+  <p>Category: {{vm.question.category}}</p>
+  <ul ng-repeat="choice in vm.question.choices">
+    <li>{{choice.id}}. {{choice.text}}</li>
+  </ul>
+  <p>The correct answer is: {{vm.question.correct}}</p>
+</div>
+
