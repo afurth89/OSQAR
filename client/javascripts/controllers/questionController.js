@@ -25,7 +25,7 @@
 
     function NewQuestionController(QuestionService) {
       let vm = this;
-
+      debugger
       vm.question = {
         text: null,
         category: null,
@@ -36,12 +36,11 @@
               {id: 4, text: null}],
         correct: {id: null, text: null}
       }
-
       vm.addQuestion = function(newQuestion, $location) {
+        debugger
         newQuestion.correct.id = +newQuestion.correct.id
         newQuestion.choices.find((val,idx) => {
           if (val.id === newQuestion.correct.id) {
-            debugger
             newQuestion.correct.text = val.text
             return val
           }

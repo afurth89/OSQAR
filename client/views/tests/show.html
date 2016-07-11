@@ -1,4 +1,4 @@
-<h1>Show Route</h1>
+<h1>Show Test Route</h1>
 <a class="btn btn-primary" href="/tests">Back to All Tests</a>
 <div class="well">
   <span>
@@ -17,18 +17,18 @@
       <li>Correct Answer: {{question.correct}}</li>
       <li>Tests this question is a part of: {{question.tests}}</li>
     </ul>
-  <a class="btn btn-success" ng-click="vm.toggleAddingQuestionsToTest()">Add Questions</a>
+  <a class="btn btn-success" ng-click="vm.toggleAddingQuestionsToTest()">{{vm.addQuestionsEnabled.text}} Questions</a>
   
-  <div id="newQuestionToTestForm" class="well" ng-show="vm.addQuestionsEnabled">
-    <form ng-submit="vm.addQuestion(vm.question)">
+  <div id="newQuestionToTestForm" class="well" ng-show="vm.addQuestionsEnabled.value" ng-controller="NewQuestionController as vmNewQuestion">
+    <form ng-submit="vmNewQuestion.addQuestion(vmNewQuestion.question)">
       <div class="form-group">
         <label>Question Text</label>
-        <textarea ng-model="vm.question.text" type="textarea" class="form-control" placeholder="Enter your question..."></textarea>
+        <textarea ng-model="vmNewQuestion.question.text" type="textarea" class="form-control" placeholder="Enter your question..."></textarea>
       </div>
       <div class="form-group">
         <label for="questionCategory">Select a Category:</label>
           <select name="questionCategory" id="questionCategorySelector"
-            ng-model="vm.question.category">
+            ng-model="vmNewQuestion.question.category">
             <option value="Math">Math</option>  
             <option value="English">English</option>  
             <option value="Social Studies">Social Studies</option>  
@@ -38,17 +38,17 @@
       <div class="form-group">
         <p>Answer Choices (Select the correct answer before submitting)</p>
         <label>A:</label>
-        <input type="radio" ng-model="vm.question.correct.id" value="1">
-        <input ng-model="vm.question.choices[0].text" type="text" class="form-control" placeholder="Enter Choice A...">
+        <input type="radio" ng-model="vmNewQuestion.question.correct.id" value="1">
+        <input ng-model="vmNewQuestion.question.choices[0].text" type="text" class="form-control" placeholder="Enter Choice A...">
         <label>B:</label>
-        <input type="radio" ng-model="vm.question.correct.id" value="2">
-        <input ng-model="vm.question.choices[1].text" type="text" class="form-control" placeholder="Enter Choice B...">
+        <input type="radio" ng-model="vmNewQuestion.question.correct.id" value="2">
+        <input ng-model="vmNewQuestion.question.choices[1].text" type="text" class="form-control" placeholder="Enter Choice B...">
         <label>C:</label>
-        <input type="radio" ng-model="vm.question.correct.id" value="3">
-        <input ng-model="vm.question.choices[2].text" type="text" class="form-control" placeholder="Enter Choice C...">
+        <input type="radio" ng-model="vmNewQuestion.question.correct.id" value="3">
+        <input ng-model="vmNewQuestion.question.choices[2].text" type="text" class="form-control" placeholder="Enter Choice C...">
         <label>D:</label>
-        <input type="radio" ng-model="vm.question.correct.id" value="4">
-        <input ng-model="vm.question.choices[3].text" type="text" class="form-control" placeholder="Enter Choice D...">
+        <input type="radio" ng-model="vmNewQuestion.question.correct.id" value="4">
+        <input ng-model="vmNewQuestion.question.choices[3].text" type="text" class="form-control" placeholder="Enter Choice D...">
       </div>
       <button type="submit" class="btn btn-success">Create Question</button>
     </form>
