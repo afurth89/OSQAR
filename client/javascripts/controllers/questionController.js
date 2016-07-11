@@ -61,9 +61,14 @@
           console.log("The 'req' object passed to QService is...", req)
           QuestionService.createQuestion(req).then((res) => {
             console.log("Response from the server is...", res)
-            // BUILD IF STATEMENT DEPENDING ON IF QUESTION
-            // WAS ADDED TO A TEST OR NOT
-            $location.path('/questions')
+            // If the response object has 'data.questions',
+            // it means that it is a test (which means the question was added to a test)
+            if (res.data.questions) {
+              // If Q is assigned to test, then redirect to that test's show page
+              $location.path('/tests/' + res.data._id)
+            } else {
+              $location.path('/questions')
+            }
           })            
 
         } else {

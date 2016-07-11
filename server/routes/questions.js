@@ -14,13 +14,16 @@ router.route('/')
 
   })
   .post((req, res) => {
-    eval(require('locus'))
-    db.Question.create(req.body.question, (err, createdQuestion) => {
-      if (err) throw err;
-      console.log("The created question data is... ", createdQuestion)
-      res.send(createdQuestion)
+    var testId = req.body.testId
+    // 1. Create the question
+    createQuestion(req.body.question).then((createdQuestion) => {
+      // 2. Add ref to Question to Test
+      addQuestionToTest(testId, createdQuestion).then((test) => {
+        // Send back the updated Test
+        res.send(test)
+      }) 
     })
-  })
+  });
 
 router.route('/:id')
   .get((req, res) => {
@@ -48,6 +51,36 @@ router.route('/:id')
       console.log("SUCCESSFUL DELETED QUESTION --> ", deletedQuestion)
       res.send(deletedQuestion)
     })
+  });
+
+//***************************************************************************
+// HELPER FUNCTIONS
+//***************************************************************************
+
+// Create a question
+function createQuestion(question) {
+  return new Promise((resolve) => {
+    db.Question.create(question, (err, createdQuestion) => {
+      if (err) throw err;
+      console.log("The created question data is... ", createdQuestion)
+      resolve(createdQuestion)
+    })
   })
+}
+
+// Once question has been created, use testId to add reference to that question in test
+function addQuestionToTest(testId, question) {
+  return new Promise((resolve) => {
+    db.Test.findById(testId, (err, foundTest) => {
+      foundTest.questions.push(question._id)
+      foundTest.save()
+      console.log("Found Test after save...", foundTest)
+      resolve(foundTest)
+    })
+  })
+}
+
+
+
 
 module.exports = router;
