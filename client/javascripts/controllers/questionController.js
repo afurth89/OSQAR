@@ -74,11 +74,20 @@
 //***************************************************************************
 // SHOW
 //***************************************************************************
-  ShowQuestionController.$inject = ['question']
+  ShowQuestionController.$inject = ['question', 'QuestionService', '$location' ,'$route']
 
-  function ShowQuestionController(question) {
+  function ShowQuestionController(question, QuestionService, $location, $route) {
     let vm = this;
 
     vm.question = question.data
+
+    vm.removeQuestion = function() {
+      QuestionService.deleteQuestion($route.current.params.id).then((res) => {
+        console.log("The response after deleting question is... ", res)
+        // TO-DO --> Improve alert
+        alert("The question has been successfully deleted")
+        $location.path('/questions')
+      })
+    }
   }
 })();
