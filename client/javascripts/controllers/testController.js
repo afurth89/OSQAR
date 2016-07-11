@@ -7,9 +7,9 @@
     .controller('ShowTestController', ShowTestController)
     .controller('EditTestController', EditTestController)
 
-    //***************************************************************************
-    // INDEX
-    //***************************************************************************
+//***************************************************************************
+// INDEX
+//***************************************************************************
     TestParentController.$inject = ['tests']
 
     function TestParentController(tests) {
@@ -20,9 +20,9 @@
       vm.tests = tests.data
     }
 
-    //***************************************************************************
-    // NEW
-    //***************************************************************************
+//***************************************************************************
+// NEW
+//***************************************************************************
     NewTestController.$inject = ['TestService', '$location']
 
     function NewTestController(TestService, $location) {
@@ -56,6 +56,9 @@
       }
     }
 
+//***************************************************************************
+// SHOW
+//***************************************************************************
     ShowTestController.$inject = ['test', 'TestService', '$location', "$route"]
 
     function ShowTestController(test, TestService, $location, $route) {
@@ -75,6 +78,9 @@
       }
     }
 
+//***************************************************************************
+// EDIT
+//***************************************************************************
     EditTestController.$inject = ['test', 'TestService', '$location', "$route"]
 
     function EditTestController(test, TestService, $location, $route) {

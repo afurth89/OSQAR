@@ -63,14 +63,14 @@
             question: getQuestionById
           }
         })
-        // .when('/questions/:id/edit', {
-        //   templateUrl: '../views/questions/edit.html',
-        //   controller: 'EditQuestionController',
-        //   controllerAs: 'vm',
-        //   resolve: {
-        //     question: getQuestionById
-        //   }
-        // })
+        .when('/questions/:id/edit', {
+          templateUrl: '../views/questions/edit.html',
+          controller: 'EditQuestionController',
+          controllerAs: 'vm',
+          resolve: {
+            question: getQuestionById
+          }
+        })
         //***************************************************************************
         // CATCH-ALL
         //***************************************************************************

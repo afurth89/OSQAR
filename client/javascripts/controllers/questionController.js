@@ -5,6 +5,7 @@
     .controller("QuestionParentController", QuestionParentController)
     .controller("NewQuestionController", NewQuestionController)
     .controller("ShowQuestionController", ShowQuestionController)
+    .controller("EditQuestionController", EditQuestionController)
 
 //***************************************************************************
 // INDEX
@@ -89,5 +90,18 @@
         $location.path('/questions')
       })
     }
+  }
+
+//***************************************************************************
+// EDIT
+//***************************************************************************
+  EditQuestionController.$inject = ['question', 'QuestionService', '$location', '$route']
+
+  function EditQuestionController(question, QuestionService, $location, $route) {
+    let vm = this;
+
+    vm.question = question.data
+
+    
   }
 })();
