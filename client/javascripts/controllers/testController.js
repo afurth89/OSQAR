@@ -68,6 +68,13 @@
       // within ShowTestController in app.js
       vm.test = test.data
 
+      vm.addQuestionsEnabled = false;
+
+      vm.toggleAddingQuestionsToTest = function() {
+        vm.addQuestionsEnabled ? vm.addQuestionsEnabled = false : vm.addQuestionsEnabled = true;
+        console.log(vm.addQuestionsEnabled)
+      }
+
       vm.removeTest = function() {
         TestService.deleteTest($route.current.params.id).then((res) => {
           console.log("The response after deleting test is... ", res)
@@ -76,6 +83,8 @@
           $location.path('/tests')
         })
       }
+
+
     }
 
 //***************************************************************************
