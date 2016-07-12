@@ -1,10 +1,10 @@
 <a class="btn btn-primary" href="/tests/new">Create a new test</a>
 <h1>Here are all the tests</h1>
-<div ng-repeat="tests in vm.tests" class="well">
-  <h4>TITLE: <a href="/tests/{{tests._id}}">{{tests.title}}</a></h4>
-  <p>Category: {{tests.category}}</p>
+<div ng-repeat="test in vm.tests" class="well">
+  <h4>TITLE: <a href="/tests/{{test._id}}">{{test.title}}</a></h4>
+  <p>Category: {{test.category}}</p>
   <p>Questions:</p>
-    <ul ng-repeat="question in tests.questions">
+    <ul ng-repeat="question in test.questions">
       <li>Category: {{question.category}}</li>
       <li>Question: {{question.text}}</li>
       <ul ng-repeat="choice in question.choices">
