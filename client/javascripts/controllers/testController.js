@@ -76,6 +76,13 @@
       }
 
       vm.toggleShowTestQs = function() {
+        // Ensure other two aren't displaying
+        vm.createNewQuestionFormDisplay.value = false;
+        vm.createNewQuestionFormDisplay.text = "Create New Question"
+        vm.addExistingQuestionFormDisplay.value = false;
+        vm.addExistingQuestionFormDisplay.text = "Add Existing Question"
+
+        // Show/Hide Current Test Qs
         if (vm.showTestQuestions.value) {
           // If add question form is shown, hide it
           vm.showTestQuestions.value = false;
@@ -95,6 +102,13 @@
       }
 
       vm.toggleCreateNewQsForTest = function() {
+        // Ensure other two aren't displaying
+        vm.showTestQuestions.value = false;
+        vm.showTestQuestions.text = "Show Current Questions"
+        vm.addExistingQuestionFormDisplay.value = false;
+        vm.addExistingQuestionFormDisplay.text = "Add Existing Question"
+
+        // Show/Hide Create Q form
         if (vm.createNewQuestionFormDisplay.value) {
           // If add question form is shown, hide it
           vm.createNewQuestionFormDisplay.value = false;
@@ -114,6 +128,13 @@
       }
 
       vm.toggleAddExistingQsToTest = function() {
+        // Ensure other two aren't displaying
+        vm.showTestQuestions.value = false;
+        vm.showTestQuestions.text = "Show Current Questions"
+        vm.createNewQuestionFormDisplay.value = false;
+        vm.createNewQuestionFormDisplay.text = "Create New Question"
+
+        // Show/Hide Existing Questions
         if (vm.addExistingQuestionFormDisplay.value) {
           // If add question form is shown, hide it
           vm.addExistingQuestionFormDisplay.value = false;

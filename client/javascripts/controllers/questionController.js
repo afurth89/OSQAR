@@ -68,7 +68,7 @@
             if (res.data.questions) {
               console.log("res.data EQUALS...", res.data)
               $scope.$parent.vm.test = res.data
-              $scope.$parent.vm.toggleAddingQuestionsToTest()
+              $scope.$parent.vm.toggleCreateNewQsForTest()
               // If Q is assigned to test, then redirect to that test's show page
               $location.path('/tests/' + res.data._id)
             } else {
