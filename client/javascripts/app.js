@@ -86,7 +86,10 @@
         .when('/sessions/new', {
           templateUrl: '../views/sessions/new.html',
           controller: 'NewSessionController',
-          controllerAs: 'vm'
+          controllerAs: 'vm',
+          resolve: {
+            allTests: getAllTests
+          }
         })
         // .when('/sessions/:id', {
         //   templateUrl: '../views/sessions/show.html',

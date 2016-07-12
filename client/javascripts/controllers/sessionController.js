@@ -20,11 +20,13 @@
 //***************************************************************************
 // NEW
 //***************************************************************************
-    NewSessionController.$inject = []
+    NewSessionController.$inject = ['allTests']
 
-    function NewSessionController() {
+    function NewSessionController(allTests) {
 
       let vm = this;
+
+      vm.tests = allTests.data
 
       
     }
