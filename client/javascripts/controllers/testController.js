@@ -168,6 +168,21 @@
         })
       }
 
+      vm.removeQuestionFromTest = (qId) => {
+        console.log("Id of question to be deleted is...", qId)
+
+        var req = {
+          qIdToDel: qId
+        }
+
+        TestService.updateTest($route.current.params.id, req).then((res) => {
+          console.log("The updated test is...", res)
+          alert("The question has been removed")
+          // Update current questions
+          vm.test = res.data
+        })
+      }
+
       // REMOVE A TEST
       vm.removeTest = function() {
         TestService.deleteTest($route.current.params.id).then((res) => {

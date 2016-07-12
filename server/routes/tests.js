@@ -59,6 +59,15 @@ router.route('/:id')
         })
       }) 
 
+    // REMOVING A QUESTION FROM TEST 
+    } else if (req.body.qIdToDel){
+      removeQuestionFromTest(req.params.id, req.body.qIdToDel).then((test) => {
+        // Repopulate the test's questions
+        populateTest(test._id).then((populatedTest) => {
+          // Send back the updated Test
+          res.send(populatedTest)
+        })
+      })
     // UPDATING TITLE/CATEGORY OF TEST
     } else {
       db.Test.findByIdAndUpdate(req.params.id, req.body.test, (err, updatedTest) => {
@@ -88,6 +97,28 @@ router.route('/:id')
         foundTest.questions.push(qId)
         foundTest.save()
         console.log("Found Test after save...", foundTest)
+        resolve(foundTest)
+      })
+    })
+  }
+
+  function removeQuestionFromTest(testId, qId) {
+    return new Promise((resolve) => {
+      // Find test
+      db.Test.findById(testId, (err, foundTest) => {
+        // Find the index of the question to be removed
+        qIdx = foundTest.questions.findIndex((el) => {
+          // qId is a string, so el (an object), must also 
+          // be converted to a string before comparing
+          if (el.toString() === qId) {
+            return el
+          }
+        })
+        // Remove the question from questions array
+        foundTest.questions.splice(qIdx, 1)
+        // Save changes
+        foundTest.save()
+        // Return updated test
         resolve(foundTest)
       })
     })

@@ -31,7 +31,7 @@
 
       this.updateTest = (id, editedTestData) => {
         console.log("The Id of the test to be updated is... ", id)
-        console.log("The updated info this this test is... ", editedTestData)
+        console.log("The info that will be updated in this test is... ", editedTestData)
         return $http.put(test_BASE_URL+id, editedTestData)
       }
 
