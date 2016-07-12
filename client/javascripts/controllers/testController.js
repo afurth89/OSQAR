@@ -133,11 +133,17 @@
         var req = {
           qId: qId
         }        
-        debugger
         TestService.updateTest($route.current.params.id, req).then((res) => {
           console.log("The updated test is...", res)
           alert("The question has been added")
-          $location.path('/tests')
+          // Hide existing questions
+          vm.toggleAddExistingQsToTest()
+          // Update current questions
+          vm.test = res.data
+          // Show current questions
+          vm.toggleShowTestQs()
+
+
         })
       }
 

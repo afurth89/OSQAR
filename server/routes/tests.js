@@ -50,10 +50,14 @@ router.route('/:id')
     console.log("ID of test to update is... ", req.params.id)    
     // ADDING A QUESTION TO TEST
     if (req.body.qId) {
-      eval(require('locus'))
-      addQuestionToTest(req.params.id, req.body.qId).then((updatedTest) => {
-        res.send(updatedTest)
-      })
+      // Add question ref to test
+      addQuestionToTest(req.params.id, req.body.qId).then((test) => {
+        // Repopulate the test's questions
+        populateTest(test._id).then((populatedTest) => {
+          // Send back the updated Test
+          res.send(populatedTest)
+        })
+      }) 
 
     // UPDATING TITLE/CATEGORY OF TEST
     } else {
@@ -76,17 +80,6 @@ router.route('/:id')
   //***************************************************************************
   // HELPER FUNCTIONS
   //***************************************************************************
-
-  // Create a question
-  function createQuestion(question) {
-    return new Promise((resolve) => {
-      db.Question.create(question, (err, createdQuestion) => {
-        if (err) throw err;
-        console.log("The created question data is... ", createdQuestion)
-        resolve(createdQuestion)
-      })
-    })
-  }
 
   // Once question has been created, use testId to add reference to that question in test
   function addQuestionToTest(testId, qId) {
