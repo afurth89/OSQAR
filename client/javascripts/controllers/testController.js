@@ -69,6 +69,7 @@
       vm.test = test.data
       vm.allQuestionsList = allQuestions.data
 
+      // CONTROL DISPLAY OF CURRENT QUESTIONS ALREADY PART OF TEST
       vm.showTestQuestions = {
         value: false,
         text: "Show Current Questions"
@@ -87,6 +88,7 @@
         console.log(vm.showTestQuestions)
       }      
 
+      // CONTROL DISPLAY OF CREATE QUESTION FORM    
       vm.createNewQuestionFormDisplay = {
         value: false,
         text: "Create New Question"
@@ -105,6 +107,7 @@
         console.log(vm.createNewQuestionFormDisplay)
       }
 
+      // CONTROL DISPLAY OF ALL EXISTING QUESTIONS
       vm.addExistingQuestionFormDisplay = {
         value: false,
         text: "Add Existing Question"
@@ -123,6 +126,22 @@
         console.log(vm.addExistingQuestionFormDisplay)
       }
 
+      // ADD AN EXISTING QUESTION TO CURRENT TEST
+      vm.addExistingQuestionToTest = function(qId) {
+        console.log("Id of question to be added is...", qId)
+        
+        var req = {
+          qId: qId
+        }        
+        debugger
+        TestService.updateTest($route.current.params.id, req).then((res) => {
+          console.log("The updated test is...", res)
+          alert("The question has been added")
+          $location.path('/tests')
+        })
+      }
+
+      // REMOVE A TEST
       vm.removeTest = function() {
         TestService.deleteTest($route.current.params.id).then((res) => {
           console.log("The response after deleting test is... ", res)
@@ -131,16 +150,6 @@
           $location.path('/tests')
         })
       }
-
-      $scope.$watch(
-        function watchTestData(scope) {
-          return vm.test
-        }, 
-        function handleTestDataChange(newVal, oldVal) {
-          console.log("newVal: ", newVal)
-          console.log("oldVal: ", oldVal)
-        }
-      );
 
 
     }

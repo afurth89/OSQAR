@@ -48,11 +48,21 @@ router.route('/:id')
   })
   .put((req, res) => {
     console.log("ID of test to update is... ", req.params.id)    
-    db.Test.findByIdAndUpdate(req.params.id, req.body.test, (err, updatedTest) => {
-      if (err) throw err;
-      console.log("SUCCESSFUL UPDATED TEST --> ", updatedTest)
-      res.send(updatedTest)
-    })
+    // ADDING A QUESTION TO TEST
+    if (req.body.qId) {
+      eval(require('locus'))
+      addQuestionToTest(req.params.id, req.body.qId).then((updatedTest) => {
+        res.send(updatedTest)
+      })
+
+    // UPDATING TITLE/CATEGORY OF TEST
+    } else {
+      db.Test.findByIdAndUpdate(req.params.id, req.body.test, (err, updatedTest) => {
+        if (err) throw err;
+        console.log("SUCCESSFUL UPDATED TEST --> ", updatedTest)
+        res.send(updatedTest)
+      })
+    }
   })
   .delete((req, res) => {
     console.log("ID of test to be deleted is... ", req.params.id)    
@@ -62,6 +72,44 @@ router.route('/:id')
       res.send(deletedTest)
     })
   })
+
+  //***************************************************************************
+  // HELPER FUNCTIONS
+  //***************************************************************************
+
+  // Create a question
+  function createQuestion(question) {
+    return new Promise((resolve) => {
+      db.Question.create(question, (err, createdQuestion) => {
+        if (err) throw err;
+        console.log("The created question data is... ", createdQuestion)
+        resolve(createdQuestion)
+      })
+    })
+  }
+
+  // Once question has been created, use testId to add reference to that question in test
+  function addQuestionToTest(testId, qId) {
+    return new Promise((resolve) => {
+      db.Test.findById(testId, (err, foundTest) => {
+        foundTest.questions.push(qId)
+        foundTest.save()
+        console.log("Found Test after save...", foundTest)
+        resolve(foundTest)
+      })
+    })
+  }
+
+  function populateTest(testId) {
+    return new Promise((resolve) => {
+      db.Test.findById(testId).populate('questions')
+        .exec((err, populatedTest) => {
+          if (err) throw err;
+          console.log("Returned Test is... ", populatedTest)
+          resolve(populatedTest)
+        })
+    })
+  }  
 
 
 module.exports = router;
