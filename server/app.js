@@ -7,6 +7,7 @@ const morgan = require('morgan')
 
 const tests = require('./routes/tests');
 const questions = require('./routes/questions');
+const sessions = require('./routes/sessions');
 
 // Configure express.static
 app.use('/javascripts', express.static(__dirname + '/../client/javascripts'))
@@ -23,6 +24,7 @@ app.use(morgan('tiny'));
 // data
 app.use('/api/tests', tests)
 app.use('/api/questions', questions)
+app.use('/api/sessions', sessions)
 
 app.get('*', (req, res) => {
   // This code is FORBIDDEN (Express thinks it could be malicious)

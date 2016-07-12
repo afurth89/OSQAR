@@ -73,6 +73,38 @@
           }
         })
         //***************************************************************************
+        // SESSIONS ROUTES
+        //***************************************************************************
+        // .when('/sessions', {
+        //   templateUrl: '../views/sessions/index.html',
+        //   controller: 'QuestionParentController',
+        //   controllerAs: 'vm',
+        //   resolve: {
+        //     questions: getAllQuestions
+        //   }
+        // })
+        .when('/sessions/new', {
+          templateUrl: '../views/sessions/new.html',
+          controller: 'NewSessionController',
+          controllerAs: 'vm'
+        })
+        // .when('/sessions/:id', {
+        //   templateUrl: '../views/sessions/show.html',
+        //   controller: 'ShowQuestionController',
+        //   controllerAs: 'vm',
+        //   resolve: {
+        //     question: getQuestionById
+        //   }
+        // })
+        // .when('/sessions/:id/edit', {
+        //   templateUrl: '../views/sessions/edit.html',
+        //   controller: 'EditQuestionController',
+        //   controllerAs: 'vm',
+        //   resolve: {
+        //     question: getQuestionById
+        //   }
+        // })
+        //***************************************************************************
         // CATCH-ALL
         //***************************************************************************
         .otherwise({redirectTo: '/tests'})
