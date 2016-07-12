@@ -28,6 +28,9 @@
 
       vm.tests = allTests.data
 
+      vm.createTestSession = function(testId) {
+        console.log("A new session will be created for test ID... ", testId)
+      }
       
     }
 
