@@ -7,19 +7,26 @@
     <a class="btn btn-danger" ng-click="vm.removeTest()">Delete Test</a>
   </span>
   <p>Category: {{vm.test.category}}</p>
-  <p>Questions:</p>
-    <ul ng-repeat="question in vm.test.questions">
-      <li>Category: {{question.category}}</li>
-      <li>Question: {{question.text}}</li>
-      <ul ng-repeat="choice in question.choices">
-        <li>Choice: {{choice.text}}</li>
+
+  <a class="btn btn-info" ng-click="vm.toggleShowTestQs()">{{vm.showTestQuestions.text}}</a>
+  <a class="btn btn-success" ng-click="vm.toggleCreateNewQsForTest()">{{vm.createNewQuestionFormDisplay.text}}</a>
+  <a class="btn btn-primary" ng-click="vm.toggleAddExistingQsToTest()">{{vm.addExistingQuestionFormDisplay.text}}</a>
+
+  <div id="showTestQuestionsContainer" ng-show="vm.showTestQuestions.value">
+    <p>Questions:
+      <ul ng-repeat="question in vm.test.questions">
+        <li>Category: {{question.category}}</li>
+        <li>Question: {{question.text}}</li>
+        <ul ng-repeat="choice in question.choices">
+          <li>Choice: {{choice.text}}</li>
+        </ul>
+        <li>Correct Answer: {{question.correct}}</li>
+        <li>Tests this question is a part of: {{question.tests}}</li>
       </ul>
-      <li>Correct Answer: {{question.correct}}</li>
-      <li>Tests this question is a part of: {{question.tests}}</li>
-    </ul>
-  <a class="btn btn-success" ng-click="vm.toggleAddingQuestionsToTest()">{{vm.createNewQuestionFormDisplay.text}}</a>
+    </p>
+  </div>
   
-  <div id="newQuestionToTestForm" class="well" ng-show="vm.createNewQuestionFormDisplay.value" ng-controller="NewQuestionController as vmNewQuestion">
+  <div id="createQuestionAddToTestForm" class="well" ng-show="vm.createNewQuestionFormDisplay.value" ng-controller="NewQuestionController as vmNewQuestion">
     <form ng-submit="vmNewQuestion.addQuestion(vmNewQuestion.question, vm.test._id)">
       <div class="form-group">
         <label>Question Text</label>
@@ -52,4 +59,20 @@
       </div>
       <button type="submit" class="btn btn-success">Create Question</button>
     </form>
-</div>
+  </div>
+
+  <div id="addExistingQuestionToTestContainer" ng-show="vm.addExistingQuestionFormDisplay.value">
+    <p>All Questions:
+      <div class="well" ng-repeat="question in vm.allQuestionsList">
+        <ul>
+          <li>Category: {{question.category}}</li>
+          <li>Question: {{question.text}}</li>
+          <ul ng-repeat="choice in question.choices">
+            <li>Choice: {{choice.text}}</li>
+          </ul>
+          <li>Correct Answer: {{question.correct}}</li>
+          <a class="btn btn-success" ng-click="vm.addExistingQuestionToTest()">Add Question</a>
+        </ul>
+      </div>
+    </p>
+  </div>

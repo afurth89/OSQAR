@@ -28,7 +28,8 @@
           controller: 'ShowTestController',
           controllerAs: 'vm',
           resolve: {
-            test: getTestById
+            test: getTestById,
+            allQuestions: getAllQuestions
           }
         })
         .when('/tests/:id/edit', {

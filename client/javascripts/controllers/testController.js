@@ -59,21 +59,40 @@
 //***************************************************************************
 // SHOW
 //***************************************************************************
-    ShowTestController.$inject = ['test', 'TestService', '$location', "$route", '$scope']
+    ShowTestController.$inject = ['test', 'allQuestions', 'TestService', '$location', "$route", '$scope']
 
-    function ShowTestController(test, TestService, $location, $route, $scope) {
+    function ShowTestController(test, allQuestions, TestService, $location, $route, $scope) {
       let vm = this;
 
-      // 'test.data' is result of 'resolve' property
+      // 'test.data' and 'allQuestions.data' is result of 'resolve' property
       // within ShowTestController in app.js
       vm.test = test.data
+      vm.allQuestionsList = allQuestions.data
+
+      vm.showTestQuestions = {
+        value: false,
+        text: "Show Current Questions"
+      }
+
+      vm.toggleShowTestQs = function() {
+        if (vm.showTestQuestions.value) {
+          // If add question form is shown, hide it
+          vm.showTestQuestions.value = false;
+          vm.showTestQuestions.text = "Show Current Questions"
+        } else {
+          // If add question form is hidden, show it
+          vm.showTestQuestions.value = true;
+          vm.showTestQuestions.text = "Hide Current Questions"
+        }
+        console.log(vm.showTestQuestions)
+      }      
 
       vm.createNewQuestionFormDisplay = {
         value: false,
         text: "Create New Question"
       }
 
-      vm.toggleAddingQuestionsToTest = function() {
+      vm.toggleCreateNewQsForTest = function() {
         if (vm.createNewQuestionFormDisplay.value) {
           // If add question form is shown, hide it
           vm.createNewQuestionFormDisplay.value = false;
@@ -84,6 +103,24 @@
           vm.createNewQuestionFormDisplay.text = "Hide New Question Form"
         }
         console.log(vm.createNewQuestionFormDisplay)
+      }
+
+      vm.addExistingQuestionFormDisplay = {
+        value: false,
+        text: "Add Existing Question"
+      }
+
+      vm.toggleAddExistingQsToTest = function() {
+        if (vm.addExistingQuestionFormDisplay.value) {
+          // If add question form is shown, hide it
+          vm.addExistingQuestionFormDisplay.value = false;
+          vm.addExistingQuestionFormDisplay.text = "Add Existing Question"
+        } else {
+          // If add question form is hidden, show it
+          vm.addExistingQuestionFormDisplay.value = true;
+          vm.addExistingQuestionFormDisplay.text = "Hide Existing Questions"
+        }
+        console.log(vm.addExistingQuestionFormDisplay)
       }
 
       vm.removeTest = function() {
