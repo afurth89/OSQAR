@@ -7,6 +7,7 @@ var sessionSchema = new Schema({
   _test: {type: Schema.Types.ObjectId, ref: 'Test'},
   // Link to User
   _user: {type: Schema.Types.ObjectId, ref: 'User'},
+  taken: {type: Date, default: Date.now},
   answers: [{
     // Link to Question
     _question: {type: Schema.Types.ObjectId, ref: 'Question'},
