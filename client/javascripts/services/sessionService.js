@@ -9,10 +9,9 @@
       const session_BASE_URL = '/api/sessions/';
 
       // POST - NEW TEST
-      this.createSession = () => {
-        return $http.post(session_BASE_URL)
+      this.createSession = (testId) => {
+        console.log("SessionService has received TestId #", testId)
+        return $http.post(session_BASE_URL, testId)
       }
-
-
     }
 })();

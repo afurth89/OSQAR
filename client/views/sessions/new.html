@@ -4,6 +4,6 @@
 <div ng-repeat="test in vm.tests" class="well">
   <h4>TITLE: <a href="/tests/{{test._id}}">{{test.title}}</a></h4>
   <p>Category: {{test.category}}</p>
-  <a class="btn btn-success" ng-click="vm.createTestSession(test._id)">Take Test</a>
+  <a class="btn btn-success" ng-click="vm.initiateTestSession(test._id)">Take Test</a>
   
 </div>

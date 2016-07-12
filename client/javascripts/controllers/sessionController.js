@@ -20,16 +20,19 @@
 //***************************************************************************
 // NEW
 //***************************************************************************
-    NewSessionController.$inject = ['allTests']
+    NewSessionController.$inject = ['allTests', 'SessionService']
 
-    function NewSessionController(allTests) {
+    function NewSessionController(allTests, SessionService) {
 
       let vm = this;
 
       vm.tests = allTests.data
 
-      vm.createTestSession = function(testId) {
+      vm.initiateTestSession = function(testId) {
         console.log("A new session will be created for test ID... ", testId)
+        SessionService.createSession(testId).then((res) => {
+          console.log("Response from created session is... ", res)
+        })
       }
       
     }
