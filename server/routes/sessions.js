@@ -7,6 +7,7 @@ router.route('/')
   .get((req, res) => {
     db.Session.find({})
       .populate('_test')
+      .populate('answers._question')
       .exec((err, sessions) => {
         if (err) throw err;
         console.log("All returned sessions: ", sessions)
