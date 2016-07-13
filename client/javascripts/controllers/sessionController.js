@@ -75,6 +75,19 @@
       vm.qCategory = vm.session.answers[vm.qIdx]._question.category
       vm.qChoices = vm.session.answers[vm.qIdx]._question.choices
 
+      vm.aChoice = null;
+
+      vm.selectAnswer = function(choice) {
+        vm.aChoice = choice
+      }
+
+      vm.submitAnswer = function(choice) {
+        console.log("Submitted answer: ", choice)
+        alert("The answer has been submitted")
+        vm.aChoice = null;
+        vm.nextQuestion()
+      }
+
       vm.nextQuestion = function() {
         // If we haven't reached the last question
         if (vm.qNum < vm.testLength) {

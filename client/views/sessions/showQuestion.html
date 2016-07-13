@@ -6,8 +6,11 @@
   <h4>{{vm.qText}}</h4>
   <p>Category: {{vm.qCategory}}</p>
   <ul ng-repeat="choice in vm.qChoices">
-    <li>{{choice.id}}. {{choice.text}}</li>
+    <li ng-click="vm.selectAnswer(choice)">{{choice.id}}. {{choice.text}}</li>
   </ul>
+
+  <p>Chosen Answer: {{vm.aChoice}}</p>
+  <a ng-click="vm.submitAnswer(vm.aChoice)" class="btn btn-success">Submit</a>
 </div>
 
 
