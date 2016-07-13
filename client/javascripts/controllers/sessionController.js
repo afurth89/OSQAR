@@ -61,12 +61,30 @@
 //***************************************************************************
 // SHOW
 //***************************************************************************
-    ShowSessionController.$inject = ['session']
+    ShowSessionController.$inject = ['session', '$location']
 
-    function ShowSessionController(session) {
+    function ShowSessionController(session, $location) {
       let vm = this;
 
       vm.session = session.data
+
+      vm.qIdx = 0;
+      vm.qNum = 1;
+      vm.testLength = vm.session._test.questions.length;
+
+      vm.nextQuestion = function() {
+        // If we haven't reached the last question
+        if (vm.qNum < vm.testLength) {
+          vm.qIdx++
+          vm.qNum++
+        }
+      }
+
+      vm.toStart = function() {
+        vm.qIdx = 0;
+        vm.qNum = 1;
+      }
+
     }
 //***************************************************************************
 // EDIT

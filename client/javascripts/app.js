@@ -99,6 +99,14 @@
             session: getSessionById
           }
         })
+        .when('/sessions/:id/question/:qNum', {
+          templateUrl: '../views/sessions/showQuestion.html',
+          controller: 'ShowSessionController',
+          controllerAs: 'vm',
+          resolve: {
+            session: getSessionById
+          }
+        })
         // .when('/sessions/:id/edit', {
         //   templateUrl: '../views/sessions/edit.html',
         //   controller: 'EditQuestionController',

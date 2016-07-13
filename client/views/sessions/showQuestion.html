@@ -1,0 +1,12 @@
+<h1>[Answer a Question - Show Page]</h1>
+
+<p>#{{vm.qNum}} of {{vm.testLength}}</p>
+
+<p>Question: {{vm.session.answers[vm.qIdx]._question.text}}</p>
+
+
+
+<a ng-click="vm.nextQuestion()" class="btn btn-primary">Next Question</a>
+<br>
+<a ng-click="vm.toStart()" class="btn btn-warning">Back To Start</a>
+
