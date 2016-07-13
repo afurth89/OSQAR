@@ -1,11 +1,11 @@
 <h1>All Existing Sessions</h1>
 
-<ul ng-repeat="session in vm.sessions">
+<ul ng-repeat="session in vm.sessions | orderBy: '-taken'">
+  <h3>Time Taken: {{session.taken | date:'short'}}</h3>
   <div class="well">
     <li>Session Id: {{session._id}}</li>
     <li>Test Name: {{session._test.title}}</li>
     <li>Test Category: {{session._test.category}}</li>
-    <li>Time Taken: {{session.taken | date:'short'}}</li>
     <p>Questions in Test:</p>
     <ul ng-repeat="question in session.answers">
       <li>{{question._question.text}}</li>
