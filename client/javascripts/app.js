@@ -92,7 +92,7 @@
           }
         })
         .when('/sessions/:id', {
-          templateUrl: '../views/sessions/show.html',
+          templateUrl: '../views/sessions/showStartSession.html',
           controller: 'ShowSessionController',
           controllerAs: 'vm',
           resolve: {
