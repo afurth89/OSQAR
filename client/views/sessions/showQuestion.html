@@ -6,7 +6,7 @@
   <h4>{{vm.qText}}</h4>
   <p>Category: {{vm.qCategory}}</p>
   <ul ng-repeat="choice in vm.qChoices">
-    <li ng-click="vm.selectAnswer(choice)">{{choice.id}}. {{choice.text}}</li>
+    <a ng-click="vm.selectAnswer(choice)" class="btn btn-info">{{choice.id}}. {{choice.text}}</a>
   </ul>
 
   <p>Chosen Answer: {{vm.aChoice}}</p>
@@ -19,4 +19,10 @@
 <a ng-click="vm.toStart()" class="btn btn-warning">Back To Start</a>
 
 
+<div class="well">
+  <ul ng-repeat="question in vm.session.answers">
+    <li>Correct Answer: {{question._question.correct}}</li>
+    <li>Your Answer: {{question.u_answer}}</li>
+  </ul>
+</div>
 
