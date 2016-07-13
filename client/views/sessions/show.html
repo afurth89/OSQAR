@@ -2,4 +2,11 @@
 
 <h1>Let's Take a Test</h1>
 
+<div class="well">
+  <h3>Name: {{vm.session._test.title}}</h3>
+  <h5>Category: {{vm.session._test.category}}</h5>
+  <p># of Questions: {{vm.session._test.questions.length}}</p>
+  <a href="/sessions/{{vm.session._id}}/question/1" class="btn btn-success">Start Test</a>
+</div>
+
 {{vm.session}}

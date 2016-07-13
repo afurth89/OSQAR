@@ -21,7 +21,6 @@
 
       // GET - ONE SESSION
       this.getSession = (sessionId) => {
-        debugger
         return $http.get(session_BASE_URL+sessionId)
       }
     }
