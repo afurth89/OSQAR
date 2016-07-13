@@ -18,5 +18,11 @@
         console.log("SessionService has received TestId #", testId)
         return $http.post(session_BASE_URL, testId)
       }
+
+      // GET - ONE SESSION
+      this.getSession = (sessionId) => {
+        debugger
+        return $http.get(session_BASE_URL+sessionId)
+      }
     }
 })();

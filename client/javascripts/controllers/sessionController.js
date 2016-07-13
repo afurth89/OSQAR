@@ -21,9 +21,9 @@
 //***************************************************************************
 // NEW
 //***************************************************************************
-    NewSessionController.$inject = ['allTests', 'SessionService']
+    NewSessionController.$inject = ['allTests', 'SessionService', '$location']
 
-    function NewSessionController(allTests, SessionService) {
+    function NewSessionController(allTests, SessionService, $location) {
 
       let vm = this;
 
@@ -52,6 +52,7 @@
         console.log("Req obj to be sent is... ", req)
         SessionService.createSession(req).then((res) => {
           console.log("Response from created session is... ", res)
+          $location.path('/sessions/'+res.data._id)
         })
       }
       
@@ -60,11 +61,12 @@
 //***************************************************************************
 // SHOW
 //***************************************************************************
-    ShowSessionController.$inject = []
+    ShowSessionController.$inject = ['session']
 
-    function ShowSessionController() {
+    function ShowSessionController(session) {
       let vm = this;
 
+      vm.session = session.data
     }
 //***************************************************************************
 // EDIT

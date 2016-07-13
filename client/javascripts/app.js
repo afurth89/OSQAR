@@ -91,14 +91,14 @@
             allTests: getAllTests
           }
         })
-        // .when('/sessions/:id', {
-        //   templateUrl: '../views/sessions/show.html',
-        //   controller: 'ShowQuestionController',
-        //   controllerAs: 'vm',
-        //   resolve: {
-        //     question: getQuestionById
-        //   }
-        // })
+        .when('/sessions/:id', {
+          templateUrl: '../views/sessions/show.html',
+          controller: 'ShowSessionController',
+          controllerAs: 'vm',
+          resolve: {
+            session: getSessionById
+          }
+        })
         // .when('/sessions/:id/edit', {
         //   templateUrl: '../views/sessions/edit.html',
         //   controller: 'EditQuestionController',
@@ -155,4 +155,10 @@
     function getAllSessions(SessionService) {
       return SessionService.getSessions();
     }
+
+    getSessionById.$inject = ['SessionService', '$route']
+
+    function getSessionById(SessionService, $route) {
+      return SessionService.getSession($route.current.params.id);      
+    } 
 })();

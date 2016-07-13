@@ -24,7 +24,15 @@ router.route('/')
 
 router.route('/:id')
   .get((req, res) => {
-
+    console.log("A session has been started")
+    db.Session.findById(req.params.id)
+      .populate('_test')
+      .populate('answers._question')
+      .exec((err, session) => {
+        if (err) throw err;
+        console.log("Returned session: ", session)
+        res.send(session)
+      })
   })
   .put((req, res) => {
 
