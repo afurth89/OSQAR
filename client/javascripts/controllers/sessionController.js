@@ -74,24 +74,44 @@
       vm.qText = vm.session.answers[vm.qIdx]._question.text
       vm.qCategory = vm.session.answers[vm.qIdx]._question.category
       vm.qChoices = vm.session.answers[vm.qIdx]._question.choices
-      vm.aArray = vm.session.answers[vm.qIdx].u_answer
+      vm.qCorrectAnswer = vm.session.answers[vm.qIdx]._question.correct
+      vm.uAnswer = vm.session.answers[vm.qIdx].u_answer
 
-      vm.aChoice = null;
+      vm.uChoice = null;
+
+      vm.uPerformance = {
+        total: 0,
+        correct: 0,
+        byQuestion: []
+      }
+
 
       vm.selectAnswer = function(choice) {
-        vm.aChoice = choice
+        vm.uChoice = choice
       }
+
+      vm.evaluateAnswer = function(answer, choice) {
+        return answer === choice ? true : false
+      }
+
 
       vm.submitAnswer = function(choice) {
         console.log("Submitted answer: ", choice)
+
+        // Push answer to u_answer
+        vm.uAnswer.id = vm.uChoice.id
+        vm.uAnswer.text = vm.uChoice.text
+
+        var isCorrect = vm.evaluateAnswer(vm.uAnswer.text, vm.qCorrectAnswer.text)
+        vm.uPerformance.total++
+        if (isCorrect) { vm.uPerformance.correct++ }
+        vm.uPerformance.byQuestion.push(isCorrect)
+        console.log("updated Performance after " +vm.uPerformance.byQuestion.length+ " questions: ", vm.uPerformance)
         vm.nextQuestion()
       }
 
       vm.nextQuestion = function() {
-        // Set the user's answer to 'u_answer' in session
-          vm.aArray.id = vm.aChoice.id
-          vm.aArray.text = vm.aChoice.text
-          
+
         // If we haven't reached the last question
         if (vm.qNum < vm.testLength) {
           // Reset info
@@ -101,8 +121,9 @@
           vm.qText = vm.session.answers[vm.qIdx]._question.text
           vm.qCategory = vm.session.answers[vm.qIdx]._question.category
           vm.qChoices = vm.session.answers[vm.qIdx]._question.choices
-          vm.aChoice = null;
-          vm.aArray = vm.session.answers[vm.qIdx].u_answer
+          vm.qCorrectAnswer = vm.session.answers[vm.qIdx]._question.correct
+          vm.uAnswer = vm.session.answers[vm.qIdx].u_answer
+          vm.uChoice = null;
         }
       }
 

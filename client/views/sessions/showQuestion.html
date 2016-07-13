@@ -9,8 +9,8 @@
     <a ng-click="vm.selectAnswer(choice)" class="btn btn-info">{{choice.id}}. {{choice.text}}</a>
   </ul>
 
-  <p>Chosen Answer: {{vm.aChoice}}</p>
-  <a ng-click="vm.submitAnswer(vm.aChoice)" class="btn btn-success">Submit</a>
+  <p>Chosen Answer: {{vm.uChoice}}</p>
+  <a ng-click="vm.submitAnswer(vm.uChoice)" class="btn btn-success">Submit</a>
 </div>
 
 
@@ -20,6 +20,7 @@
 
 
 <div class="well">
+  <p>{{vm.uPerformance.correct}} of {{vm.uPerformance.total}} correct</p>
   <ul ng-repeat="question in vm.session.answers">
     <li>Correct Answer: {{question._question.correct}}</li>
     <li>Your Answer: {{question.u_answer}}</li>
