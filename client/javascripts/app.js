@@ -75,14 +75,14 @@
         //***************************************************************************
         // SESSIONS ROUTES
         //***************************************************************************
-        // .when('/sessions', {
-        //   templateUrl: '../views/sessions/index.html',
-        //   controller: 'QuestionParentController',
-        //   controllerAs: 'vm',
-        //   resolve: {
-        //     questions: getAllQuestions
-        //   }
-        // })
+        .when('/sessions', {
+          templateUrl: '../views/sessions/index.html',
+          controller: 'SessionParentController',
+          controllerAs: 'vm',
+          resolve: {
+            sessions: getAllSessions
+          }
+        })
         .when('/sessions/new', {
           templateUrl: '../views/sessions/new.html',
           controller: 'NewSessionController',
@@ -145,5 +145,14 @@
     function getQuestionById(QuestionService, $route) {
       // Pulls the id of question from the $route object
       return QuestionService.getQuestion($route.current.params.id)
+    }
+
+//***************************************************************************
+// QUESTIONS ON-LOAD FUNCTIONS
+//***************************************************************************
+    getAllSessions.$inject = ['SessionService']
+
+    function getAllSessions(SessionService) {
+      return SessionService.getSessions();
     }
 })();

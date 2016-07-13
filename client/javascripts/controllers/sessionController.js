@@ -10,11 +10,12 @@
 //***************************************************************************
 // INDEX
 //***************************************************************************
-    SessionParentController.$inject = []
+    SessionParentController.$inject = ['sessions']
 
-    function SessionParentController() {
+    function SessionParentController(sessions) {
       let vm = this;
 
+      vm.sessions = sessions.data
     }
 
 //***************************************************************************

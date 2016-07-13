@@ -5,7 +5,13 @@ var express = require('express')
 
 router.route('/')
   .get((req, res) => {
-
+    db.Session.find({})
+      .populate('_test')
+      .exec((err, sessions) => {
+        if (err) throw err;
+        console.log("All returned sessions: ", sessions)
+        res.send(sessions)
+      })
   })
   .post((req, res) => {
     console.log("REQ: ", req)
