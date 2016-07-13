@@ -30,7 +30,13 @@
 
       vm.initiateTestSession = function(testId) {
         console.log("A new session will be created for test ID... ", testId)
-        SessionService.createSession(testId).then((res) => {
+
+        var req = {
+          session: {
+            _test: testId
+          }
+        }
+        SessionService.createSession(req).then((res) => {
           console.log("Response from created session is... ", res)
         })
       }
