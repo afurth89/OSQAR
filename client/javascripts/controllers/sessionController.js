@@ -80,6 +80,10 @@
         if (vm.qNum < vm.testLength) {
           vm.qIdx++
           vm.qNum++
+          vm.testLength = vm.session._test.questions.length;
+          vm.qText = vm.session.answers[vm.qIdx]._question.text
+          vm.qCategory = vm.session.answers[vm.qIdx]._question.category
+          vm.qChoices = vm.session.answers[vm.qIdx]._question.choices
         }
       }
 
