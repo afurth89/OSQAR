@@ -2,11 +2,18 @@
 
 <p>#{{vm.qNum}} of {{vm.testLength}}</p>
 
-<p>Question: {{vm.session.answers[vm.qIdx]._question.text}}</p>
-
+<div class="well">
+  <h4>{{vm.qText}}</h4>
+  <p>Category: {{vm.qCategory}}</p>
+  <ul ng-repeat="choice in vm.qChoices">
+    <li>{{choice.id}}. {{choice.text}}</li>
+  </ul>
+</div>
 
 
 <a ng-click="vm.nextQuestion()" class="btn btn-primary">Next Question</a>
 <br>
 <a ng-click="vm.toStart()" class="btn btn-warning">Back To Start</a>
+
+
 

@@ -71,6 +71,9 @@
       vm.qIdx = 0;
       vm.qNum = 1;
       vm.testLength = vm.session._test.questions.length;
+      vm.qText = vm.session.answers[vm.qIdx]._question.text
+      vm.qCategory = vm.session.answers[vm.qIdx]._question.category
+      vm.qChoices = vm.session.answers[vm.qIdx]._question.choices
 
       vm.nextQuestion = function() {
         // If we haven't reached the last question
