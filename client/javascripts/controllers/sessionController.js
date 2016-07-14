@@ -61,9 +61,9 @@
 //***************************************************************************
 // SHOW
 //***************************************************************************
-    ShowSessionController.$inject = ['session', '$location']
+    ShowSessionController.$inject = ['session', '$location', 'SessionService', '$route']
 
-    function ShowSessionController(session, $location) {
+    function ShowSessionController(session, $location, SessionService, $route) {
       let vm = this;
 
       vm.session = session.data
@@ -98,15 +98,29 @@
       vm.submitAnswer = function(choice) {
         console.log("Submitted answer: ", choice)
 
-        // Push answer to u_answer
-        vm.uAnswer.id = vm.uChoice.id
-        vm.uAnswer.text = vm.uChoice.text
+        // // Push answer to u_answer
+        // vm.uAnswer.id = vm.uChoice.id
+        // vm.uAnswer.text = vm.uChoice.text
 
-        var isCorrect = vm.evaluateAnswer(vm.uAnswer.text, vm.qCorrectAnswer.text)
-        vm.uPerformance.total++
-        if (isCorrect) { vm.uPerformance.correct++ }
-        vm.uPerformance.byQuestion.push(isCorrect)
-        console.log("updated Performance after " +vm.uPerformance.byQuestion.length+ " questions: ", vm.uPerformance)
+        var req = {
+          session: vm.session,
+        }
+
+        req.session.answers[vm.qIdx].u_answer.id = choice.id
+        req.session.answers[vm.qIdx].u_answer.text = choice.text
+        console.log("CHECK REQ", req)
+
+        SessionService.addUserAnswerChoice($route.current.params.id, req).then((res) => {
+          console.log("Response after adding user answer: ", res.data)
+        })
+
+
+        // var isCorrect = vm.evaluateAnswer(vm.uAnswer.text, vm.qCorrectAnswer.text)
+        // vm.uPerformance.total++
+        // if (isCorrect) { vm.uPerformance.correct++ }
+        // vm.uPerformance.byQuestion.push(isCorrect)
+        // console.log("updated Performance after " +vm.uPerformance.byQuestion.length+ " questions: ", vm.uPerformance)
+
         vm.nextQuestion()
       }
 

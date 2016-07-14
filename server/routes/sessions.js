@@ -35,7 +35,12 @@ router.route('/:id')
       })
   })
   .put((req, res) => {
-
+    db.Session.findByIdAndUpdate(req.params.id, req.body.session, 
+      (err, session) => {
+        if (err) throw err;
+        console.log("Returned session: ", session.answers)
+        res.send(session)
+      })
   })
   .delete((req, res) => {
 
