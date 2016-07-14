@@ -8,7 +8,11 @@
     <li>Test Category: {{session._test.category}}</li>
     <p>Questions in Test:</p>
     <ul ng-repeat="question in session.answers">
-      <li>{{question._question.text}}</li>
+      <li>Q:{{question._question.text}}</li>
+      <ul>
+        <li>Correct: {{question._question.correct.text}}</li>
+        <li>User said: {{question.u_answer.text}}</li>
+      </ul>
     </ul>
   </div>
 </ul>
