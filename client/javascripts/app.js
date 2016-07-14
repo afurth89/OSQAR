@@ -96,7 +96,8 @@
           controller: 'ShowSessionController',
           controllerAs: 'vm',
           resolve: {
-            session: getSessionById
+            session: getSessionById,
+            trackingData: getSessionTrackingData
           }
         })
         .when('/sessions/:id/question/:qNum', {
@@ -104,7 +105,17 @@
           controller: 'ShowSessionController',
           controllerAs: 'vm',
           resolve: {
-            session: getSessionById
+            session: getSessionById,
+            trackingData: getSessionTrackingData
+          }
+        })
+        .when('/sessions/:id/question/:qNum/result', {
+          templateUrl: '../views/sessions/showQuestionResult.html',
+          controller: 'ShowSessionController',
+          controllerAs: 'vm',
+          resolve: {
+            session: getSessionById,
+            trackingData: getSessionTrackingData
           }
         })
         // .when('/sessions/:id/edit', {
@@ -156,7 +167,7 @@
     }
 
 //***************************************************************************
-// QUESTIONS ON-LOAD FUNCTIONS
+// SESSIONS ON-LOAD FUNCTIONS
 //***************************************************************************
     getAllSessions.$inject = ['SessionService']
 
@@ -168,5 +179,11 @@
 
     function getSessionById(SessionService, $route) {
       return SessionService.getSession($route.current.params.id);      
-    } 
+    }
+
+    getSessionTrackingData.$inject = ['SessionService', '$route'] 
+
+    function getSessionTrackingData(SessionService, $route) {
+      return SessionService.serveSessionTrackingData($route.current.params.qNum)
+    }
 })();

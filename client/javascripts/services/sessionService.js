@@ -8,7 +8,7 @@
     function SessionService($http) {
       const session_BASE_URL = '/api/sessions/';
 
-      var userData = {
+      var sessionTrackingData = {
         qIdx: 0,
         qNum: 1,
         uPerformance: {
@@ -35,10 +35,21 @@
         return $http.get(session_BASE_URL+sessionId)
       }
 
+      this.serveSessionTrackingData = (questionNum) => {
+        // if (questionNum) {
+        //   sessionTrackingData.qNum = questionNum
+        //   sessionTrackingData.qIdx = questionNum - 1
+        // }
+        return new Promise((resolve) => {
+          resolve(sessionTrackingData)
+        })
+      }
+
       this.addUserAnswerChoice = (sessionId, sessionData) => {
         console.log("sessionId is...", sessionId)
         console.log("sessionData is... ", sessionData)
         return $http.put(session_BASE_URL+sessionId, sessionData)
       }
+
     }
 })();
