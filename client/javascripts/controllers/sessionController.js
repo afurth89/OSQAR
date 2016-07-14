@@ -108,22 +108,21 @@
         console.log("CHECK REQ", req)
 
         // Update sessionTrackingData
-        SessionService.updateTrackingData($route.current.params.qNum, vm.qCorrectAnswer, vm.uChoice).then((res) => {
+        SessionService.updateTrackingData($route.current.params.qNum, vm.qCorrectAnswer.text, vm.uChoice.text).then((res) => {
           console.log("res after updating session tracking, ", res)
         })
-        
+
         // Adds user answer to session in DB
         SessionService.addUserAnswerChoice($route.current.params.id, req).then((res) => {
           console.log("Response after adding user answer: ", res.data)
         })
 
-
-        // if (vm.trackingData.uPerformance.byQuestion[vm.trackingData.qIdx]) {
-        //   vm.result.text = "You are correct!"
-        // } else {
-        //   vm.result.text = "Sorry, that is incorrect"
-        // }
-        // vm.result.display = true;
+        if (vm.trackingData.uPerformance.byQuestion[vm.trackingData.qIdx]) {
+          vm.result.text = "You are correct!"
+        } else {
+          vm.result.text = "Sorry, that is incorrect"
+        }
+        vm.result.display = true;
       }
 
 

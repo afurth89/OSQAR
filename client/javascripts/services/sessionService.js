@@ -66,9 +66,6 @@
             // Log question as incorrect
             sessionTrackingData.uPerformance.byQuestion[qNum-1] = false
           }
-          // Increment the Idx and Num
-          sessionTrackingData.qIdx += 1
-          sessionTrackingData.qNum += 1
           resolve(sessionTrackingData)
         })
       }
