@@ -51,5 +51,27 @@
         return $http.put(session_BASE_URL+sessionId, sessionData)
       }
 
+      this.updateTrackingData = (qNum, correctAns, userAns) => {
+        return new Promise((resolve) => {
+          // Increment total questions answered
+          sessionTrackingData.uPerformance.total += 1
+          // If answer was correct
+          if (correctAns === userAns) {
+            // Increment correct answers
+            sessionTrackingData.uPerformance.correct += 1
+            // Log question as correct
+            sessionTrackingData.uPerformance.byQuestion[qNum-1] = true
+          // If answer was incorrect
+          } else {
+            // Log question as incorrect
+            sessionTrackingData.uPerformance.byQuestion[qNum-1] = false
+          }
+          // Increment the Idx and Num
+          sessionTrackingData.qIdx += 1
+          sessionTrackingData.qNum += 1
+          resolve(sessionTrackingData)
+        })
+      }
+
     }
 })();

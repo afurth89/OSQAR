@@ -85,38 +85,46 @@
       // Invoke function on load
       vm.setSessionVariables();
 
+      vm.result = {
+        display: false,
+        text: "You are correct!"
+      }
+
       vm.selectAnswer = function(choice) {
         vm.uChoice = choice
       }
 
-      vm.evaluateAnswer = function(answer, choice) {
-        return answer === choice ? true : false
-      }
-
-
       vm.submitAnswer = function(choice=null) {
         // console.log("Submitted answer: ", choice)
 
-        // // Set up req to mirror structure of session obj
-        // var req = {
-        //   session: vm.session,
-        // }
+        // Set up req to mirror structure of session obj
+        var req = {
+          session: vm.session,
+        }
 
-        // // Update the question's 'u_answer' obj to include user's choice
-        // req.session.answers[vm.qIdx].u_answer.id = choice.id
-        // req.session.answers[vm.qIdx].u_answer.text = choice.text
-        // console.log("CHECK REQ", req)
+        // Update the question's 'u_answer' obj to include user's choice
+        req.session.answers[vm.trackingData.qIdx].u_answer.id = choice.id
+        req.session.answers[vm.trackingData.qIdx].u_answer.text = choice.text
+        console.log("CHECK REQ", req)
 
-        // SessionService.addUserAnswerChoice($route.current.params.id, req).then((res) => {
-        //   console.log("Response after adding user answer: ", res.data)
-        // })
-
-        SessionService.serveSessionTrackingData($route.current.params.qNum).then((res) => {
-          console.log("res after serving session tracking, ", res)
+        // Update sessionTrackingData
+        SessionService.updateTrackingData($route.current.params.qNum, vm.qCorrectAnswer, vm.uChoice).then((res) => {
+          console.log("res after updating session tracking, ", res)
         })
-        $location.path('/sessions/'+$route.current.params.id+'/question/'+$route.current.params.qNum+'/result')
+        
+        // Adds user answer to session in DB
+        SessionService.addUserAnswerChoice($route.current.params.id, req).then((res) => {
+          console.log("Response after adding user answer: ", res.data)
+        })
+
+
+        // if (vm.trackingData.uPerformance.byQuestion[vm.trackingData.qIdx]) {
+        //   vm.result.text = "You are correct!"
+        // } else {
+        //   vm.result.text = "Sorry, that is incorrect"
+        // }
+        // vm.result.display = true;
       }
-      // Change to 'Results' page
 
 
     }

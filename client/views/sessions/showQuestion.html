@@ -1,8 +1,9 @@
 <h1>[Answer a Question - Show Page]</h1>
 
-<p>#{{vm.qNum}} of {{vm.testLength}}</p>
+<p>#{{vm.trackingData.qNum}} of {{vm.testLength}}</p>
 
 <div class="well">
+  <h1 ng-show="vm.result.display">{{vm.result.text}}</h1>
   <h4>{{vm.qText}}</h4>
   <p>Category: {{vm.qCategory}}</p>
   <ul ng-repeat="choice in vm.qChoices">
