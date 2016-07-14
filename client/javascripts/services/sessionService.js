@@ -38,9 +38,7 @@
       this.addUserAnswerChoice = (sessionId, sessionData) => {
         console.log("sessionId is...", sessionId)
         console.log("sessionData is... ", sessionData)
-        $http.put(session_BASE_URL+sessionId, sessionData).then((res) => {
-          console.log("Res from db... ", res)
-        })
+        return $http.put(session_BASE_URL+sessionId, sessionData)
       }
     }
 })();
