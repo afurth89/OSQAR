@@ -11,11 +11,11 @@
   </ul>
 
   <p>Chosen Answer: {{vm.uChoice}}</p>
-  <a ng-click="vm.submitAnswer(vm.uChoice)" class="btn btn-success">Submit</a>
+  <a ng-hide="vm.result.display" ng-click="vm.submitAnswer(vm.uChoice)" class="btn btn-success">Submit</a>
+  <a ng-show="vm.result.display" ng-click="vm.nextQuestion()" class="btn btn-primary">Next Question</a>
 </div>
 
 
-<a ng-click="vm.nextQuestion()" class="btn btn-primary">Next Question</a>
 <br>
 <a ng-click="vm.toStart()" class="btn btn-warning">Back To Start</a>
 

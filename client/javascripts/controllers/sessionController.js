@@ -77,6 +77,7 @@
         display: false
       }
 
+
       vm.selectAnswer = function(choice) {
         vm.uChoice = choice
       }
@@ -124,7 +125,6 @@
         }
         SessionService.serveNextQuestion().then((res) => {
         })
-
       }
 
 
