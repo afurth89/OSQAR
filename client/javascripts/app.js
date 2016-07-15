@@ -7,6 +7,11 @@
 
     function config($routeProvider, $locationProvider) {
       $routeProvider
+        .when('/', {
+          templateUrl: '../views/home.html',
+          controller: 'HomeController',
+          controllerAs: 'vm'
+        })
         //***************************************************************************
         // TESTS ROUTES
         //***************************************************************************
@@ -129,7 +134,7 @@
         //***************************************************************************
         // CATCH-ALL
         //***************************************************************************
-        .otherwise({redirectTo: '/tests'})
+        .otherwise({redirectTo: '/'})
       $locationProvider.html5Mode(true);
     }
 

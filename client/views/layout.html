@@ -20,13 +20,14 @@
 </head>
 <body>
   <nav>
+    <a href="/" class="btn btn-success">Home</a>
     <a href="/tests" class="btn btn-primary">See All Tests</a>
     <a href="/questions" class="btn btn-info">See All Questions</a>
     <a href="/sessions/new" class="btn btn-danger">Take a Test</a>
     <a href="/sessions" class="btn btn-warning">See Existing Sessions</a>
 
   </nav>
-  <h1>Hello, I am OSQAR</h1>
+  <h1>Hello, I am OSQAR, the Open Source Question&Answer Resource</h1>
   <div class="container">
     <div ng-view></div>
   </div>
@@ -35,6 +36,7 @@
   <script src="/javascripts/services/questionService.js"></script>
   <script src="/javascripts/services/testService.js"></script>
   <script src="/javascripts/services/sessionService.js"></script>
+  <script src="/javascripts/controllers/homeController.js"></script>
   <script src="/javascripts/controllers/questionController.js"></script>
   <script src="/javascripts/controllers/testController.js"></script>
   <script src="/javascripts/controllers/sessionController.js"></script>
