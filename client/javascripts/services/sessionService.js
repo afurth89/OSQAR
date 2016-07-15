@@ -53,6 +53,7 @@
 
       this.updateTrackingData = (qNum, correctAns, userAns) => {
         return new Promise((resolve) => {
+          debugger  
           // Increment total questions answered
           sessionTrackingData.uPerformance.total += 1
           // If answer was correct
@@ -66,6 +67,14 @@
             // Log question as incorrect
             sessionTrackingData.uPerformance.byQuestion[qNum-1] = false
           }
+          resolve(sessionTrackingData)
+        })
+      }
+
+      this.serveNextQuestion = () => {
+        return new Promise((resolve) => {
+          sessionTrackingData.qIdx += 1;
+          sessionTrackingData.qNum += 1;
           resolve(sessionTrackingData)
         })
       }

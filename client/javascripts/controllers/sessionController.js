@@ -71,23 +71,10 @@
       console.log("Session data: ", vm.session)
       console.log("User data: ", vm.trackingData)
 
-      // Declare function to set vars
-      vm.setSessionVariables = function() {
-        vm.testLength = vm.session._test.questions.length;
-        vm.qText = vm.session.answers[vm.trackingData.qIdx]._question.text
-        vm.qCategory = vm.session.answers[vm.trackingData.qIdx]._question.category
-        vm.qChoices = vm.session.answers[vm.trackingData.qIdx]._question.choices
-        vm.qCorrectAnswer = vm.session.answers[vm.trackingData.qIdx]._question.correct
-        vm.uAnswer = vm.session.answers[vm.trackingData.qIdx].u_answer
-        vm.uChoice = null;
-      }
-
-      // Invoke function on load
-      vm.setSessionVariables();
-
+      vm.testLength = vm.session._test.questions.length;
+      vm.uChoice = null;
       vm.result = {
-        display: false,
-        text: "You are correct!"
+        display: false
       }
 
       vm.selectAnswer = function(choice) {
@@ -108,7 +95,7 @@
         console.log("CHECK REQ", req)
 
         // Update sessionTrackingData
-        SessionService.updateTrackingData($route.current.params.qNum, vm.qCorrectAnswer.text, vm.uChoice.text).then((res) => {
+        SessionService.updateTrackingData($route.current.params.qNum, vm.session.answers[vm.trackingData.qIdx]._question.correct.text, vm.uChoice.text).then((res) => {
           console.log("res after updating session tracking, ", res)
         })
 
@@ -117,12 +104,29 @@
           console.log("Response after adding user answer: ", res.data)
         })
 
+        // Check whether answer was correct, set proper result text
         if (vm.trackingData.uPerformance.byQuestion[vm.trackingData.qIdx]) {
           vm.result.text = "You are correct!"
+          debugger
         } else {
           vm.result.text = "Sorry, that is incorrect"
+          debugger
         }
+        // Display result text
         vm.result.display = true;
+      }
+
+      // Trigger next question
+      vm.nextQuestion = function() {
+        // Reset user choice
+        vm.uChoice = null;
+        // Hide result text
+        vm.result = {
+          display: false
+        }
+        SessionService.serveNextQuestion().then((res) => {
+        })
+
       }
 
 

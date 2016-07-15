@@ -4,9 +4,9 @@
 
 <div class="well">
   <h1 ng-show="vm.result.display">{{vm.result.text}}</h1>
-  <h4>{{vm.qText}}</h4>
-  <p>Category: {{vm.qCategory}}</p>
-  <ul ng-repeat="choice in vm.qChoices">
+  <h4>{{vm.session.answers[vm.trackingData.qIdx]._question.text}}</h4>
+  <p>Category: {{vm.session.answers[vm.trackingData.qIdx]._question.category}}</p>
+  <ul ng-repeat="choice in vm.session.answers[vm.trackingData.qIdx]._question.choices">
     <a ng-click="vm.selectAnswer(choice)" class="btn btn-info">{{choice.id}}. {{choice.text}}</a>
   </ul>
 
