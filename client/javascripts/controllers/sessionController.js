@@ -95,7 +95,7 @@
         console.log("CHECK REQ", req)
 
         // Update sessionTrackingData
-        SessionService.updateTrackingData($route.current.params.qNum, vm.session.answers[vm.trackingData.qIdx]._question.correct.text, vm.uChoice.text).then((res) => {
+        SessionService.updateTrackingData(vm.trackingData.qNum, vm.session.answers[vm.trackingData.qIdx]._question.correct.text, vm.uChoice.text).then((res) => {
           console.log("res after updating session tracking, ", res)
         })
 
@@ -107,10 +107,8 @@
         // Check whether answer was correct, set proper result text
         if (vm.trackingData.uPerformance.byQuestion[vm.trackingData.qIdx]) {
           vm.result.text = "You are correct!"
-          debugger
         } else {
           vm.result.text = "Sorry, that is incorrect"
-          debugger
         }
         // Display result text
         vm.result.display = true;
@@ -144,7 +142,7 @@
      
 
         // var isCorrect = vm.evaluateAnswer(vm.uAnswer.text, vm.qCorrectAnswer.text)
-        // vm.userData.total++
+        // vm.trackingData.total++
         // if (isCorrect) { vm.uPerformance.correct++ }
         // vm.uPerformance.byQuestion.push(isCorrect)
         // console.log("updated Performance after " +vm.uPerformance.byQuestion.length+ " questions: ", vm.uPerformance)

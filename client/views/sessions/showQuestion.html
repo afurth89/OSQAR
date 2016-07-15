@@ -21,7 +21,11 @@
 
 
 <div class="well">
-  <p>{{vm.uPerformance.correct}} of {{vm.uPerformance.total}} correct</p>
+  <p>{{vm.trackingData.uPerformance.correct}} of {{vm.trackingData.uPerformance.total}} correct</p>
+  
+  <ul ng-repeat="correct in vm.trackingData.uPerformance.byQuestion">
+    <li>Correct?: {{correct}}</li>
+  </ul>
   <ul ng-repeat="question in vm.session.answers">
     <li>Correct Answer: {{question._question.correct}}</li>
     <li>Your Answer: {{question.u_answer}}</li>
