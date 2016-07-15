@@ -10,6 +10,7 @@ const questions = require('./routes/questions');
 const sessions = require('./routes/sessions');
 
 // Configure express.static
+app.use('/assets', express.static(__dirname + '/../client/assets'))
 app.use('/javascripts', express.static(__dirname + '/../client/javascripts'))
 app.use('/stylesheets', express.static(__dirname + '/../client/stylesheets'))
 app.use('/views', express.static(__dirname + '/../client/views'))
