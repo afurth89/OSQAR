@@ -76,7 +76,7 @@
       vm.result = {
         display: false
       }
-
+      vm.testOver = false
 
       vm.selectAnswer = function(choice) {
         vm.uChoice = choice
@@ -111,8 +111,14 @@
         } else {
           vm.result.text = "Sorry, that is incorrect"
         }
-        // Display result text
-        vm.result.display = true;
+        
+        // If this question is the final question
+        if (vm.trackingData.qNum === vm.testLength) {
+          vm.testOver = true;
+        } else {
+          // Display result text
+          vm.result.display = true;
+        }
       }
 
       // Trigger next question

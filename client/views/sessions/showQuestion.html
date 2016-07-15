@@ -2,7 +2,7 @@
 
 <p>#{{vm.trackingData.qNum}} of {{vm.testLength}}</p>
 
-<div class="well">
+<div class="well" ng-hide="vm.testOver">
   <h1 ng-show="vm.result.display">{{vm.result.text}}</h1>
   <h4>{{vm.session.answers[vm.trackingData.qIdx]._question.text}}</h4>
   <p>Category: {{vm.session.answers[vm.trackingData.qIdx]._question.category}}</p>
@@ -15,6 +15,13 @@
   <a ng-show="vm.result.display" ng-click="vm.nextQuestion()" class="btn btn-primary">Next Question</a>
 </div>
 
+<div class="well" ng-show="vm.testOver">
+  <h1>COMPLETION REPORT</h1>
+  <h1>{{vm.trackingData.uPerformance.correct}} of {{vm.trackingData.uPerformance.total}} correct</h1>
+  <a href="/sessions/new" class="btn btn-success">Take another test</a>
+  <a href="/" class="btn btn-primary">Back to Home</a>
+
+</div>
 
 <br>
 <a ng-click="vm.toStart()" class="btn btn-warning">Back To Start</a>
