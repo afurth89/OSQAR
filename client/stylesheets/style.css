@@ -2,6 +2,7 @@ html, body {
   height: 100%;
 }
 
+/* NAV BAR */
 .navbar {
   margin-bottom: 0px;
 }
@@ -14,6 +15,7 @@ html, body {
   background-color: #3498db;
 }
 
+/* PARENT CONTAINER DIV */
 #container-background {
   background: 
     linear-gradient(
@@ -26,6 +28,7 @@ html, body {
   height: 100%; /* cross-browser */
 }
 
+/* HOME PAGE */
 #home-container {
   margin-top: 50px;
   background-color: rgba(190, 186, 191, 1);
@@ -65,3 +68,5 @@ html, body {
   text-align: center;
   margin: auto;
 }
+
+/* CREATE A TEST */
