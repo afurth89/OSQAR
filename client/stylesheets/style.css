@@ -1,3 +1,15 @@
-.container-fluid {
-  background-image: url("/assets/lined_paper_bg.jpg");
+html, body {
+    height: 100%;
+}
+
+#container-background {
+  background: 
+    linear-gradient(
+      rgba(190, 186, 191, 0.45),
+      rgba(190, 186, 191, 0.45)
+    ),
+    url("/assets/lined_paper_bg.jpg");
+  min-height: 100%;
+  height:auto !important; /* cross-browser */
+  height: 100%; /* cross-browser */
 }
