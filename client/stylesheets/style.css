@@ -1,5 +1,5 @@
 html, body {
-    height: 100%;
+  height: 100%;
 }
 
 #container-background {
@@ -12,4 +12,44 @@ html, body {
   min-height: 100%;
   height:auto !important; /* cross-browser */
   height: 100%; /* cross-browser */
+}
+
+#home-container {
+  margin-top: 50px;
+  background-color: rgba(190, 186, 191, 1);
+}
+
+.home-text {
+  text-align: center;
+}
+
+#home-text-title {
+  font-size: 10em !important;
+}
+
+#home-btn-container {
+  width: 80%;
+  position: relative;
+  margin-top: 50px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.home-btn {
+  display: block;
+  position: relative;
+  height: 100px;
+  width: 80%;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 10px;
+  border: 5px solid white;
+}
+
+.home-btn-text {
+  font-size: 4em !important;
+  color: white;
+  text-align: center;
+  margin: auto;
 }
