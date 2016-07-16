@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.5.7",
+    "angular-drag-and-drop-lists": "^1.4.0",
     "angular-route": "^1.5.7",
     "bluebird": "^3.4.1",
     "body-parser": "^1.15.2",
