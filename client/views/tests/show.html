@@ -19,11 +19,11 @@
         <h3 class="test-category">Category: <span class="label {{vm.test.catClass}}">{{vm.test.category}}</span></h3>
         
         <div id="add-questions-dropdown" class="btn-group edit-btn-group">
-          <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus fa-2x" aria-hidden="true"></i>    Add a Question<span class="caret"></span>
+          <button type="button" class="btn btn-md btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus fa-2x" aria-hidden="true"></i>    Add a Question <span class="caret"></span>
           </button>
           <ul class="dropdown-menu edit-btn-dropdown">
-            <li><a ng-click="vm.toggleCreateNewQsForTest()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Create New</a></li>
-            <li><a ng-click="vm.toggleAddExistingQsToTest()"><i class="fa fa-trash" aria-hidden="true"></i>  Add Existing</a></li>
+            <li><a ng-click="vm.toggleCreateNewQsForTest()"><i class="fa fa-pencil" aria-hidden="true"></i>  Create New</a></li>
+            <li><a ng-click="vm.toggleAddExistingQsToTest()"><i class="fa fa-cart-plus" aria-hidden="true"></i>  Add Existing</a></li>
           </ul>
         </div>
         <!-- <a class="btn btn-info" ng-click="vm.toggleShowTestQs()">{{vm.showTestQuestions.text}}</a>

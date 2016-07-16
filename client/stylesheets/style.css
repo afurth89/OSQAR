@@ -60,6 +60,12 @@ label {
   left: -88px;
 }
 
+.caret {
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 12px solid #ffffff;
+}
+
 /* HOME PAGE */
 
 .home-text {
@@ -117,6 +123,6 @@ label {
 }
 
 #add-questions-dropdown {
-  right: -1;
-  top: -1;
+  right: -1px;
+  top: -1px;
 }
