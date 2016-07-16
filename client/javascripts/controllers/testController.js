@@ -75,6 +75,18 @@
       vm.test = test.data
       vm.allQuestionsList = allQuestions.data
 
+      // Set Category for ngClass
+      if (vm.test.category === "Math") {
+        vm.test.catClass = "label-danger"
+      } else if (vm.test.category === "English") {
+        vm.test.catClass = "label-info"
+      } else if (vm.test.category === "Social Studies") {
+        vm.test.catClass = "label-default"
+      } else {
+        vm.test.catClass = "label-warning"
+      }
+
+      console.log("vm.test.catClass = ", vm.test.catClass)
       // CONTROL DISPLAY OF CURRENT QUESTIONS ALREADY PART OF TEST
       vm.showTestQuestions = {
         value: false,
