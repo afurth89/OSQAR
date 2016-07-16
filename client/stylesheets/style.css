@@ -123,8 +123,8 @@ label {
 }
 
 #add-questions-dropdown {
-  right: -1px;
-  top: -1px;
+  right: 20px;
+  top: 15px;
 }
 
 .test-question-container {
