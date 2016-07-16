@@ -34,10 +34,20 @@ html, body {
   background-color: #3498db;
 }
 
-.pg-content-title {
+.jumbotron>h1, .pg-content-title {
   margin-top: -10px;
   margin-bottom: 20px;
+  color: #ffffff;
 }
+
+label {
+  font-size: 2em;
+}
+
+.btn-submit {
+  font-size: 2em;
+}
+
 
 /* HOME PAGE */
 
@@ -77,3 +87,8 @@ html, body {
 }
 
 /* CREATE A TEST */
+#test-title-text {
+  width: 80%;
+  height: 60px;
+  font-size: 2em;
+}
