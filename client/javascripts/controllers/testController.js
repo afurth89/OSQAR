@@ -31,6 +31,11 @@
 
       vm.test = {};
 
+      vm.selectCategory = function(category) {
+        vm.test.category = category
+        console.log("vm.test.category: ", vm.test.category)
+      }
+
       vm.addTest = function(newTest) {
         if (newTest.title && newTest.category) {
           // "req" object becomes 'req.body' in http call to db
