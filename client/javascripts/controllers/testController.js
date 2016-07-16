@@ -75,16 +75,21 @@
       vm.test = test.data
       vm.allQuestionsList = allQuestions.data
 
-      // Set class for Category label
-      if (vm.test.category === "Math") {
-        vm.test.catClass = "label-danger"
-      } else if (vm.test.category === "English") {
-        vm.test.catClass = "label-info"
-      } else if (vm.test.category === "Social Studies") {
-        vm.test.catClass = "label-default"
-      } else {
-        vm.test.catClass = "label-warning"
+      vm.setCatClass = function(category) {
+        // Set class for Category label
+        if (category === "Math") {
+          vm.test.catClass = "label-danger"
+        } else if (category === "English") {
+          vm.test.catClass = "label-info"
+        } else if (category === "Social Studies") {
+          vm.test.catClass = "label-default"
+        } else {
+          vm.test.catClass = "label-warning"
+        }
       }
+
+      vm.setCatClass(vm.test.category)
+
 
       console.log("vm.test.catClass = ", vm.test.catClass)
       // CONTROL DISPLAY OF CURRENT QUESTIONS ALREADY PART OF TEST
@@ -181,7 +186,8 @@
           vm.test = res.data
           // Show current questions
           vm.toggleShowTestQs()
-
+          // Reset category
+          vm.setCatClass(vm.test.category)
 
         })
       }
