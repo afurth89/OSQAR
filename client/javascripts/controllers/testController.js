@@ -98,7 +98,7 @@
       console.log("vm.test.catClass = ", vm.test.catClass)
       // CONTROL DISPLAY OF CURRENT QUESTIONS ALREADY PART OF TEST
       vm.showTestQuestions = {
-        value: false,
+        value: true,
         text: "Show Current Questions"
       }
 
