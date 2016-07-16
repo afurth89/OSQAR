@@ -74,17 +74,21 @@
       // within ShowTestController in app.js
       vm.test = test.data
       vm.allQuestionsList = allQuestions.data
-      
+
       vm.setCatClass = function(category) {
         // Set class for Category label
         if (category === "Math") {
           vm.test.catClass = "label-danger"
+          vm.test.catIcon = "fa-calculator"
         } else if (category === "English") {
           vm.test.catClass = "label-info"
+          vm.test.catIcon = "fa-book"
         } else if (category === "Social Studies") {
           vm.test.catClass = "label-default"
+          vm.test.catIcon = "fa-globe"
         } else {
           vm.test.catClass = "label-warning"
+          vm.test.catIcon = "fa-flask"
         }
       }
 
