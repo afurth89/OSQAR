@@ -221,6 +221,11 @@
         })
       }
 
+      // FOR TESTING DND LIST
+      // $scope.$watch('vm.test.questions', function(model) {
+      //   $scope.modelAsJson = angular.toJson(model, true);
+      //   console.log($scope.modelAsJson)
+      // }, true);
 
     }
 
