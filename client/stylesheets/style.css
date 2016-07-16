@@ -126,3 +126,10 @@ label {
   right: -1px;
   top: -1px;
 }
+
+.test-question-container {
+  border: 2px solid #3498db;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  padding: 15px;
+}
