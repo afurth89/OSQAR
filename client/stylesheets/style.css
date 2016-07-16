@@ -28,11 +28,18 @@ html, body {
   height: 100%; /* cross-browser */
 }
 
-/* HOME PAGE */
-#home-container {
+/* CONTENT  FOR ALL PAGES */
+.pg-content-container {
   margin-top: 50px;
   background-color: rgba(190, 186, 191, 1);
 }
+
+.pg-content-title {
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+/* HOME PAGE */
 
 .home-text {
   text-align: center;
