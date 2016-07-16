@@ -30,7 +30,8 @@
         <div id="show-test-questions-container" ng-show="vm.showTestQuestions.value">
           <h3>Questions:</h3>
           <div class="test-question-container">
-            <ul dnd-list="vm.test.questions">
+            <!-- DND LIST CODE -->
+            <!--  <ul dnd-list="vm.test.questions">
               <li ng-repeat="question in vm.test.questions"
                   dnd-draggable="questions"
                   dnd-effect-allowed="move"
@@ -39,13 +40,13 @@
               >
                 <p>Question: {{question.text}}</p>
               </li>
-            </ul>
-            <!-- <li>Category: {{question.category}}</li> -->
-            <!-- <ul ng-repeat="choice in question.choices">
+            </ul> -->
+            <li>Category: {{question.category}}</li>
+            <ul ng-repeat="choice in question.choices">
               <li>Choice: {{choice.text}}</li>
             </ul>
             <li>Correct Answer: {{question.correct}}</li>
-            <a class="btn btn-danger" ng-click="vm.removeQuestionFromTest(question._id)">Remove Question</a> -->
+            <a class="btn btn-danger" ng-click="vm.removeQuestionFromTest(question._id)">Remove Question</a>
           </div>
         </div>
         
