@@ -50,7 +50,8 @@
           }
           TestService.createTest(req).then((res) => {
             console.log("Response from the server is...", res)
-            $location.path('/tests')
+            // To Test Edit Page
+            $location.path('/tests/'+res.data._id)
           })
 
         } else {
