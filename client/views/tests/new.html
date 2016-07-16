@@ -11,13 +11,21 @@
           </div>
           <div class="form-group">
             <label for="testCategory">Select a Category:</label>
-              <select name="testCategory" id="testCategorySelector"
+            <div class="input-group">
+              <div class="input-group-btn">
+                  <button type="button" class="btn btn-default">Math</button>
+                  <button type="button" class="btn btn-default">English</button>
+                  <button type="button" class="btn btn-default">Social Studies</button>
+                  <button type="button" class="btn btn-default">Science</button>
+              </div>
+            </div>
+              <!-- <select name="testCategory" id="testCategorySelector"
                 ng-model="vm.test.category">
                 <option value="Math">Math</option>  
                 <option value="English">English</option>  
                 <option value="Social Studies">Social Studies</option>  
                 <option value="Science">Science</option>  
-              </select>
+              </select> -->
           </div>
           <button type="submit" class="btn btn-success">Create Test</button>
         </form>

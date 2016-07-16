@@ -31,7 +31,7 @@ html, body {
 /* CONTENT  FOR ALL PAGES */
 .pg-content-container {
   margin-top: 50px;
-  background-color: rgba(190, 186, 191, 1);
+  background-color: #3498db;
 }
 
 .pg-content-title {
