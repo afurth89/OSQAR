@@ -2,16 +2,24 @@
   <div class="col-xs-10 col-xs-offset-1">
     <div class="jumbotron pg-content-container">
       <h1 class="pg-content-title">{{vm.test.title}}</h1>
-      <div id="newTestForm" class="well">
-        <span>
-          <a class="btn btn-warning" href="/tests/{{vm.test._id}}/edit">Edit Test</a>
-          <a class="btn btn-danger" ng-click="vm.removeTest()">Delete Test</a>
-        </span>
-        <br>
-        <span class="label {{vm.test.catClass}}">
-          {{vm.test.category}}
-        </span>
-        <br>
+      <!-- Single button -->
+      <div class="btn-group edit-btn-group">
+        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog fa-2x" aria-hidden="true"></i>    <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu edit-btn-dropdown">
+          <li><a href="/tests/{{vm.test._id}}/edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit</a></li>
+          <li><a ng-click="vm.removeTest()"><i class="fa fa-trash" aria-hidden="true"></i>  Delete</a></li>
+        </ul>
+      </div>
+
+<!--       <div class="btn-group edit-btns" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary" href="/tests/{{vm.test._id}}/edit">Edit</button>
+        <button type="button" class="btn btn-secondary" ng-click="vm.removeTest()">Delete</button>
+      </div> -->
+      
+
+      <div id="ShowTestContainer" class="well">
+        <h3>Category: <span class="label {{vm.test.catClass}}">{{vm.test.category}}</span></h3>
         <a class="btn btn-info" ng-click="vm.toggleShowTestQs()">{{vm.showTestQuestions.text}}</a>
         <a class="btn btn-success" ng-click="vm.toggleCreateNewQsForTest()">{{vm.createNewQuestionFormDisplay.text}}</a>
         <a class="btn btn-primary" ng-click="vm.toggleAddExistingQsToTest()">{{vm.addExistingQuestionFormDisplay.text}}</a>

@@ -38,6 +38,7 @@ html, body {
   margin-top: -10px;
   margin-bottom: 20px;
   color: #ffffff;
+  position: relative;
 }
 
 label {
@@ -48,6 +49,16 @@ label {
   font-size: 2em;
 }
 
+.edit-btn-group {
+  position: absolute;
+  right: 15px;
+  top: 50px;
+}
+
+.dropdown-menu, .edit-btn-group>.dropdown-menu {
+  right: 0;
+  left: -88px;
+}
 
 /* HOME PAGE */
 

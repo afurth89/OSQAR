@@ -75,7 +75,7 @@
       vm.test = test.data
       vm.allQuestionsList = allQuestions.data
 
-      // Set Category for ngClass
+      // Set class for Category label
       if (vm.test.category === "Math") {
         vm.test.catClass = "label-danger"
       } else if (vm.test.category === "English") {
