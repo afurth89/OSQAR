@@ -91,9 +91,12 @@
           location.catIcon = "fa-flask"
         }
       }
-
+      // Set CatClass for Test
       vm.setCatClass(vm.test, vm.test.category)
-
+      // Set CatClass for Questions in Test
+      vm.test.questions.forEach((val) => {
+        vm.setCatClass(val, val.category)
+      })
 
       console.log("vm.test.catClass = ", vm.test.catClass)
       // CONTROL DISPLAY OF CURRENT QUESTIONS ALREADY PART OF TEST
@@ -190,8 +193,11 @@
           vm.test = res.data
           // Show current questions
           vm.toggleShowTestQs()
-          // Reset category
+          // Reset category for test, and questions within
           vm.setCatClass(vm.test, vm.test.category)
+          vm.test.questions.forEach((val) => {
+            vm.setCatClass(val, val.category)
+          })
 
         })
       }
