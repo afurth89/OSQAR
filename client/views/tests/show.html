@@ -30,8 +30,8 @@
         <div id="show-test-questions-container" ng-show="vm.showTestQuestions.value">
           <h3>Questions:</h3>
           <div class="test-question-container" ng-repeat="question in vm.test.questions">
-            <li>Category: {{question.category}}</li>
-            <li>Question: {{question.text}}</li>
+            <!-- <li>Category: {{question.category}}</li> -->
+            <p>Question: {{question.text}}</p>
             <!-- <ul ng-repeat="choice in question.choices">
               <li>Choice: {{choice.text}}</li>
             </ul>
