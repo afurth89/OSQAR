@@ -2,6 +2,18 @@ html, body {
   height: 100%;
 }
 
+.navbar {
+  margin-bottom: 0px;
+}
+
+#teacher-dropdown {
+  background-color: #f39c12;
+}
+
+#student-dropdown {
+  background-color: #3498db;
+}
+
 #container-background {
   background: 
     linear-gradient(
