@@ -69,7 +69,7 @@
               console.log("res.data EQUALS...", res.data)
               $scope.$parent.vm.test = res.data
               $scope.$parent.vm.toggleCreateNewQsForTest()
-              $scope.$parent.vm.setCatClass($scope.$parent.vm.test.category)
+              $scope.$parent.vm.setCatClass($scope.$parent.vm.test, $scope.$parent.vm.test.category)
               // If Q is assigned to test, then redirect to that test's show page
               $location.path('/tests/' + res.data._id)
             } else {

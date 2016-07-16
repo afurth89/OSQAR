@@ -75,24 +75,24 @@
       vm.test = test.data
       vm.allQuestionsList = allQuestions.data
 
-      vm.setCatClass = function(category) {
+      vm.setCatClass = function(location, category) {
         // Set class for Category label
         if (category === "Math") {
-          vm.test.catClass = "label-danger"
-          vm.test.catIcon = "fa-calculator"
+          location.catClass = "label-danger"
+          location.catIcon = "fa-calculator"
         } else if (category === "English") {
-          vm.test.catClass = "label-info"
-          vm.test.catIcon = "fa-book"
+          location.catClass = "label-info"
+          location.catIcon = "fa-book"
         } else if (category === "Social Studies") {
-          vm.test.catClass = "label-default"
-          vm.test.catIcon = "fa-globe"
+          location.catClass = "label-default"
+          location.catIcon = "fa-globe"
         } else {
-          vm.test.catClass = "label-warning"
-          vm.test.catIcon = "fa-flask"
+          location.catClass = "label-warning"
+          location.catIcon = "fa-flask"
         }
       }
 
-      vm.setCatClass(vm.test.category)
+      vm.setCatClass(vm.test, vm.test.category)
 
 
       console.log("vm.test.catClass = ", vm.test.catClass)
@@ -191,7 +191,7 @@
           // Show current questions
           vm.toggleShowTestQs()
           // Reset category
-          vm.setCatClass(vm.test.category)
+          vm.setCatClass(vm.test, vm.test.category)
 
         })
       }
