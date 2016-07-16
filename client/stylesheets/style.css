@@ -103,3 +103,20 @@ label {
   height: 60px;
   font-size: 2em;
 }
+
+/* SHOW A TEST */
+.test-category {
+  margin-top: 0;
+  margin-bottom: 30px;
+  width: 50%;
+  display: inline-block;
+}
+
+#show-test-container {
+  position: relative;
+}
+
+#add-questions-dropdown {
+  right: -1;
+  top: -1;
+}

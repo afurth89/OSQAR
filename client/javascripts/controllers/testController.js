@@ -74,7 +74,7 @@
       // within ShowTestController in app.js
       vm.test = test.data
       vm.allQuestionsList = allQuestions.data
-
+      
       vm.setCatClass = function(category) {
         // Set class for Category label
         if (category === "Math") {

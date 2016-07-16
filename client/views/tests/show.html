@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-xs-10 col-xs-offset-1">
     <div class="jumbotron pg-content-container">
+      
       <h1 class="pg-content-title">{{vm.test.title}}</h1>
       <!-- Single button -->
       <div class="btn-group edit-btn-group">
@@ -12,17 +13,22 @@
         </ul>
       </div>
 
-<!--       <div class="btn-group edit-btns" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-secondary" href="/tests/{{vm.test._id}}/edit">Edit</button>
-        <button type="button" class="btn btn-secondary" ng-click="vm.removeTest()">Delete</button>
-      </div> -->
       
 
-      <div id="ShowTestContainer" class="well">
-        <h3>Category: <span class="label {{vm.test.catClass}}">{{vm.test.category}}</span></h3>
-        <a class="btn btn-info" ng-click="vm.toggleShowTestQs()">{{vm.showTestQuestions.text}}</a>
+      <div id="show-test-container" class="well">
+        <h3 class="test-category">Category: <span class="label {{vm.test.catClass}}">{{vm.test.category}}</span></h3>
+        
+        <div id="add-questions-dropdown" class="btn-group edit-btn-group">
+          <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus fa-2x" aria-hidden="true"></i>    Add a Question<span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu edit-btn-dropdown">
+            <li><a ng-click="vm.toggleCreateNewQsForTest()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Create New</a></li>
+            <li><a ng-click="vm.toggleAddExistingQsToTest()"><i class="fa fa-trash" aria-hidden="true"></i>  Add Existing</a></li>
+          </ul>
+        </div>
+        <!-- <a class="btn btn-info" ng-click="vm.toggleShowTestQs()">{{vm.showTestQuestions.text}}</a>
         <a class="btn btn-success" ng-click="vm.toggleCreateNewQsForTest()">{{vm.createNewQuestionFormDisplay.text}}</a>
-        <a class="btn btn-primary" ng-click="vm.toggleAddExistingQsToTest()">{{vm.addExistingQuestionFormDisplay.text}}</a>
+        <a class="btn btn-primary" ng-click="vm.toggleAddExistingQsToTest()">{{vm.addExistingQuestionFormDisplay.text}}</a> -->
 
         <div id="showTestQuestionsContainer" ng-show="vm.showTestQuestions.value">
           <p>Questions:
