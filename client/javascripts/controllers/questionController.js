@@ -42,11 +42,19 @@
 
       vm.updateChosenAnswer = function(id) {
         vm.chosenAnswer = id
+        console.log("Chosen Answer is now... ", vm.chosenAnswer)
       }
 
+      vm.selectCategory = function(category) {
+        vm.question.category = category
+        console.log("vm.question.category: ", vm.question.category)
+      }
 
       vm.addQuestion = function(newQuestion, testId=false) {
-        newQuestion.correct.id = +newQuestion.correct.id
+        // Set id for correct answer
+        newQuestion.correct.id = +vm.chosenAnswer
+        // Set category
+        newQuestion.category = vm.question.category
         newQuestion.choices.find((val,idx) => {
           if (val.id === newQuestion.correct.id) {
             newQuestion.correct.text = val.text
@@ -54,6 +62,7 @@
           }
         })
 
+        debugger
         // Are all fields filled in for question?
         if (newQuestion.text && newQuestion.category &&
             newQuestion.choices[0].text &&

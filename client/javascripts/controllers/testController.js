@@ -97,8 +97,9 @@
       vm.test.questions.forEach((val) => {
         vm.setCatClass(val, val.category)
       })
-
       console.log("vm.test.catClass = ", vm.test.catClass)
+
+      
       // CONTROL DISPLAY OF CURRENT QUESTIONS ALREADY PART OF TEST
       vm.showTestQuestions = {
         value: true,
