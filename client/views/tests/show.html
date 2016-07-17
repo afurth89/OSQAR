@@ -58,7 +58,7 @@
         
         <!-- FORM TO CREATE NEW QUESTION -->
         <div id="createQuestionAddToTestForm" class="well" ng-show="vm.display[1].val" ng-controller="NewQuestionController as vmNewQuestion">
-          <h1 class="add-question-title">Add a Question</h1>
+          <h1 class="add-question-title">Create a Question</h1>
           <form ng-submit="vmNewQuestion.addQuestion(vmNewQuestion.question, vm.test._id)">
             <div class="form-group">
               <label>Question Text:</label>
@@ -121,7 +121,7 @@
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-success">Create Question</button>
+            <button type="submit" class="btn btn-success">Create Question and Add to Test</button>
           </form>
         </div>
 
