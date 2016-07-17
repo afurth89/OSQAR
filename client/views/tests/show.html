@@ -126,20 +126,16 @@
         </div>
 
         <!-- LIST OF QUESTIONS IN DB TO ADD TO TEST -->
-        <div id="addExistingQuestionToTestContainer" ng-show="vm.display[2].val">
-          <p>All Questions:
-            <div class="well" ng-repeat="question in vm.allQuestionsList">
-              <ul>
-                <li>Category: {{question.category}}</li>
-                <li>Question: {{question.text}}</li>
-                <ul ng-repeat="choice in question.choices">
-                  <li>Choice: {{choice.text}}</li>
-                </ul>
-                <li>Correct Answer: {{question.correct}}</li>
-                <a class="btn btn-success" ng-click="vm.addExistingQuestionToTest(question._id)">Add Question</a>
-              </ul>
+        <div id="all-questions-list-container" ng-show="vm.display[2].val">
+          <h3>All Questions:</h3>
+          <div class="test-question-container" ng-repeat="question in vm.allQuestionsList" ng-click="showChoices = !showChoices">
+            <p class="test-question-text"><span class="label {{question.catClass}}"><i class="fa {{question.catIcon}}" aria-hidden="true"></i></span>  {{question.text}}</p>
+            <span class="toggle-icon-container"><i class="fa fa-caret-down fa-3x" aria-hidden="true" ng-hide="showChoices"></i><i class="fa fa-caret-up fa-3x" aria-hidden="true" ng-show="showChoices"></i></span>
+
+            <div ng-repeat="choice in question.choices" ng-show="showChoices" class="answer-choice-container" ng-class="question.correct.text === choice.text ? 'correct-answer' : 'wrong-answer'">
+              <p>{{vm.letters[$index]}}: {{choice.text}}</p>
             </div>
-          </p>
+          </div>
         </div>
       </div>
       <a class="btn btn-primary" href="/tests">Back to All Tests</a>
