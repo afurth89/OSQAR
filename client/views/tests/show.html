@@ -29,13 +29,14 @@
 
         <div id="show-test-questions-container" ng-show="vm.showTestQuestions.value">
           <h3>Questions:</h3>
-          <div class="test-question-container" ng-repeat="question in vm.test.questions">
-            <p><span class="label {{question.catClass}}"><i class="fa {{question.catIcon}}" aria-hidden="true"></i></span>  {{question.text}}</p>
+          <div class="test-question-container" ng-repeat="question in vm.test.questions" ng-click="showChoices = !showChoices">
+            <p class="test-question-text"><span class="label {{question.catClass}}"><i class="fa {{question.catIcon}}" aria-hidden="true"></i></span>  {{question.text}}</p>
+            <span class="toggle-icon-container"><i class="fa fa-caret-down fa-3x" aria-hidden="true" ng-hide="showChoices"></i><i class="fa fa-caret-up fa-3x" aria-hidden="true" ng-show="showChoices"></i></span>
 
-            <!-- <ul ng-repeat="choice in question.choices">
-              <li>Choice: {{choice.text}}</li>
+            <ul ng-repeat="choice in question.choices" ng-show="showChoices">
+              <p>{{choice.text}}</p>
             </ul>
-            <li>Correct Answer: {{question.correct}}</li>
+<!--             <li>Correct Answer: {{question.correct}}</li>
             <a class="btn btn-danger" ng-click="vm.removeQuestionFromTest(question._id)">Remove Question</a> -->
 
             <!-- DND LIST CODE -->
@@ -53,35 +54,69 @@
         </div>
         
         <div id="createQuestionAddToTestForm" class="well" ng-show="vm.createNewQuestionFormDisplay.value" ng-controller="NewQuestionController as vmNewQuestion">
+          <h1 class="add-question-title">Add a Question</h1>
           <form ng-submit="vmNewQuestion.addQuestion(vmNewQuestion.question, vm.test._id)">
             <div class="form-group">
-              <label>Question Text</label>
-              <textarea ng-model="vmNewQuestion.question.text" type="textarea" class="form-control" placeholder="Enter your question..."></textarea>
+              <label>Question Text:</label>
+              <textarea ng-model="vmNewQuestion.question.text" type="textarea" class="form-control input-text" placeholder="Enter your question..."></textarea>
             </div>
             <div class="form-group">
               <label for="questionCategory">Select a Category:</label>
-                <select name="questionCategory" id="questionCategorySelector"
-                  ng-model="vmNewQuestion.question.category">
-                  <option value="Math">Math</option>  
-                  <option value="English">English</option>  
-                  <option value="Social Studies">Social Studies</option>  
-                  <option value="Science">Science</option>  
-                </select>
+              <div class="input-group">
+                <div class="input-group-btn">
+                  <button ng-click="vm.selectCategory('Math')" type="button" class="btn btn-danger">
+                    <i class="fa fa-calculator" aria-hidden="true"></i> 
+                    Math
+                  </button>
+                  <button ng-click="vm.selectCategory('English')" type="button" class="btn btn-info">
+                    <i class="fa fa-book" aria-hidden="true"></i> 
+                    English
+                  </button>
+                  <button ng-click="vm.selectCategory('Social Studies')" type="button" class="btn btn-default">
+                    <i class="fa fa-globe" aria-hidden="true"></i> 
+                    Social Studies
+                  </button>
+                  <button ng-click="vm.selectCategory('Science')" type="button" class="btn btn-warning">
+                    <i class="fa fa-flask" aria-hidden="true"></i> 
+                    Science
+                  </button>
+                </div>
+              </div>
             </div>
             <div class="form-group">
-              <p>Answer Choices (Select the correct answer before submitting)</p>
-              <label>A:</label>
-              <input type="radio" ng-model="vmNewQuestion.question.correct.id" value="1">
-              <input ng-model="vmNewQuestion.question.choices[0].text" type="text" class="form-control" placeholder="Enter Choice A...">
-              <label>B:</label>
-              <input type="radio" ng-model="vmNewQuestion.question.correct.id" value="2">
-              <input ng-model="vmNewQuestion.question.choices[1].text" type="text" class="form-control" placeholder="Enter Choice B...">
-              <label>C:</label>
-              <input type="radio" ng-model="vmNewQuestion.question.correct.id" value="3">
-              <input ng-model="vmNewQuestion.question.choices[2].text" type="text" class="form-control" placeholder="Enter Choice C...">
-              <label>D:</label>
-              <input type="radio" ng-model="vmNewQuestion.question.correct.id" value="4">
-              <input ng-model="vmNewQuestion.question.choices[3].text" type="text" class="form-control" placeholder="Enter Choice D...">
+            Correct: {{vmNewQuestion.chosenAnswer}}
+              <div class="answer-input">
+                <div class="input-group choice-input">
+                  <input ng-model="vmNewQuestion.question.choices[0].text" type="text" class="form-control choice-input" placeholder="Enter Choice A...">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn" ng-click="vmNewQuestion.updateChosenAnswer(1)" ng-class="vmNewQuestion.chosenAnswer === 1 ? 'btn-success' : 'btn-default'">Correct</button>
+                  </div>
+                </div>
+              </div>
+              <div class="answer-input">
+                <div class="input-group choice-input">
+                  <input ng-model="vmNewQuestion.question.choices[1].text" type="text" class="form-control choice-input" placeholder="Enter Choice B...">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn" ng-click="vmNewQuestion.updateChosenAnswer(2)" ng-class="vmNewQuestion.chosenAnswer === 2 ? 'btn-success' : 'btn-default'">Correct</button>
+                  </div>
+                </div>
+              </div>
+              <div class="answer-input">
+                <div class="input-group choice-input">
+                  <input ng-model="vmNewQuestion.question.choices[2].text" type="text" class="form-control choice-input" placeholder="Enter Choice C...">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn" ng-click="vmNewQuestion.updateChosenAnswer(3)" ng-class="vmNewQuestion.chosenAnswer === 3 ? 'btn-success' : 'btn-default'">Correct</button>
+                  </div>
+                </div>
+              </div>
+              <div class="answer-input">
+                <div class="input-group choice-input">
+                  <input ng-model="vmNewQuestion.question.choices[3].text" type="text" class="form-control choice-input" placeholder="Enter Choice D...">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn" ng-click="vmNewQuestion.updateChosenAnswer(4)" ng-class="vmNewQuestion.chosenAnswer === 4 ? 'btn-success' : 'btn-default'">Correct</button>
+                  </div>
+                </div>
+              </div>
             </div>
             <button type="submit" class="btn btn-success">Create Question</button>
           </form>

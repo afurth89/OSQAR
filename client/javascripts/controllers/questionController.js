@@ -27,6 +27,7 @@
       let vm = this;
 
       console.log("$scope.$parent is...", $scope.$parent.vm.test)
+      // TO VISUALIZE OBJECT STRUCTURE
       vm.question = {
         text: null,
         category: null,
@@ -37,6 +38,13 @@
               {id: 4, text: null}],
         correct: {id: null, text: null}
       }
+
+
+      vm.updateChosenAnswer = function(id) {
+        vm.chosenAnswer = id
+      }
+
+
       vm.addQuestion = function(newQuestion, testId=false) {
         newQuestion.correct.id = +newQuestion.correct.id
         newQuestion.choices.find((val,idx) => {

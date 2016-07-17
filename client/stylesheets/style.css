@@ -66,6 +66,18 @@ label {
   border-top: 12px solid #ffffff;
 }
 
+.choice-input {
+  width: 100%;
+  height: 50px;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.correct-choice-input {
+  display: inline-block;
+  width: 100%;
+}
+
 /* HOME PAGE */
 
 .home-text {
@@ -133,4 +145,35 @@ label {
   margin-bottom: 15px;
   padding-left: 15px;
   padding-top: 10px;
+  background-color: #ffffff;
+}
+
+.test-question-container:hover {
+  background-color: rgba(190, 186, 191, 0.45);
+}
+
+.test-question-text {
+  display: inline-block;
+  width: 84%;
+}
+
+.toggle-icon-container {
+  display: inline-block;
+  width: 14%;
+  text-align: right;
+  vertical-align: middle;
+}
+
+#createQuestionAddToTestForm {
+  padding-top: 0px;
+}
+
+.add-question-title {
+  text-decoration: underline;
+  margin-top: 0px;
+  margin-bottom: 35px;
+}
+
+.chosen-answer {
+  background-color: #18bc9c;
 }
