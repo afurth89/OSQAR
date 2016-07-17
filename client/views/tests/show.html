@@ -31,7 +31,7 @@
 
         <!-- TEST QUESTIONS -->
         <div id="show-test-questions-container" ng-show="vm.display[0].val">
-          <h3>Questions:</h3>
+          <h1 class="content-title">Questions ({{vm.test.questions.length}})</h1>
           <div class="test-question-container" ng-repeat="question in vm.test.questions" ng-click="showChoices = !showChoices">
             <p class="test-question-text"><span class="label {{question.catClass}}"><i class="fa {{question.catIcon}}" aria-hidden="true"></i></span>  {{question.text}}</p>
             <span class="toggle-icon-container"><i class="fa fa-caret-down fa-3x" aria-hidden="true" ng-hide="showChoices"></i><i class="fa fa-caret-up fa-3x" aria-hidden="true" ng-show="showChoices"></i></span>
@@ -58,7 +58,7 @@
         
         <!-- FORM TO CREATE NEW QUESTION -->
         <div id="createQuestionAddToTestForm" class="well" ng-show="vm.display[1].val" ng-controller="NewQuestionController as vmNewQuestion">
-          <h1 class="add-question-title">Create a Question</h1>
+          <h1 class="content-title">Create a Question</h1>
           <form ng-submit="vmNewQuestion.addQuestion(vmNewQuestion.question, vm.test._id)">
             <div class="form-group">
               <label>Question Text:</label>
@@ -127,7 +127,8 @@
 
         <!-- LIST OF QUESTIONS IN DB TO ADD TO TEST -->
         <div id="all-questions-list-container" ng-show="vm.display[2].val">
-          <h3>All Questions:</h3>
+          <h1 class="content-title">Add an Existing Question</h1>
+          <h2>{{vm.allQuestionsList.length}} available</h2>
           <div class="test-question-container" ng-repeat="question in vm.allQuestionsList" ng-click="showChoices = !showChoices">
             <p class="test-question-text"><span class="label {{question.catClass}}"><i class="fa {{question.catIcon}}" aria-hidden="true"></i></span>  {{question.text}}</p>
             <span class="toggle-icon-container"><i class="fa fa-caret-down fa-3x" aria-hidden="true" ng-hide="showChoices"></i><i class="fa fa-caret-up fa-3x" aria-hidden="true" ng-show="showChoices"></i></span>
