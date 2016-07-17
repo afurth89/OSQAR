@@ -19,15 +19,18 @@
         <h3 class="test-category">Category: <span class="label {{vm.test.catClass}}"><i class="fa {{vm.test.catIcon}}" aria-hidden="true"></i>  {{vm.test.category}}</span></h3>
         
         <div id="add-questions-dropdown" class="btn-group edit-btn-group">
-          <button type="button" class="btn btn-md btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus fa-2x" aria-hidden="true"></i>    Add a Question <span class="caret"></span>
+          <button ng-show="vm.display[0].val" type="button" class="btn btn-md btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus fa-2x" aria-hidden="true"></i>    Add a Question <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu edit-btn-dropdown">
-            <li><a ng-click="vm.toggleCreateNewQsForTest()"><i class="fa fa-pencil" aria-hidden="true"></i>  Create New</a></li>
-            <li><a ng-click="vm.toggleAddExistingQsToTest()"><i class="fa fa-cart-plus" aria-hidden="true"></i>  Add Existing</a></li>
+          <ul ng-show="vm.display[0].val" class="dropdown-menu edit-btn-dropdown">
+            <li><a ng-click="vm.toggleDisplay(1)"><i class="fa fa-pencil" aria-hidden="true"></i>  Create New</a></li>
+            <li><a ng-click="vm.toggleDisplay(2)"><i class="fa fa-cart-plus" aria-hidden="true"></i>  Add Existing</a></li>
           </ul>
+          <!-- To go back to test's questions -->
+          <button ng-hide="vm.display[0].val" type="button" class="btn btn-md btn-danger" ng-click="vm.toggleDisplay(0)">Back to Test</button>
         </div>
 
-        <div id="show-test-questions-container" ng-show="vm.showTestQuestions.value">
+        <!-- TEST QUESTIONS -->
+        <div id="show-test-questions-container" ng-show="vm.display[0].val">
           <h3>Questions:</h3>
           <div class="test-question-container" ng-repeat="question in vm.test.questions" ng-click="showChoices = !showChoices">
             <p class="test-question-text"><span class="label {{question.catClass}}"><i class="fa {{question.catIcon}}" aria-hidden="true"></i></span>  {{question.text}}</p>
@@ -53,7 +56,8 @@
           </div>
         </div>
         
-        <div id="createQuestionAddToTestForm" class="well" ng-show="vm.createNewQuestionFormDisplay.value" ng-controller="NewQuestionController as vmNewQuestion">
+        <!-- FORM TO CREATE NEW QUESTION -->
+        <div id="createQuestionAddToTestForm" class="well" ng-show="vm.display[1].val" ng-controller="NewQuestionController as vmNewQuestion">
           <h1 class="add-question-title">Add a Question</h1>
           <form ng-submit="vmNewQuestion.addQuestion(vmNewQuestion.question, vm.test._id)">
             <div class="form-group">
@@ -122,7 +126,8 @@
           </form>
         </div>
 
-        <div id="addExistingQuestionToTestContainer" ng-show="vm.addExistingQuestionFormDisplay.value">
+        <!-- LIST OF QUESTIONS IN DB TO ADD TO TEST -->
+        <div id="addExistingQuestionToTestContainer" ng-show="vm.display[2].val">
           <p>All Questions:
             <div class="well" ng-repeat="question in vm.allQuestionsList">
               <ul>

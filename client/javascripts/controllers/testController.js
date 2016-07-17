@@ -100,84 +100,26 @@
       console.log("vm.test.catClass = ", vm.test.catClass)
 
       
-      // CONTROL DISPLAY OF CURRENT QUESTIONS ALREADY PART OF TEST
-      vm.showTestQuestions = {
-        value: true,
-        text: "Show Current Questions"
-      }
+      // DEFAULT DISPLAYED CONTENT
+      vm.display = [
+        {val: true},  // Test Qs
+        {val: false}, // Create Question Form
+        {val: false}  // List of Available Qs
+      ]
 
-      vm.toggleShowTestQs = function() {
-        // Ensure other two aren't displaying
-        vm.createNewQuestionFormDisplay.value = false;
-        vm.createNewQuestionFormDisplay.text = "Create New Question"
-        vm.addExistingQuestionFormDisplay.value = false;
-        vm.addExistingQuestionFormDisplay.text = "Add Existing Question"
+      vm.toggleDisplay = function(itemToDisplayIdx) {
+        // Hide all three
+        vm.display.forEach((val, idx) => {
+          if (idx === itemToDisplayIdx) {
+            val.val = true;
+          } else {
+            val.val = false;
+          }
+        })
+        console.log("The index that is displayed is... ", itemToDisplayIdx)
+        console.log("Display object... ", vm.display)
+      }              
 
-        // Show/Hide Current Test Qs
-        if (vm.showTestQuestions.value) {
-          // If add question form is shown, hide it
-          vm.showTestQuestions.value = false;
-          vm.showTestQuestions.text = "Show Current Questions"
-        } else {
-          // If add question form is hidden, show it
-          vm.showTestQuestions.value = true;
-          vm.showTestQuestions.text = "Hide Current Questions"
-        }
-        console.log(vm.showTestQuestions)
-      }      
-
-      // CONTROL DISPLAY OF CREATE QUESTION FORM    
-      vm.createNewQuestionFormDisplay = {
-        value: false,
-        text: "Create New Question"
-      }
-
-
-      vm.toggleCreateNewQsForTest = function() {
-        // Ensure other two aren't displaying
-        vm.showTestQuestions.value = false;
-        vm.showTestQuestions.text = "Show Current Questions"
-        vm.addExistingQuestionFormDisplay.value = false;
-        vm.addExistingQuestionFormDisplay.text = "Add Existing Question"
-
-        // Show/Hide Create Q form
-        if (vm.createNewQuestionFormDisplay.value) {
-          // If add question form is shown, hide it
-          vm.createNewQuestionFormDisplay.value = false;
-          vm.createNewQuestionFormDisplay.text = "Create New Question"
-        } else {
-          // If add question form is hidden, show it
-          vm.createNewQuestionFormDisplay.value = true;
-          vm.createNewQuestionFormDisplay.text = "Hide New Question Form"
-        }
-        console.log(vm.createNewQuestionFormDisplay)
-      }
-
-      // CONTROL DISPLAY OF ALL EXISTING QUESTIONS
-      vm.addExistingQuestionFormDisplay = {
-        value: false,
-        text: "Add Existing Question"
-      }
-
-      vm.toggleAddExistingQsToTest = function() {
-        // Ensure other two aren't displaying
-        vm.showTestQuestions.value = false;
-        vm.showTestQuestions.text = "Show Current Questions"
-        vm.createNewQuestionFormDisplay.value = false;
-        vm.createNewQuestionFormDisplay.text = "Create New Question"
-
-        // Show/Hide Existing Questions
-        if (vm.addExistingQuestionFormDisplay.value) {
-          // If add question form is shown, hide it
-          vm.addExistingQuestionFormDisplay.value = false;
-          vm.addExistingQuestionFormDisplay.text = "Add Existing Question"
-        } else {
-          // If add question form is hidden, show it
-          vm.addExistingQuestionFormDisplay.value = true;
-          vm.addExistingQuestionFormDisplay.text = "Hide Existing Questions"
-        }
-        console.log(vm.addExistingQuestionFormDisplay)
-      }
 
       // ADD AN EXISTING QUESTION TO CURRENT TEST
       vm.addExistingQuestionToTest = function(qId) {
