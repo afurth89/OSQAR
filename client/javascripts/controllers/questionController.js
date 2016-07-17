@@ -62,7 +62,6 @@
           }
         })
 
-        debugger
         // Are all fields filled in for question?
         if (newQuestion.text && newQuestion.category &&
             newQuestion.choices[0].text &&
@@ -85,12 +84,12 @@
             if (res.data.questions) {
               console.log("res.data EQUALS...", res.data)
               $scope.$parent.vm.test = res.data
-              $scope.$parent.vm.toggleCreateNewQsForTest()
               // Reset category for test, and questions within
               $scope.$parent.vm.setCatClass($scope.$parent.vm.test, $scope.$parent.vm.test.category)
               $scope.$parent.vm.test.questions.forEach((val) => {
-                $scope.parent.vm.setCatClass(val, val.category)
+                $scope.$parent.vm.setCatClass(val, val.category)
               })
+              $scope.$parent.vm.toggleDisplay(0)
               // If Q is assigned to test, then redirect to that test's show page
               $location.path('/tests/' + res.data._id)
             } else {
