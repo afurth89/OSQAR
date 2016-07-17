@@ -103,6 +103,10 @@
       vm.test.questions.forEach((val) => {
         vm.setCatClass(val, val.category)
       })
+      // Set CatClass for All Questions
+      vm.allQuestionsList.forEach((val) => {
+        vm.setCatClass(val, val.category)
+      })
       console.log("vm.test.catClass = ", vm.test.catClass)
 
       
