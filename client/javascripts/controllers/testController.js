@@ -134,25 +134,19 @@
       // ADD AN EXISTING QUESTION TO CURRENT TEST
       vm.addExistingQuestionToTest = function(qId) {
         console.log("Id of question to be added is...", qId)
-        
         var req = {
           qId: qId
         }        
         TestService.updateTest($route.current.params.id, req).then((res) => {
           console.log("The updated test is...", res)
           alert("The question has been added")
-          // Hide existing questions
-          vm.toggleAddExistingQsToTest()
-          // Update current questions
-          vm.test = res.data
-          // Show current questions
-          vm.toggleShowTestQs()
           // Reset category for test, and questions within
           vm.setCatClass(vm.test, vm.test.category)
           vm.test.questions.forEach((val) => {
             vm.setCatClass(val, val.category)
           })
-
+          // Back to the test
+          vm.toggleDisplay(0)
         })
       }
 

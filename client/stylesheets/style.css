@@ -145,6 +145,7 @@ label {
 }
 
 .test-question-container {
+  position: relative;
   border: 2px solid #3498db;
   border-radius: 10px;
   margin-bottom: 15px;
@@ -157,16 +158,31 @@ label {
   background-color: rgba(190, 186, 191, 0.45);
 }
 
-.test-question-text {
-  display: inline-block;
-  width: 84%;
-}
-
 .toggle-icon-container {
   display: inline-block;
-  width: 14%;
-  text-align: right;
+  width: 3%;
+  text-align: left;
   vertical-align: middle;
+}
+
+.test-question-text {
+  display: inline-block;
+  width: 90%;
+}
+
+#add-existingQ-btn {
+  display: inline-block;
+  position: absolute;
+  width: 5%;
+  vertical-align: middle;
+  text-align: center;
+  top: 0;
+  right: 0;
+  height: 59px;
+}
+
+#add-existingQ-btn>span {
+  margin-left: -5px;
 }
 
 .answer-choice-container {
