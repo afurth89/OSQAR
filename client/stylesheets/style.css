@@ -164,6 +164,20 @@ label {
   vertical-align: middle;
 }
 
+.answer-choice-container {
+  width: 90%;
+  border: 2px solid #3498db;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  padding-left: 15px;
+  padding-top: 10px;
+  background-color: rgba(190, 186, 191, 0.45);
+}
+
+.test-question-container:hover .answer-choice-container {
+  background-color: #ffffff;
+}
+
 #createQuestionAddToTestForm {
   padding-top: 0px;
 }

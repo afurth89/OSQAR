@@ -74,6 +74,12 @@
       // within ShowTestController in app.js
       vm.test = test.data
       vm.allQuestionsList = allQuestions.data
+      vm.letters = {
+        0: "A",
+        1: "B",
+        2: "C",
+        3: "D"
+      }
 
       vm.setCatClass = function(location, category) {
         // Set class for Category label
