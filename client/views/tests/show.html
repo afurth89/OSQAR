@@ -36,7 +36,7 @@
             <p class="test-question-text"><span class="label {{question.catClass}}"><i class="fa {{question.catIcon}}" aria-hidden="true"></i></span>  {{question.text}}</p>
             <span class="toggle-icon-container"><i class="fa fa-caret-down fa-3x" aria-hidden="true" ng-hide="showChoices"></i><i class="fa fa-caret-up fa-3x" aria-hidden="true" ng-show="showChoices"></i></span>
 
-            <div ng-repeat="choice in question.choices" ng-show="showChoices" class="answer-choice-container">
+            <div ng-repeat="choice in question.choices" ng-show="showChoices" class="answer-choice-container" ng-class="question.correct.text === choice.text ? 'correct-answer' : 'wrong-answer'">
               <p>{{vm.letters[$index]}}: {{choice.text}}</p>
             </div>
 <!--             <li>Correct Answer: {{question.correct}}</li>

@@ -174,8 +174,12 @@ label {
   background-color: rgba(190, 186, 191, 0.45);
 }
 
-.test-question-container:hover .answer-choice-container {
-  background-color: #ffffff;
+.test-question-container:hover .correct-answer {
+  background-color: rgba(20, 156, 130, 0.4);
+}
+
+.test-question-container:hover .wrong-answer {
+  background-color: rgba(231, 76, 60, 0.4); 
 }
 
 #createQuestionAddToTestForm {
