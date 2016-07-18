@@ -149,12 +149,17 @@
 
         // Update sessionTrackingData
         SessionService.updateTrackingData(vm.trackingData.qNum, vm.session.answers[vm.trackingData.qIdx]._question.correct.text, vm.uChoice.text).then((res) => {
-          console.log("res after updating session tracking, ", res)
+          console.log("Updated trackingData: , ", res)
+          SessionService.updateChartData(res).then((res) => {
+            console.log("Updated chartData: ", res)
+          })
         })
+
+        // Update chartData
 
         // Adds user answer to session in DB
         SessionService.addUserAnswerChoice($route.current.params.id, req).then((res) => {
-          console.log("Response after adding user answer: ", res.data)
+          console.log("Updated session: ", res.data)
         })
 
         // Check whether answer was correct, set proper result text

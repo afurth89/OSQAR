@@ -11,6 +11,7 @@
             <div class="progress progress-striped active">
               <div class="progress-bar" style="width: {{(vm.trackingData.qNum/vm.testLength)*100}}%"></div>
             </div>
+            <p>uPerformance: {{vm.trackingData.uPerformance}}</p>
           </div>
           <div class="col-xs-6">
             <nvd3 options='vm.chartOptions' data='vm.chartData' ></nvd3>
@@ -22,7 +23,8 @@
           <!-- Question Text -->
           <p ng-click="showChoices = !showChoices" class="test-question-text"><span class="label {{vm.session.answers[vm.trackingData.qIdx]._question.catClass}}"><i class="fa {{vm.session.answers[vm.trackingData.qIdx]._question.catIcon}}" aria-hidden="true"></i></span>  {{vm.session.answers[vm.trackingData.qIdx]._question.text}}</p>
 
-          <div ng-repeat="choice in vm.session.answers[vm.trackingData.qIdx]._question.choices" class="answer-choice-container session-answer-choice" ng-click="vm.selectAnswer(choice)" ng-class="{'session-chosen-answer': vm.uChoice === choice}">
+          <div ng-repeat="choice in vm.session.answers[vm.trackingData.qIdx]._question.choices" class="answer-choice-container session-answer-choice" ng-click="vm.selectAnswer(choice)" 
+          ng-class="{'session-chosen-answer': vm.uChoice === choice}">
             <p class="test-question-text">{{choice.id}}. {{choice.text}}</p>
           </div>
 

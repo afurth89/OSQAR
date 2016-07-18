@@ -46,14 +46,14 @@
       var chartData = [
         {
           key: "Correct",
-          y: 1,
-          // y: sessionTrackingData.uPerformance.correct,
+          // y: 1,
+          y: sessionTrackingData.uPerformance.correct,
           color: "green"
         },
         {
           key: "Incorrect",
-          y: 1,
-          // y: sessionTrackingData.uPerformance.total - sessionTrackingData.uPerformance.correct,
+          // y: 1,
+          y: sessionTrackingData.uPerformance.total - sessionTrackingData.uPerformance.correct,
           color: "red"
         }
       ]
@@ -119,6 +119,17 @@
             sessionTrackingData.uPerformance.byQuestion[qNum-1] = false
           }
           resolve(sessionTrackingData)
+        })
+      }
+
+      this.updateChartData = (updatedData) => {
+        return new Promise((resolve) => {
+          console.log("updatedData: ", updatedData)
+          // Set correct Num
+          chartData[0].y = updatedData.uPerformance.correct
+          // Set incorrect Num
+          chartData[1].y = updatedData.uPerformance.total - updatedData.uPerformance.correct
+          resolve(chartData)
         })
       }
 
