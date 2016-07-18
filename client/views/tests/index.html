@@ -13,7 +13,7 @@
           <h3 class="content-title">{{vm.tests.length}} available tests</h3>
           <div class="test-question-container" ng-repeat="test in vm.tests">
             <span ng-click="showChoices = !showChoices" class="toggle-icon-container"><i class="fa fa-caret-down fa-3x" aria-hidden="true" ng-hide="showChoices"></i><i class="fa fa-caret-up fa-3x" aria-hidden="true" ng-show="showChoices"></i></span>
-            <!-- Question Text -->
+            <!-- Test Title -->
             <p ng-click="showChoices = !showChoices" class="test-question-text">
               <span class="label {{test.catClass}}"><i class="fa {{test.catIcon}}" aria-hidden="true"></i> {{test.category}}</span>
               <a href="/tests/{{test._id}}">  {{test.title}}  </a>

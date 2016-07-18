@@ -1,3 +1,41 @@
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+    <div class="jumbotron pg-content-container">
+      <!-- Back Button -->
+      <a class="btn btn-primary back-btn" href="/">Back to Home</a>
+      <!-- Title -->
+      <h1 class="pg-content-title">Tests</h1>
+      
+      <div id="show-test-container" class="well">
+        <a id="add-test-btn" class="btn btn-success btn-md" href="/tests/new"><i class="fa fa-plus fa-2x" aria-hidden="true"></i>  New test</a>
+
+        <div id="shows-tests-container">
+          <h3 class="content-title">{{vm.tests.length}} available tests</h3>
+          <div class="test-question-container" ng-repeat="test in vm.tests">
+            <!-- Test Title -->
+            <p ng-click="showChoices = !showChoices" class="test-question-text">
+              <span class="label {{test.catClass}}"><i class="fa {{test.catIcon}}" aria-hidden="true"></i> {{test.category}}</span>
+              <a href="/tests/{{test._id}}">  {{test.title}}  </a>
+              <span class="badge">{{test.questions.length}} 
+                <ng-pluralize count="test.questions.length"
+                              when="{'one': 'Q',
+                                     'other': 'Qs'}">
+                  
+                </ng-pluralize>
+              </span>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
 <h1>Take a Test</h1>
 
 <h1>Here are all the tests</h1>
