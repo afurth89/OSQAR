@@ -274,6 +274,20 @@ label {
 }
 
 /* TAKE A QUESTION */
+.progress {
+  background-color: #ffffff;
+  height: 40px;
+}
+
+.nvd3-svg {
+  /*height: 350px !important;*/
+  margin-bottom: -140px;
+}
+
+.nv-pieChart {
+  height: 350px !important;
+}
+
 #session-show-question:hover {
   background-color: #ffffff;
 }

@@ -3,7 +3,17 @@
     <div class="jumbotron pg-content-container">
       <div class="well" id="session-question-page-container">
         
-        <p>#{{vm.trackingData.qNum}} of {{vm.testLength}}</p>
+        <div class="row">
+          <div class="col-xs-6">
+            <p>#{{vm.trackingData.qNum}} of {{vm.testLength}}</p>
+            <div class="progress progress-striped active">
+              <div class="progress-bar" style="width: {{(vm.trackingData.qNum/vm.testLength)*100}}%"></div>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <nvd3 options='vm.chartOptions' data='vm.chartData' ></nvd3>
+          </div>
+        </div>
 
         <div id="session-show-question" class="test-question-container" ng-hide="vm.testOver">
           <h1 ng-show="vm.result.display">{{vm.result.text}}</h1>
@@ -32,6 +42,7 @@
         <br>
         <a ng-click="vm.toStart()" class="btn btn-warning">Back To Start</a>
 
+        
 
         <div class="well">
           <p>{{vm.trackingData.uPerformance.correct}} of {{vm.trackingData.uPerformance.total}} correct</p>

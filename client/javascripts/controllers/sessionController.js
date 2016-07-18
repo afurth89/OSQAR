@@ -85,15 +85,19 @@
 //***************************************************************************
 // SHOW
 //***************************************************************************
-    ShowSessionController.$inject = ['session', 'trackingData', '$location', 'SessionService', '$route', '$scope']
+    ShowSessionController.$inject = ['session', 'trackingData', 'chartOptions', 'chartData', '$location', 'SessionService', '$route', '$scope']
 
-    function ShowSessionController(session, trackingData, $location, SessionService, $route, $scope) {
+    function ShowSessionController(session, trackingData, chartOptions, chartData, $location, SessionService, $route, $scope) {
       let vm = this;
 
       vm.session = session.data
       vm.trackingData = trackingData
       console.log("Session data: ", vm.session)
       console.log("User data: ", vm.trackingData)
+      vm.chartOptions = chartOptions
+      vm.chartData = chartData
+      console.log("Chart Options: ", vm.chartOptions)
+      console.log("User data: ", vm.chartData)
 
       vm.setCatClass = function(location, category) {
         // Set class for Category label

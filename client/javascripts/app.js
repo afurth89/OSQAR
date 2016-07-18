@@ -1,6 +1,6 @@
 (function() {
   angular
-    .module('osqarApp', ['ngRoute', 'dndLists'])
+    .module('osqarApp', ['ngRoute', 'dndLists', 'nvd3'])
     .config(config)
 
     config.$inject = ['$routeProvider', '$locationProvider']
@@ -111,7 +111,9 @@
           controllerAs: 'vm',
           resolve: {
             session: getSessionById,
-            trackingData: getSessionTrackingData
+            trackingData: getSessionTrackingData,
+            chartOptions: getChartOptions,
+            chartData: getChartData
           }
         })
         .when('/sessions/:id/question/:qNum/result', {
@@ -190,5 +192,17 @@
 
     function getSessionTrackingData(SessionService, $route) {
       return SessionService.serveSessionTrackingData($route.current.params.qNum)
+    }
+
+    getChartOptions.$inject = ['SessionService']
+
+    function getChartOptions(SessionService) {
+      return SessionService.serveChartOptions();
+    }
+
+    getChartData.$inject = ['SessionService']
+
+    function getChartData(SessionService) {
+      return SessionService.serveChartData();
     }
 })();

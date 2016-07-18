@@ -18,6 +18,46 @@
         }
       }
 
+      var chartOptions = {
+        chart: {
+          type: 'pieChart',
+          height: 350,
+          donut: true,
+          x: function(d){return d.key;},
+          y: function(d){return d.y;},
+          showLabels: true,
+
+          pie: {
+              startAngle: function(d) { return d.startAngle/2 -Math.PI/2 },
+              endAngle: function(d) { return d.endAngle/2 -Math.PI/2 }
+          },
+          duration: 500,
+          legend: {
+              margin: {
+                  top: 10,
+                  right: 0,
+                  bottom: 0,
+                  left: 0
+              }
+          }
+        }
+      };
+
+      var chartData = [
+        {
+          key: "Correct",
+          y: 1,
+          // y: sessionTrackingData.uPerformance.correct,
+          color: "green"
+        },
+        {
+          key: "Incorrect",
+          y: 1,
+          // y: sessionTrackingData.uPerformance.total - sessionTrackingData.uPerformance.correct,
+          color: "red"
+        }
+      ]
+
 
       // GET - ALL TESTS
       this.getSessions = () => {
@@ -42,6 +82,18 @@
         // }
         return new Promise((resolve) => {
           resolve(sessionTrackingData)
+        })
+      }
+
+      this.serveChartOptions = () => {
+        return new Promise((resolve) => {
+          resolve(chartOptions)
+        })
+      }
+
+      this.serveChartData = () => {
+        return new Promise((resolve) => {
+          resolve(chartData)
         })
       }
 
