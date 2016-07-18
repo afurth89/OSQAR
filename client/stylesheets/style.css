@@ -35,7 +35,7 @@ html, body {
 }
 
 .jumbotron>h1, .pg-content-title {
-  margin-bottom: 20px;
+  margin-top: -30px;
   color: #ffffff;
   position: relative;
 }
@@ -289,9 +289,8 @@ label {
 }
 
 #result-display {
-  margin-left: -17px;
   margin-top: -12px;
-  margin-right: -2px;
+  margin-bottom: 0px;
 }
 
 #result-display-content {
@@ -306,8 +305,6 @@ label {
 
 #result-display-nxt-btn {
   display: inline-block;
-  margin-left: 27px;
-  margin-top: -15px;
 }
 
 #session-show-question:hover {

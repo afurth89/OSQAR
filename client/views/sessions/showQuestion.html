@@ -11,6 +11,17 @@
             <div class="progress progress-striped active">
               <div class="progress-bar" style="width: {{(vm.trackingData.qNum/vm.testLength)*100}}%"></div>
             </div>
+            <div id="result-display" ng-show="vm.result.display" class="alert alert-dismissible" ng-class="vm.result.correct ? 'alert-success' : 'alert-danger'">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <div id="result-display-content" class="row">
+                <div class="col-xs-8 result-display-content-container">
+                  <h2 id="result-display-text"><strong>{{vm.result.text}}</strong></h2>
+                </div>
+                <div class="col-xs-4 result-display-content-container">
+                  <button type="button" id="result-display-nxt-btn" ng-show="vm.result.display" ng-click="vm.nextQuestion()" class="btn btn-md btn-primary">Next Question</button> 
+                </div>
+              </div>
+            </div>
           </div>
           <div class="col-xs-6">
             <nvd3 ng-hide="vm.trackingData.uPerformance.byQuestion.length === 0" options='vm.chartOptions' data='vm.chartData' ></nvd3>
@@ -18,17 +29,6 @@
         </div>
 
         <div id="session-show-question" class="test-question-container" ng-hide="vm.testOver">
-          <div id="result-display" ng-show="vm.result.display" class="alert alert-dismissible" ng-class="vm.result.correct ? 'alert-success' : 'alert-danger'">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <div id="result-display-content" class="row">
-              <div class="col-xs-9 result-display-content-container">
-                <h1 id="result-display-text"><strong>{{vm.result.text}}</strong></h1>
-              </div>
-              <div class="col-xs-3 result-display-content-container">
-                <button type="button" id="result-display-nxt-btn" ng-show="vm.result.display" ng-click="vm.nextQuestion()" class="btn btn-lg btn-primary">Next Question</button> 
-              </div>
-            </div>
-          </div>
           <!-- Question Text -->
           <p ng-click="showChoices = !showChoices" class="test-question-text"><span class="label {{vm.session.answers[vm.trackingData.qIdx]._question.catClass}}"><i class="fa {{vm.session.answers[vm.trackingData.qIdx]._question.catIcon}}" aria-hidden="true"></i></span>  {{vm.session.answers[vm.trackingData.qIdx]._question.text}}</p>
 
