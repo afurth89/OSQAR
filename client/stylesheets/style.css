@@ -266,5 +266,9 @@ label {
   width: 10%;
 }
 
-#start-session-btn {
+
+/* START SESSION */
+#session-start-page-container {
+  position: relative;
+  text-align: center;
 }
