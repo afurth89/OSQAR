@@ -35,7 +35,6 @@ html, body {
 }
 
 .jumbotron>h1, .pg-content-title {
-  margin-top: -10px;
   margin-bottom: 20px;
   color: #ffffff;
   position: relative;
@@ -52,6 +51,12 @@ label {
 .edit-btn-group {
   position: absolute;
   right: 15px;
+  top: 50px;
+}
+
+.back-btn {
+  position: absolute;
+  left: 15px;
   top: 50px;
 }
 
