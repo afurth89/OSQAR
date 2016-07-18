@@ -165,8 +165,10 @@
         // Check whether answer was correct, set proper result text
         if (vm.trackingData.uPerformance.byQuestion[vm.trackingData.qIdx]) {
           vm.result.text = "You are correct!"
+          vm.result.correct = true;
         } else {
           vm.result.text = "Sorry, that is incorrect"
+          vm.result.correct = false;
         }
         
         // If this question is the final question

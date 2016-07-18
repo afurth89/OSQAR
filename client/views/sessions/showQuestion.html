@@ -19,7 +19,10 @@
         </div>
 
         <div id="session-show-question" class="test-question-container" ng-hide="vm.testOver">
-          <h1 ng-show="vm.result.display">{{vm.result.text}}</h1>
+          <div id="result-display" ng-show="vm.result.display" class="alert alert-dismissible" ng-class="vm.result.correct ? 'alert-success' : 'alert-danger'">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <h1><strong>{{vm.result.text}}</strong></h1>
+          </div>
           <!-- Question Text -->
           <p ng-click="showChoices = !showChoices" class="test-question-text"><span class="label {{vm.session.answers[vm.trackingData.qIdx]._question.catClass}}"><i class="fa {{vm.session.answers[vm.trackingData.qIdx]._question.catIcon}}" aria-hidden="true"></i></span>  {{vm.session.answers[vm.trackingData.qIdx]._question.text}}</p>
 

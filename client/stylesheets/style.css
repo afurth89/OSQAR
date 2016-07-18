@@ -288,6 +288,12 @@ label {
   height: 350px !important;
 }
 
+#result-display {
+  margin-left: -17px;
+  margin-top: -12px;
+  margin-right: -2px;
+}
+
 #session-show-question:hover {
   background-color: #ffffff;
 }
