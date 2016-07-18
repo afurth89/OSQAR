@@ -162,6 +162,11 @@
           alert("The question has been removed")
           // Update current questions
           vm.test = res.data
+          // Reset category for test, and questions within
+          vm.setCatClass(vm.test, vm.test.category)
+          vm.test.questions.forEach((val) => {
+            vm.setCatClass(val, val.category)
+          })
         })
       }
 
