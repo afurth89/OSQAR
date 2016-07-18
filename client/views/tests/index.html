@@ -1,16 +1,24 @@
-<a class="btn btn-primary" href="/tests/new">Create a new test</a>
-<h1>Here are all the tests</h1>
-<div ng-repeat="test in vm.tests" class="well">
-  <h4>TITLE: <a href="/tests/{{test._id}}">{{test.title}}</a></h4>
-  <p>Category: {{test.category}}</p>
-  <p>Questions:</p>
-    <ul ng-repeat="question in test.questions">
-      <li>Category: {{question.category}}</li>
-      <li>Question: {{question.text}}</li>
-      <ul ng-repeat="choice in question.choices">
-        <li>Choice: {{choice.text}}</li>
-      </ul>
-      <li>Correct Answer: {{question.correct}}</li>
-    </ul>
-  
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+    <div class="jumbotron pg-content-container">
+      <a class="btn btn-primary" href="/tests/new">Create a new test</a>
+      <h1>Here are all the tests</h1>
+      <div ng-repeat="test in vm.tests" class="well">
+        <h4>TITLE: <a href="/tests/{{test._id}}">{{test.title}}</a></h4>
+        <p>Category: {{test.category}}</p>
+        <p>Questions:</p>
+          <ul ng-repeat="question in test.questions">
+            <li>Category: {{question.category}}</li>
+            <li>Question: {{question.text}}</li>
+            <ul ng-repeat="choice in question.choices">
+              <li>Choice: {{choice.text}}</li>
+            </ul>
+            <li>Correct Answer: {{question.correct}}</li>
+          </ul>
+        
+      </div>
+    </div>
+  </div>
 </div>
+
+
