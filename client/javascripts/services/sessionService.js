@@ -48,13 +48,13 @@
           key: "Correct",
           // y: 1,
           y: sessionTrackingData.uPerformance.correct,
-          color: "green"
+          color: 'rgba(20, 156, 130, 0.4)'
         },
         {
           key: "Incorrect",
           // y: 1,
           y: sessionTrackingData.uPerformance.total - sessionTrackingData.uPerformance.correct,
-          color: "red"
+          color: 'rgba(231, 76, 60, 0.4)'
         }
       ]
 

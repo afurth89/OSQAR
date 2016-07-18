@@ -11,7 +11,6 @@
             <div class="progress progress-striped active">
               <div class="progress-bar" style="width: {{(vm.trackingData.qNum/vm.testLength)*100}}%"></div>
             </div>
-            <p>uPerformance: {{vm.trackingData.uPerformance}}</p>
           </div>
           <div class="col-xs-6">
             <nvd3 ng-hide="vm.trackingData.uPerformance.byQuestion.length === 0" options='vm.chartOptions' data='vm.chartData' ></nvd3>
