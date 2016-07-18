@@ -22,10 +22,10 @@
         chart: {
           type: 'pieChart',
           height: 350,
-          donut: true,
+          donut: false,
           x: function(d){return d.key;},
           y: function(d){return d.y;},
-          showLabels: true,
+          showLabels: false,
 
           pie: {
               startAngle: function(d) { return d.startAngle/2 -Math.PI/2 },
