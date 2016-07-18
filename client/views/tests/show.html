@@ -32,11 +32,13 @@
         <!-- TEST QUESTIONS -->
         <div id="show-test-questions-container" ng-show="vm.display[0].val">
           <h1 class="content-title">Questions ({{vm.test.questions.length}})</h1>
-          <div class="test-question-container" ng-repeat="question in vm.test.questions" ng-click="showChoices = !showChoices">
+          <div class="test-question-container" ng-repeat="question in vm.test.questions" >
           <!-- Toggle Show/Hide Arrows -->
-            <span class="toggle-icon-container"><i class="fa fa-caret-down fa-3x" aria-hidden="true" ng-hide="showChoices"></i><i class="fa fa-caret-up fa-3x" aria-hidden="true" ng-show="showChoices"></i></span>
+            <span ng-click="showChoices = !showChoices" class="toggle-icon-container"><i class="fa fa-caret-down fa-3x" aria-hidden="true" ng-hide="showChoices"></i><i class="fa fa-caret-up fa-3x" aria-hidden="true" ng-show="showChoices"></i></span>
             <!-- Question Text -->
-            <p class="test-question-text"><span class="label {{question.catClass}}"><i class="fa {{question.catIcon}}" aria-hidden="true"></i></span>  {{question.text}}</p>
+            <p ng-click="showChoices = !showChoices" class="test-question-text"><span class="label {{question.catClass}}"><i class="fa {{question.catIcon}}" aria-hidden="true"></i></span>  {{question.text}}</p>
+
+            <button id="remove-question-btn" type="button" class="btn btn-danger question-action-icon-containe" ng-click="vm.removeQuestionFromTest(question._id)"><span><i class="fa fa-trash" aria-hidden="true"></i></span></button>
             <!-- Question's Answer Choices (Hidden by default) -->
             <div ng-repeat="choice in question.choices" ng-show="showChoices" class="answer-choice-container" ng-class="question.correct.text === choice.text ? 'correct-answer' : 'wrong-answer'">
               <p>{{vm.letters[$index]}}: {{choice.text}}</p>

@@ -170,6 +170,17 @@ label {
   width: 90%;
 }
 
+#remove-question-btn {
+  display: inline-block;
+  position: absolute;
+  width: 5%;
+  vertical-align: middle;
+  text-align: center;
+  top: 5px;
+  right: 5px;
+  height: 48px;
+}
+
 #add-existingQ-btn {
   display: inline-block;
   position: absolute;
