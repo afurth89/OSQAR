@@ -297,7 +297,16 @@ label {
 }
 
 .session-chosen-answer {
-  background-color: rgba(243, 156, 18, 0.45);
+  border-width: 7px;
+  border-color: rgba(243, 156, 18, 1);
+}
+
+.correct-answer {
+  background-color: rgba(20, 156, 130, 0.4);
+}
+
+.wrong-answer {
+  background-color: rgba(231, 76, 60, 0.4); 
 }
 
 .session-btn-container {
