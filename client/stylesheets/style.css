@@ -294,6 +294,22 @@ label {
   margin-right: -2px;
 }
 
+#result-display-content {
+  margin: 0px;
+}
+
+#result-display-text {
+  display: inline-block;
+  margin-top: 0px;
+  text-align: center;
+}
+
+#result-display-nxt-btn {
+  display: inline-block;
+  margin-left: 27px;
+  margin-top: -15px;
+}
+
 #session-show-question:hover {
   background-color: #ffffff;
 }

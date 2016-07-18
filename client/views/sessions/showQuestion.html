@@ -14,14 +14,21 @@
             <p>uPerformance: {{vm.trackingData.uPerformance}}</p>
           </div>
           <div class="col-xs-6">
-            <nvd3 options='vm.chartOptions' data='vm.chartData' ></nvd3>
+            <nvd3 ng-hide="vm.trackingData.uPerformance.byQuestion.length === 0" options='vm.chartOptions' data='vm.chartData' ></nvd3>
           </div>
         </div>
 
         <div id="session-show-question" class="test-question-container" ng-hide="vm.testOver">
           <div id="result-display" ng-show="vm.result.display" class="alert alert-dismissible" ng-class="vm.result.correct ? 'alert-success' : 'alert-danger'">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <h1><strong>{{vm.result.text}}</strong></h1>
+            <div id="result-display-content" class="row">
+              <div class="col-xs-9 result-display-content-container">
+                <h1 id="result-display-text"><strong>{{vm.result.text}}</strong></h1>
+              </div>
+              <div class="col-xs-3 result-display-content-container">
+                <button type="button" id="result-display-nxt-btn" ng-show="vm.result.display" ng-click="vm.nextQuestion()" class="btn btn-lg btn-primary">Next Question</button> 
+              </div>
+            </div>
           </div>
           <!-- Question Text -->
           <p ng-click="showChoices = !showChoices" class="test-question-text"><span class="label {{vm.session.answers[vm.trackingData.qIdx]._question.catClass}}"><i class="fa {{vm.session.answers[vm.trackingData.qIdx]._question.catIcon}}" aria-hidden="true"></i></span>  {{vm.session.answers[vm.trackingData.qIdx]._question.text}}</p>
@@ -35,10 +42,9 @@
             <p class="test-question-text">{{choice.id}}. {{choice.text}}</p>
           </div>
 
-          <p>Chosen Answer: {{vm.uChoice}}</p>
+          <!-- <p>Chosen Answer: {{vm.uChoice}}</p> -->
           <div class="session-btn-container">
             <a ng-hide="vm.result.display" ng-click="vm.submitAnswer(vm.uChoice)" class="btn btn-block btn-success">Submit</a>
-            <a ng-show="vm.result.display" ng-click="vm.nextQuestion()" class="btn btn-block btn-primary">Next Question</a>
           </div>
         </div>
 
@@ -67,7 +73,7 @@
 
         
 
-        <div class="well">
+        <!-- <div class="well">
           <p>{{vm.trackingData.uPerformance.correct}} of {{vm.trackingData.uPerformance.total}} correct</p>
           
           <ul ng-repeat="correct in vm.trackingData.uPerformance.byQuestion">
@@ -77,7 +83,7 @@
             <li>Correct Answer: {{question._question.correct}}</li>
             <li>Your Answer: {{question.u_answer}}</li>
           </ul>
-        </div>
+        </div> -->
 
       </div>
     </div>
