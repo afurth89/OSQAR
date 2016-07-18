@@ -95,6 +95,10 @@ label {
   text-align: center;
 }
 
+.home-description {
+  font-style: italic;
+}
+
 #home-text-title {
   font-size: 10em !important;
 }

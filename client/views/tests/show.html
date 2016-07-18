@@ -1,8 +1,9 @@
 <div class="row">
   <div class="col-xs-10 col-xs-offset-1">
     <div class="jumbotron pg-content-container">
+
       <!-- Back Button -->
-      <a class="btn btn-primary back-btn" href="/tests">Back to Tests</a>
+      <a class="btn btn-primary back-btn" href="/tests"><i class="fa fa-caret-left fa-2x" aria-hidden="true"></i></a>
       <!-- Title -->
       <h1 class="pg-content-title">{{vm.test.title}}</h1>
       <!-- Edit Menu -->
@@ -16,7 +17,7 @@
       </div>
 
       
-      
+      <!-- INNER CONTAINER -->
       <div id="show-test-container" class="well">
         <h3 class="test-category">Category: <span class="label {{vm.test.catClass}}"><i class="fa {{vm.test.catIcon}}" aria-hidden="true"></i>  {{vm.test.category}}</span></h3>
         
@@ -146,6 +147,7 @@
           </div>
         </div>
       </div>
+      <a class="btn btn-primary" href="/tests">Back to Tests</a>
     </div>
   </div>
 </div>
