@@ -88,6 +88,7 @@ label {
   width: 100%;
 }
 
+
 /* HOME PAGE */
 
 .home-text {
@@ -125,6 +126,31 @@ label {
   margin: auto;
 }
 
+#show-test-container {
+  position: relative;
+}
+
+/* TEST INDEX */
+#add-test-btn {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+}
+
+.sub-container {
+  width: 90%;
+  border: 2px solid #3498db;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  padding-left: 15px;
+  padding-top: 10px;
+  background-color: rgba(190, 186, 191, 0.45);
+}
+
+.test-question-container:hover .sub-container {
+  background-color: #ffffff;
+}
+
 /* CREATE A TEST */
 #test-title-text {
   width: 80%;
@@ -140,9 +166,6 @@ label {
   display: inline-block;
 }
 
-#show-test-container {
-  position: relative;
-}
 
 #add-questions-dropdown {
   right: 20px;

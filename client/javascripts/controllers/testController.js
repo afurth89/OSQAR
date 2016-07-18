@@ -18,6 +18,30 @@
       // 'tests.data' is result of 'resolve' property
       // within TestParentController in app.js
       vm.tests = tests.data
+      vm.setCatClass = function(location, category) {
+        // Set class for Category label
+        if (category === "Math") {
+          location.catClass = "label-danger"
+          location.catIcon = "fa-calculator"
+        } else if (category === "English") {
+          location.catClass = "label-info"
+          location.catIcon = "fa-book"
+        } else if (category === "Social Studies") {
+          location.catClass = "label-default"
+          location.catIcon = "fa-globe"
+        } else {
+          location.catClass = "label-warning"
+          location.catIcon = "fa-flask"
+        }
+      }
+
+      // // Set CatClass for Test
+      // vm.setCatClass(vm.tests, vm.tests.category)
+      // Set CatClass for Questions in Test
+      vm.tests.forEach((val) => {
+        vm.setCatClass(val, val.category)
+      })
+      console.log("vm.tests: ", vm.tests)
     }
 
 //***************************************************************************
