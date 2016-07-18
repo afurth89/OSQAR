@@ -272,3 +272,20 @@ label {
   position: relative;
   text-align: center;
 }
+
+/* TAKE A QUESTION */
+#session-show-question:hover {
+  background-color: #ffffff;
+}
+
+.session-answer-choice:hover {
+  background-color: rgba(243, 156, 18, 0.45);
+}
+
+.session-chosen-answer {
+  background-color: rgba(243, 156, 18, 0.45);
+}
+
+.session-btn-container {
+  margin-left: -15px;
+}

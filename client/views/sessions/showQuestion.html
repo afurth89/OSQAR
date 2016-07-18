@@ -1,41 +1,52 @@
-<h1>[Answer a Question - Show Page]</h1>
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+    <div class="jumbotron pg-content-container">
+      <div class="well" id="session-question-page-container">
+        
+        <p>#{{vm.trackingData.qNum}} of {{vm.testLength}}</p>
 
-<p>#{{vm.trackingData.qNum}} of {{vm.testLength}}</p>
+        <div id="session-show-question" class="test-question-container" ng-hide="vm.testOver">
+          <h1 ng-show="vm.result.display">{{vm.result.text}}</h1>
+          <!-- Question Text -->
+          <p ng-click="showChoices = !showChoices" class="test-question-text"><span class="label {{vm.session.answers[vm.trackingData.qIdx]._question.catClass}}"><i class="fa {{vm.session.answers[vm.trackingData.qIdx]._question.catIcon}}" aria-hidden="true"></i></span>  {{vm.session.answers[vm.trackingData.qIdx]._question.text}}</p>
 
-<div class="well" ng-hide="vm.testOver">
-  <h1 ng-show="vm.result.display">{{vm.result.text}}</h1>
-  <h4>{{vm.session.answers[vm.trackingData.qIdx]._question.text}}</h4>
-  <p>Category: {{vm.session.answers[vm.trackingData.qIdx]._question.category}}</p>
-  <ul ng-repeat="choice in vm.session.answers[vm.trackingData.qIdx]._question.choices">
-    <a ng-click="vm.selectAnswer(choice)" class="btn btn-info">{{choice.id}}. {{choice.text}}</a>
-  </ul>
+          <div ng-repeat="choice in vm.session.answers[vm.trackingData.qIdx]._question.choices" class="answer-choice-container session-answer-choice" ng-click="vm.selectAnswer(choice)" ng-class="{'session-chosen-answer': vm.uChoice === choice}">
+            <p class="test-question-text">{{choice.id}}. {{choice.text}}</p>
+          </div>
 
-  <p>Chosen Answer: {{vm.uChoice}}</p>
-  <a ng-hide="vm.result.display" ng-click="vm.submitAnswer(vm.uChoice)" class="btn btn-success">Submit</a>
-  <a ng-show="vm.result.display" ng-click="vm.nextQuestion()" class="btn btn-primary">Next Question</a>
-</div>
+          <p>Chosen Answer: {{vm.uChoice}}</p>
+          <div class="session-btn-container">
+            <a ng-hide="vm.result.display" ng-click="vm.submitAnswer(vm.uChoice)" class="btn btn-block btn-success">Submit</a>
+            <a ng-show="vm.result.display" ng-click="vm.nextQuestion()" class="btn btn-block btn-primary">Next Question</a>
+          </div>
+        </div>
 
-<div class="well" ng-show="vm.testOver">
-  <h1>COMPLETION REPORT</h1>
-  <h1>{{vm.trackingData.uPerformance.correct}} of {{vm.trackingData.uPerformance.total}} correct</h1>
-  <a href="/sessions/new" class="btn btn-success">Take another test</a>
-  <a href="/" class="btn btn-primary">Back to Home</a>
+        <div class="well" ng-show="vm.testOver">
+          <h1>COMPLETION REPORT</h1>
+          <h1>{{vm.trackingData.uPerformance.correct}} of {{vm.trackingData.uPerformance.total}} correct</h1>
+          <a href="/sessions/new" class="btn btn-lg btn-success">Take another test</a>
+          <a href="/" class="btn btn-lg btn-primary">Back to Home</a>
 
-</div>
+        </div>
 
-<br>
-<a ng-click="vm.toStart()" class="btn btn-warning">Back To Start</a>
+        <br>
+        <a ng-click="vm.toStart()" class="btn btn-warning">Back To Start</a>
 
 
-<div class="well">
-  <p>{{vm.trackingData.uPerformance.correct}} of {{vm.trackingData.uPerformance.total}} correct</p>
-  
-  <ul ng-repeat="correct in vm.trackingData.uPerformance.byQuestion">
-    <li>Correct?: {{correct}}</li>
-  </ul>
-  <ul ng-repeat="question in vm.session.answers">
-    <li>Correct Answer: {{question._question.correct}}</li>
-    <li>Your Answer: {{question.u_answer}}</li>
-  </ul>
+        <div class="well">
+          <p>{{vm.trackingData.uPerformance.correct}} of {{vm.trackingData.uPerformance.total}} correct</p>
+          
+          <ul ng-repeat="correct in vm.trackingData.uPerformance.byQuestion">
+            <li>Correct?: {{correct}}</li>
+          </ul>
+          <ul ng-repeat="question in vm.session.answers">
+            <li>Correct Answer: {{question._question.correct}}</li>
+            <li>Your Answer: {{question.u_answer}}</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </div>
 
