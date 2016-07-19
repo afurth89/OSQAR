@@ -4,7 +4,7 @@
       <div class="well" id="session-start-page-container">
         <h1 class="content-title">{{vm.session._test.title}}</h1>
         <h2><span class="label {{vm.session._test.catClass}}"><i class="fa {{vm.session._test.catIcon}}" aria-hidden="true"></i>  {{vm.session._test.category}}</span></h2>
-        <p># of Questions: {{vm.session._test.questions.length}}</p>
+        <p>{{vm.session._test.questions.length}} Questions</p>
         <a href="/sessions/{{vm.session._id}}/question/1" class="btn btn-success">Start Test</a>
       </div>
     </div>
