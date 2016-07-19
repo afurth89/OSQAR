@@ -106,18 +106,6 @@
         3: "D"
       }
 
-      vm.filterData = {
-        catSelected: "",
-        searchText: ""
-      }
-
-      vm.filterCategory = function(category) {
-        vm.filterData.catSelected = category
-      }
-
-      vm.clearSearch = function() {
-        vm.filterData.searchText = ""
-      }
 
       vm.setCatClass = function(location, category) {
         // Set class for Category label
@@ -130,9 +118,12 @@
         } else if (category === "Social Studies") {
           location.catClass = "label-default"
           location.catIcon = "fa-globe"
-        } else {
+        } else if (category === "Science") {
           location.catClass = "label-warning"
           location.catIcon = "fa-flask"
+        } else {
+          location.catClass = "label-primary"
+          location.catIcon = "fa-list-ol"
         }
       }
       // Set CatClass for Test
@@ -147,6 +138,23 @@
       })
       console.log("vm.test.catClass = ", vm.test.catClass)
 
+      vm.filterData = {
+        catSelected: {
+          name: vm.test.category,
+          catClass: vm.test.catClass,
+          catIcon: vm.test.catIcon
+        },
+        searchText: ""
+      }
+
+      vm.filterCategory = function(category) {
+        vm.filterData.catSelected.name = category
+        vm.setCatClass(vm.filterData.catSelected, category)
+      }
+
+      vm.clearSearch = function() {
+        vm.filterData.searchText = ""
+      }
       
       // DEFAULT DISPLAYED CONTENT
       vm.display = [
