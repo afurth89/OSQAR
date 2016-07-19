@@ -43,14 +43,14 @@
           <!-- Question Text -->
           <p ng-click="showChoices = !showChoices" class="test-question-text"><span class="label {{vm.session.answers[vm.trackingData.qIdx]._question.catClass}}"><i class="fa {{vm.session.answers[vm.trackingData.qIdx]._question.catIcon}}" aria-hidden="true"></i></span>  {{vm.session.answers[vm.trackingData.qIdx]._question.text}}</p>
 
-          
+          <!-- Question Choices -->
           <div ng-repeat="choice in vm.session.answers[vm.trackingData.qIdx]._question.choices" class="answer-choice-container session-answer-choice" ng-click="vm.selectAnswer(choice)" 
           ng-class="{
           'session-chosen-answer': vm.uChoice === choice,
           'correct-answer': vm.result.display && choice.text === vm.session.answers[vm.trackingData.qIdx]._question.correct.text,
           'wrong-answer': vm.result.display && choice.text !== vm.session.answers[vm.trackingData.qIdx]._question.correct.text  
           }">
-            <p class="test-question-text">{{choice.id}}. {{choice.text}}</p>
+            <p class="test-question-text"><strong>{{vm.letters[$index]}}:</strong> {{choice.text}}</p>
           </div>
 
           <!-- <p>Chosen Answer: {{vm.uChoice}}</p> -->

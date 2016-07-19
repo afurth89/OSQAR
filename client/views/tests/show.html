@@ -41,11 +41,11 @@
             <span ng-click="showChoices = !showChoices" class="toggle-icon-container"><i class="fa fa-caret-down fa-3x" aria-hidden="true" ng-hide="showChoices"></i><i class="fa fa-caret-up fa-3x" aria-hidden="true" ng-show="showChoices"></i></span>
             <!-- Question Text -->
             <p ng-click="showChoices = !showChoices" class="test-question-text"><span class="label {{question.catClass}}"><i class="fa {{question.catIcon}}" aria-hidden="true"></i></span>  {{question.text}}</p>
-
+            <!-- Remove Question Button -->
             <button id="remove-question-btn" type="button" class="btn btn-danger question-action-icon-container" ng-click="vm.removeQuestionFromTest(question._id)"><span><i class="fa fa-trash" aria-hidden="true"></i></span></button>
             <!-- Question's Answer Choices (Hidden by default) -->
             <div ng-repeat="choice in question.choices" ng-show="showChoices" class="answer-choice-container" ng-class="question.correct.text === choice.text ? 'correct-answer-view-only' : 'wrong-answer-view-only'">
-              <p>{{vm.letters[$index]}}: {{choice.text}}</p>
+              <p><strong>{{vm.letters[$index]}}:</strong> {{choice.text}}</p>
             </div>
 <!--             <li>Correct Answer: {{question.correct}}</li>
             <a class="btn btn-danger" ng-click="vm.removeQuestionFromTest(question._id)">Remove Question</a> -->
