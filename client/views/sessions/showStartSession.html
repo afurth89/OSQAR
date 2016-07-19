@@ -3,17 +3,19 @@
     <div class="jumbotron pg-content-container">
     <!-- Back Button -->
     <a class="btn btn-primary back-btn" href="/sessions/new"><i class="fa fa-caret-left fa-2x" aria-hidden="true"></i></a>
+    <!-- Title -->
+    <h1 class="pg-content-title">Let's Get Started</h1>
     <!-- Container -->
     <div class="well" id="report-card-container">
       <h1 class="content-title report-card-text">{{vm.session._test.title}}</h1>
       
       <h2>
-        <span class="report-card-text">Category: </span>
+        <span>Category: </span>
         <span class="label {{vm.session._test.catClass}}"><i class="fa {{vm.session._test.catIcon}}" aria-hidden="true"></i>  {{vm.session._test.category}}</span>
       </h2>
       
       <h2 >
-        <span class="report-card-text">Number of Questions: </span> 
+        <span>Number of Questions: </span> 
         <span class="label label-primary">{{vm.session._test.questions.length}}</span>
       </h2>
       <br>
