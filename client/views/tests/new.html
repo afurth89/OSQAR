@@ -15,19 +15,19 @@
             <label for="testCategory">Select a Category:</label>
             <div class="input-group">
               <div class="input-group-btn">
-                <button ng-click="vm.selectCategory('Math')" type="button" class="btn btn-danger">
+                <button ng-click="vm.selectCategory('Math')" type="button" class="btn btn-danger" ng-class="{'selected-category': vm.test.category === 'Math'}">
                   <i class="fa fa-calculator" aria-hidden="true"></i> 
                   Math
                 </button>
-                <button ng-click="vm.selectCategory('English')" type="button" class="btn btn-info">
+                <button ng-click="vm.selectCategory('English')" type="button" class="btn btn-info" ng-class="{'selected-category': vm.test.category === 'English'}">
                   <i class="fa fa-book" aria-hidden="true"></i> 
                   English
                 </button>
-                <button ng-click="vm.selectCategory('Social Studies')" type="button" class="btn btn-default">
+                <button ng-click="vm.selectCategory('Social Studies')" type="button" class="btn btn-default" ng-class="{'selected-category': vm.test.category === 'Social Studies'}">
                   <i class="fa fa-globe" aria-hidden="true"></i> 
                   Social Studies
                 </button>
-                <button ng-click="vm.selectCategory('Science')" type="button" class="btn btn-warning">
+                <button ng-click="vm.selectCategory('Science')" type="button" class="btn btn-warning" ng-class="{'selected-category': vm.test.category === 'Science'}">
                   <i class="fa fa-flask" aria-hidden="true"></i> 
                   Science
                 </button>
