@@ -24,15 +24,13 @@
                 </div>
               </div>
             </div>
-            <div id="final-result-display" ng-show="vm.testOver" class="alert alert-dismissible alert-default">
+            <div id="final-result-display" ng-show="vm.testOver" class="alert alert-dismissible alert-warning">
               <button type="button" class="close" data-dismiss="alert">&times;</button>
-              <div id="result-display-content" class="row">
-                <div class="col-xs-6 result-display-content-container">
-                  <a href="/sessions/new" class="btn btn-lg btn-success">Take another test</a>
-                </div>
-                <div class="col-xs-6 result-display-content-container">
-                  <a href="/" class="btn btn-lg btn-primary">To Home</a>
-                </div>
+              <div class="result-display-content-container">
+                <button type="button" href="/sessions/new" class="btn btn-lg btn-success final-result-btn">Take another test</button>
+              </div>
+              <div class="result-display-content-container">
+                <button type="button" href="/" class="btn btn-lg btn-primary final-result-btn" style="margin-left: 65px;">To Home</button>
               </div>
             </div>
           </div>

@@ -300,7 +300,7 @@ label {
   height: 350px !important;
 }
 
-#result-display {
+#result-display, #final-result-display {
   margin-top: -12px;
   margin-bottom: 0px;
 }
@@ -317,6 +317,22 @@ label {
 
 #result-display-nxt-btn {
   display: inline-block;
+}
+
+#final-result-display {
+  margin-top: -12px;
+  margin-bottom: 10px;
+  background-color: rgba(243, 156, 18, 0.45);
+}
+
+.result-display-content-container {
+  width: 48%;
+  display: inline-block;
+}
+
+.final-result-btn {
+  display: inline-block;
+  margin-left: 15px;
 }
 
 #session-show-question:hover {
