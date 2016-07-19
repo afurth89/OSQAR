@@ -169,7 +169,8 @@
         }        
         TestService.updateTest($route.current.params.id, req).then((res) => {
           console.log("The updated test is...", res)
-          alert("The question has been added")
+          // Reset Test data
+          vm.test = res.data
           // Reset category for test, and questions within
           vm.setCatClass(vm.test, vm.test.category)
           vm.test.questions.forEach((val) => {
