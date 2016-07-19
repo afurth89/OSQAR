@@ -93,6 +93,7 @@
                       {id: 4, text: null}],
                 correct: {id: null, text: null}
               }
+              vm.chosenAnswer = null;
               $scope.$parent.vm.test = res.data
               // Reset category for test, and questions within
               $scope.$parent.vm.setCatClass($scope.$parent.vm.test, $scope.$parent.vm.test.category)
