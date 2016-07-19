@@ -9,10 +9,13 @@
         
         <div class="row">
           <div class="col-xs-6">
+            <!-- Progress Tracking -->
             <p>Question {{vm.trackingData.qNum}} of {{vm.testLength}}</p>
             <div class="progress progress-striped active">
               <div class="progress-bar" style="width: {{(vm.trackingData.qNum/vm.testLength)*100}}%"></div>
             </div>
+
+            <!-- Result Display -->
             <div id="result-display" ng-show="vm.result.display" class="alert alert-dismissible" ng-class="vm.result.correct ? 'alert-success' : 'alert-danger'">
               <button type="button" class="close" data-dismiss="alert">&times;</button>
               <div id="result-display-content" class="row">
@@ -24,6 +27,8 @@
                 </div>
               </div>
             </div>
+
+            <!-- Final Result display -->
             <div id="final-result-display" ng-show="vm.testOver" class="alert alert-dismissible alert-warning">
               <button type="button" class="close" data-dismiss="alert">&times;</button>
               <div class="result-display-content-container">
@@ -38,10 +43,11 @@
             <nvd3 ng-hide="vm.trackingData.uPerformance.byQuestion.length === 0" options='vm.chartOptions' data='vm.chartData' ></nvd3>
           </div>
         </div>
-
+        
+        <!-- Question Container -->
         <div id="session-show-question" class="test-question-container" ng-hide="vm.testOver">
           <!-- Question Text -->
-          <p ng-click="showChoices = !showChoices" class="test-question-text"><span class="label {{vm.session.answers[vm.trackingData.qIdx]._question.catClass}}"><i class="fa {{vm.session.answers[vm.trackingData.qIdx]._question.catIcon}}" aria-hidden="true"></i></span>  {{vm.session.answers[vm.trackingData.qIdx]._question.text}}</p>
+          <h2 style="margin-bottom: 30px;" ng-click="showChoices = !showChoices" class="test-question-text"><span class="label {{vm.session.answers[vm.trackingData.qIdx]._question.catClass}}"><i class="fa {{vm.session.answers[vm.trackingData.qIdx]._question.catIcon}}" aria-hidden="true"></i></span>  {{vm.session.answers[vm.trackingData.qIdx]._question.text}}</h2>
 
           <!-- Question Choices -->
           <div ng-repeat="choice in vm.session.answers[vm.trackingData.qIdx]._question.choices" class="answer-choice-container session-answer-choice" ng-click="vm.selectAnswer(choice)" 
