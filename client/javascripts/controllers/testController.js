@@ -106,6 +106,11 @@
         3: "D"
       }
 
+      vm.filterCatChoices = [
+      "Math", "English", "Social Studies", "Science"]
+
+      vm.filterCat = "";
+
       vm.setCatClass = function(location, category) {
         // Set class for Category label
         if (category === "Math") {
