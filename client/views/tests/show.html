@@ -135,17 +135,66 @@
 
         <!-- LIST OF QUESTIONS IN DB TO ADD TO TEST -->
         <div id="all-questions-list-container" ng-show="vm.display[2].val">
-          <h1 class="content-title">Add an Existing Question</h1>
-          <div class="form-group">
-            <label for="search-categories">Search by Category:</label>
-            <select id="search-categories" ng-model='vm.filterCat'>
-              <option selected></option>
-              <option ng-repeat='category in vm.filterCatChoices' value='{{category}}'>{{category}}</option>
-            </select>
+        <!-- Title -->
+        <h1 class="content-title">Add an Existing Question</h1>
+        <!-- Filter/Search -->
+        <!-- <div class="form-group">
+          <label for="search-categories">Search by Category:</label>
+          <select id="search-categories" ng-model='vm.filterCat'>
+            <option selected></option>
+            <option ng-repeat='category in vm.filterCatChoices' value='{{category}}'>{{category}}</option>
+          </select>
+        </div> -->
+        <div class="row">
+          <div class="col-xs-6">
+          <!-- Category Filtering -->
+            <div class="form-group">
+              <label for="filterCategory">Filter by Category:</label>
+              <div class="input-group">
+                <div class="input-group-btn">
+                  <button ng-click="vm.filterCategory('')" type="button" class="btn btn-primary"> 
+                    All
+                  </button>
+                  <button ng-click="vm.filterCategory('Math')" type="button" class="btn btn-danger">
+                    <i class="fa fa-calculator" aria-hidden="true"></i> 
+                    Math
+                  </button>
+                  <button ng-click="vm.filterCategory('English')" type="button" class="btn btn-info">
+                    <i class="fa fa-book" aria-hidden="true"></i> 
+                    English
+                  </button>
+                  <button ng-click="vm.filterCategory('Social Studies')" type="button" class="btn btn-default">
+                    <i class="fa fa-globe" aria-hidden="true"></i> 
+                    Social Studies
+                  </button>
+                  <button ng-click="vm.filterCategory('Science')" type="button" class="btn btn-warning">
+                    <i class="fa fa-flask" aria-hidden="true"></i> 
+                    Science
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
+          <!-- Search Filtering -->
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="filterSearch">Search Question Text:</label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Enter search..." ng-model="vm.filterData.searchText">
+                <span class="input-group-btn">
+                  <button class="btn btn-danger" type="button" ng-click="vm.clearSearch()">Clear</button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+          <!-- Existing Question List -->
           <h2>{{vm.allQuestionsList.length}} available</h2>
           <div class="test-question-container" ng-repeat="question in vm.allQuestionsList |
-          filter: vm.filterCat" >
+          filter: vm.filterData.catSelected |
+          filter: vm.filterData.searchText" >
             <span ng-click="showChoices = !showChoices" class="toggle-icon-container"><i class="fa fa-caret-down fa-3x" aria-hidden="true" ng-hide="showChoices"></i><i class="fa fa-caret-up fa-3x" aria-hidden="true" ng-show="showChoices"></i></span>
             <p ng-click="showChoices = !showChoices" class="test-question-text"><span class="label {{question.catClass}}"><i class="fa {{question.catIcon}}" aria-hidden="true"></i></span>  {{question.text}}</p>
             <button id="add-existingQ-btn" type="button" class="btn btn-success question-action-icon-containe" ng-click="vm.addExistingQuestionToTest(question._id)"><span>Add</span></button>

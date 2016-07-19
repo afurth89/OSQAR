@@ -106,10 +106,18 @@
         3: "D"
       }
 
-      vm.filterCatChoices = [
-      "Math", "English", "Social Studies", "Science"]
+      vm.filterData = {
+        catSelected: "",
+        searchText: ""
+      }
 
-      vm.filterCat = "";
+      vm.filterCategory = function(category) {
+        vm.filterData.catSelected = category
+      }
+
+      vm.clearSearch = function() {
+        vm.filterData.searchText = ""
+      }
 
       vm.setCatClass = function(location, category) {
         // Set class for Category label
