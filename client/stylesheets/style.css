@@ -263,6 +263,7 @@ label {
   text-decoration: underline;
   margin-top: 0px;
   margin-bottom: 35px;
+  font-family: 'Permanent Marker', cursive;
 }
 
 .chosen-answer {
@@ -279,12 +280,6 @@ label {
   width: 10%;
 }
 
-
-/* START SESSION */
-#session-start-page-container {
-  position: relative;
-  text-align: center;
-}
 
 /* TAKE A QUESTION */
 .progress {
@@ -377,6 +372,8 @@ label {
       rgba(190, 186, 191, 0.45)
     ),
     url("/assets/lined_paper_bg.jpg");
+  position: relative;
+  text-align: center;
 }
 
 .report-card-text {
