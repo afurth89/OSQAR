@@ -388,3 +388,7 @@ label {
 .report-card-title {
   text-decoration: underline;
 }
+
+.progress {
+  background-color: rgba(243, 156, 18, 0.45);
+}
