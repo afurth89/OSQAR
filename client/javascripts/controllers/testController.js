@@ -183,7 +183,6 @@
 
         TestService.updateTest($route.current.params.id, req).then((res) => {
           console.log("The updated test is...", res)
-          alert("The question has been removed")
           // Update current questions
           vm.test = res.data
           // Reset category for test, and questions within
@@ -199,7 +198,6 @@
         TestService.deleteTest($route.current.params.id).then((res) => {
           console.log("The response after deleting test is... ", res)
           // TO-DO --> Improve alert
-          alert("The test has been successfully deleted")
           $location.path('/tests')
         })
       }

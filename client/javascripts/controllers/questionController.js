@@ -119,7 +119,6 @@
       QuestionService.deleteQuestion($route.current.params.id).then((res) => {
         console.log("The response after deleting question is... ", res)
         // TO-DO --> Improve alert
-        alert("The question has been successfully deleted")
         $location.path('/questions')
       })
     }
