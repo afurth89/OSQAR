@@ -299,6 +299,19 @@ label {
   height: 350px !important;
 }
 
+g>circle[r] {
+  r: 15;
+}
+
+g>circle {
+  transform: translateX(-15px);
+}
+
+g>text {
+  /*margin-left: 15px !important;*/
+  font-size: 2em;
+}
+
 #result-display, #final-result-display {
   margin-top: -12px;
   margin-bottom: 0px;

@@ -45,7 +45,7 @@
         <!-- Question Container -->
         <div id="session-show-question" class="test-question-container" ng-hide="vm.testOver">
           <!-- Question Text -->
-          <h2 style="margin-bottom: 30px;" ng-click="showChoices = !showChoices" class="test-question-text"><span class="label {{vm.session.answers[vm.trackingData.qIdx]._question.catClass}}"><i class="fa {{vm.session.answers[vm.trackingData.qIdx]._question.catIcon}}" aria-hidden="true"></i></span>  {{vm.session.answers[vm.trackingData.qIdx]._question.text}}</h2>
+          <h2 style="margin-bottom: 30px; line-height:1.4em;" ng-click="showChoices = !showChoices" class="test-question-text"><span class="label {{vm.session.answers[vm.trackingData.qIdx]._question.catClass}}"><i class="fa {{vm.session.answers[vm.trackingData.qIdx]._question.catIcon}}" aria-hidden="true"></i></span>  {{vm.session.answers[vm.trackingData.qIdx]._question.text}}</h2>
 
           <!-- Question Choices -->
           <div ng-repeat="choice in vm.session.answers[vm.trackingData.qIdx]._question.choices" class="answer-choice-container" ng-click="vm.selectAnswer(choice)" 

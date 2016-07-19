@@ -22,7 +22,7 @@
         chart: {
           type: 'pieChart',
           height: 350,
-          donut: false,
+          donut: true,
           x: function(d){return d.key;},
           y: function(d){return d.y;},
           showLabels: false,
@@ -35,23 +35,24 @@
           legend: {
               margin: {
                   top: 10,
-                  right: 0,
+                  right: -15,
                   bottom: 0,
                   left: 0
-              }
+              },
+              padding: 50
           }
         }
       };
 
       var chartData = [
         {
-          key: "Correct",
+          key: 'Correct: '+sessionTrackingData.uPerformance.correct,
           // y: 1,
           y: sessionTrackingData.uPerformance.correct,
           color: 'rgba(20, 156, 130, 0.75)'
         },
         {
-          key: "Incorrect",
+          key: 'Incorrect: '+(sessionTrackingData.uPerformance.total - sessionTrackingData.uPerformance.correct),
           // y: 1,
           y: sessionTrackingData.uPerformance.total - sessionTrackingData.uPerformance.correct,
           color: 'rgba(231, 76, 60, 0.75)'
@@ -125,9 +126,11 @@
       this.updateChartData = (updatedData) => {
         return new Promise((resolve) => {
           console.log("updatedData: ", updatedData)
-          // Set correct Num
+          // Set correct Num for data and display
+          chartData[0].key = 'Correct: '+updatedData.uPerformance.correct
           chartData[0].y = updatedData.uPerformance.correct
-          // Set incorrect Num
+          // Set incorrect Num for data and display
+          chartData[1].key = 'Incorrect: '+(updatedData.uPerformance.total - updatedData.uPerformance.correct)
           chartData[1].y = updatedData.uPerformance.total - updatedData.uPerformance.correct
           resolve(chartData)
         })
