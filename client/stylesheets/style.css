@@ -242,6 +242,10 @@ label {
   background-color: rgba(190, 186, 191, 0.45);
 }
 
+.session-answer-choice:hover {
+  background-color: rgba(243, 156, 18, 0.45);
+}
+
 .test-question-container:hover .correct-answer-view-only {
   background-color: rgba(20, 156, 130, 0.4);
 }
@@ -319,9 +323,7 @@ label {
   background-color: #ffffff;
 }
 
-.session-answer-choice:hover {
-  background-color: rgba(243, 156, 18, 0.45);
-}
+/*HERE*/
 
 .session-chosen-answer {
   border-width: 7px;
