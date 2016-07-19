@@ -83,6 +83,16 @@
             // it means that it is a test (which means the question was added to a test)
             if (res.data.questions) {
               console.log("res.data EQUALS...", res.data)
+              vm.question = {
+                text: null,
+                category: null,
+                choices: [
+                      {id: 1, text: null},
+                      {id: 2, text: null},
+                      {id: 3, text: null},
+                      {id: 4, text: null}],
+                correct: {id: null, text: null}
+              }
               $scope.$parent.vm.test = res.data
               // Reset category for test, and questions within
               $scope.$parent.vm.setCatClass($scope.$parent.vm.test, $scope.$parent.vm.test.category)
@@ -93,7 +103,7 @@
               // If Q is assigned to test, then redirect to that test's show page
               $location.path('/tests/' + res.data._id)
             } else {
-              $location.path('/questions')
+              $location.path('/tests/' + res.data._id)
             }
           })            
 

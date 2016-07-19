@@ -98,6 +98,7 @@
       // within ShowTestController in app.js
       vm.test = test.data
       vm.allQuestionsList = allQuestions.data
+      console.log('All Qs: ', vm.allQuestionsList)
       vm.letters = {
         0: "A",
         1: "B",
