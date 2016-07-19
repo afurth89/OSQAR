@@ -203,7 +203,7 @@
           vm.result.text = "You are correct!"
           vm.result.correct = true;
         } else {
-          vm.result.text = "Sorry, that's incorrect"
+          vm.result.text = "Sorry, incorrect"
           vm.result.correct = false;
         }
         

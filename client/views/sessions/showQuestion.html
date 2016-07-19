@@ -19,10 +19,8 @@
             <div id="result-display" ng-show="vm.result.display" class="alert alert-dismissible" ng-class="vm.result.correct ? 'alert-success' : 'alert-danger'">
               <button type="button" class="close" data-dismiss="alert">&times;</button>
               <div id="result-display-content" class="row">
-                <div class="col-xs-8 result-display-content-container">
+                <div class="col-xs-12 result-display-content-container">
                   <h2 id="result-display-text"><strong>{{vm.result.text}}</strong></h2>
-                </div>
-                <div class="col-xs-4 result-display-content-container">
                   <button type="button" id="result-display-nxt-btn" ng-show="vm.result.display" ng-click="vm.nextQuestion()" class="btn btn-md btn-primary">Next Question</button> 
                 </div>
               </div>

@@ -304,6 +304,23 @@ label {
   margin-bottom: 0px;
 }
 
+/* ANIMATION - REVISIT */
+/*#result-display {
+  animation-name: fade-in;
+  animation-iteration-count: 1;
+  animation-duration: 2000ms;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes fade-in {
+  from{
+    opacity: 0%;
+  }
+  to{
+    opacity: 100%;
+  }
+}*/
+
 #result-display-content {
   margin: 0px;
 }
@@ -314,8 +331,15 @@ label {
   text-align: center;
 }
 
+.result-display-content-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 #result-display-nxt-btn {
   display: inline-block;
+  position: relative;
+  bottom: 5px;
 }
 
 #final-result-display {
@@ -324,10 +348,6 @@ label {
   background-color: rgba(243, 156, 18, 0.45);
 }
 
-.result-display-content-container {
-  width: 48%;
-  display: inline-block;
-}
 
 .final-result-btn {
   display: inline-block;
