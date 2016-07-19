@@ -55,14 +55,14 @@
 
           <!-- <p>Chosen Answer: {{vm.uChoice}}</p> -->
           <div class="session-btn-container">
-            <a ng-hide="vm.result.display" ng-click="vm.submitAnswer(vm.uChoice)" class="btn btn-block btn-success">Submit</a>
+            <a ng-hide="vm.result.display" ng-click="vm.submitAnswer(vm.uChoice)" class="btn btn-block btn-success"><span id="submit-text">Submit</span></a>
           </div>
         </div>
 
-        <div class="test-question-container" ng-show="vm.testOver">
-          <h1>REPORT CARD</h1>
-          <h1>{{vm.trackingData.uPerformance.correct}} of {{vm.trackingData.uPerformance.total}} correct</h1>
-          <div class="answer-choice-container" ng-repeat="question in vm.session.answers" ng-class="vm.trackingData.uPerformance.byQuestion[$index] ? 'correct-answer' : 'wrong-answer'">
+        <div id="report-card-container" class="test-question-container" ng-show="vm.testOver">
+          <h1 class="report-card-text report-card-title" >REPORT CARD</h1>
+          <h1 class="report-card-text">{{(vm.trackingData.uPerformance.correct/vm.trackingData.uPerformance.total)*100}}%  ({{vm.trackingData.uPerformance.correct}} of {{vm.trackingData.uPerformance.total}})</h1>
+          <div class="answer-choice-container" ng-repeat="question in vm.session.answers" ng-class="vm.trackingData.uPerformance.byQuestion[$index] ? 'correct-answer-solid' : 'wrong-answer-solid'">
             <p><strong>Q: </strong>{{question._question.text}}</p>
             <ul>
               <li>

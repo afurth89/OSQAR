@@ -339,7 +339,6 @@ label {
   background-color: #ffffff;
 }
 
-/*HERE*/
 
 .session-chosen-answer {
   border-width: 7px;
@@ -354,6 +353,37 @@ label {
   background-color: rgba(231, 76, 60, 0.4); 
 }
 
+.correct-answer-solid {
+  background-color: rgba(20, 156, 130, 1);
+}
+
+.wrong-answer-solid {
+  background-color: rgba(231, 76, 60, 1); 
+}
+
 .session-btn-container {
   margin-left: -15px;
+}
+
+#submit-text {
+  font-size: 2em;
+}
+
+#report-card-container {
+  background: 
+    linear-gradient(
+      rgba(190, 186, 191, 0.45),
+      rgba(190, 186, 191, 0.45)
+    ),
+    url("/assets/lined_paper_bg.jpg");
+}
+
+.report-card-text {
+  font-family: 'Permanent Marker', cursive;
+  color: red !important;
+  text-align: center;
+}
+
+.report-card-title {
+  text-decoration: underline;
 }
