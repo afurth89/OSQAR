@@ -141,6 +141,7 @@
       vm.filterData = {
         catSelected: {
           name: vm.test.category,
+          displayName: vm.test.category,
           catClass: vm.test.catClass,
           catIcon: vm.test.catIcon
         },
@@ -148,7 +149,14 @@
       }
 
       vm.filterCategory = function(category) {
-        vm.filterData.catSelected.name = category
+        // Catch "All" edge case
+        if (category !== "All") {
+          vm.filterData.catSelected.name = category
+        } else {
+          // Ensure that the filter is nothing if "All" is selected
+          vm.filterData.catSelected.name = ""
+        }
+        vm.filterData.catSelected.displayName = category
         vm.setCatClass(vm.filterData.catSelected, category)
       }
 

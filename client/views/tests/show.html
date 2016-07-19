@@ -147,11 +147,12 @@
             <div class="form-group">
               <span>
                 <label for="filterCategory">Category Filter: </label> 
-                <h3 class="test-category"><span class="label {{vm.filterData.catSelected.catClass}}"><i class="fa {{vm.filterData.catSelected.catIcon}}" aria-hidden="true"></i>  {{vm.filterData.catSelected.name}}</span></h3>
+                <h3 class="test-category"><span class="label {{vm.filterData.catSelected.catClass}}"><i class="fa {{vm.filterData.catSelected.catIcon}}" aria-hidden="true"></i>  {{vm.filterData.catSelected.displayName}}</span></h3>
               </span>
-              <div class="input-group">
+              <div class="input-group" style="margin-top: -20px;">
                 <div class="input-group-btn">
-                  <button ng-click="vm.filterCategory('')" type="button" class="btn btn-primary"> 
+                  <button ng-click="vm.filterCategory('All')" type="button" class="btn btn-primary"> 
+                    <i class="fa fa-list-ol" aria-hidden="true"></i>
                     All
                   </button>
                   <button ng-click="vm.filterCategory('Math')" type="button" class="btn btn-danger">
