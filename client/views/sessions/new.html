@@ -2,9 +2,9 @@
   <div class="col-xs-10 col-xs-offset-1">
     <div class="jumbotron pg-content-container">
       <!-- Back Button -->
-      <a class="btn btn-primary back-btn" href="/">Back to Home</a>
+      <a class="btn btn-primary back-btn" href="/tests"><i class="fa fa-caret-left fa-2x" aria-hidden="true"></i></a>
       <!-- Title -->
-      <h1 class="pg-content-title">Tests</h1>
+      <h1 class="pg-content-title">Take a Test</h1>
       
       <div id="show-test-container" class="well">
 
@@ -28,20 +28,7 @@
         </div>
 
       </div>
+      <a class="btn btn-primary" href="/">Back to Home</a>
     </div>
   </div>
-</div>
-
-
-
-
-
-<h1>Take a Test</h1>
-
-<h1>Here are all the tests</h1>
-<div ng-repeat="test in vm.tests" class="well">
-  <h4>TITLE: <a href="/tests/{{test._id}}">{{test.title}}</a></h4>
-  <p>Category: {{test.category}}</p>
-  <a class="btn btn-success" ng-click="vm.initiateTestSession(test._id, test.questions)">Take Test</a>
-  
 </div>
