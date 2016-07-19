@@ -1,12 +1,15 @@
 <div class="row">
   <div class="col-xs-10 col-xs-offset-1">
     <div class="jumbotron pg-content-container">
+    <!-- Back Button -->
+    <a class="btn btn-primary back-btn" href="/sessions/new"><i class="fa fa-caret-left fa-2x" aria-hidden="true"></i></a>
       <div class="well" id="session-start-page-container">
         <h1 class="content-title">{{vm.session._test.title}}</h1>
         <h2><span class="label {{vm.session._test.catClass}}"><i class="fa {{vm.session._test.catIcon}}" aria-hidden="true"></i>  {{vm.session._test.category}}</span></h2>
         <p>{{vm.session._test.questions.length}} Questions</p>
         <a href="/sessions/{{vm.session._id}}/question/1" class="btn btn-success">Start Test</a>
       </div>
+      <a class="btn btn-primary" href="/sessions/new">Go Back</a>
     </div>
   </div>
 </div>
