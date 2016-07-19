@@ -21,6 +21,7 @@
       <div id="show-test-container" class="well">
         <h3 class="test-category">Category: <span class="label {{vm.test.catClass}}"><i class="fa {{vm.test.catIcon}}" aria-hidden="true"></i>  {{vm.test.category}}</span></h3>
         
+        <!-- ADD QUESTION DROPDOWN -->
         <div id="add-questions-dropdown" class="btn-group edit-btn-group">
           <button ng-show="vm.display[0].val" type="button" class="btn btn-md btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus fa-2x" aria-hidden="true"></i>    Add a Question <span class="caret"></span>
           </button>
@@ -29,7 +30,7 @@
             <li><a ng-click="vm.toggleDisplay(2)"><i class="fa fa-cart-plus" aria-hidden="true"></i>  Add Existing</a></li>
           </ul>
           <!-- To go back to test's questions -->
-          <button ng-hide="vm.display[0].val" type="button" class="btn btn-md btn-danger" ng-click="vm.toggleDisplay(0)">Back to Test</button>
+          <button ng-hide="vm.display[0].val" type="button" class="btn btn-md btn-danger" ng-click="vm.toggleDisplay(0)">Show Test's Qs</button>
         </div>
 
         <!-- TEST QUESTIONS -->
@@ -43,7 +44,7 @@
 
             <button id="remove-question-btn" type="button" class="btn btn-danger question-action-icon-container" ng-click="vm.removeQuestionFromTest(question._id)"><span><i class="fa fa-trash" aria-hidden="true"></i></span></button>
             <!-- Question's Answer Choices (Hidden by default) -->
-            <div ng-repeat="choice in question.choices" ng-show="showChoices" class="answer-choice-container" ng-class="question.correct.text === choice.text ? 'correct-answer' : 'wrong-answer'">
+            <div ng-repeat="choice in question.choices" ng-show="showChoices" class="answer-choice-container" ng-class="question.correct.text === choice.text ? 'correct-answer-view-only' : 'wrong-answer-view-only'">
               <p>{{vm.letters[$index]}}: {{choice.text}}</p>
             </div>
 <!--             <li>Correct Answer: {{question.correct}}</li>
@@ -147,7 +148,7 @@
           </div>
         </div>
       </div>
-      <a class="btn btn-primary" href="/tests">Back to Tests</a>
+      <a class="btn btn-primary" href="/tests">Back to All Tests</a>
     </div>
   </div>
 </div>
