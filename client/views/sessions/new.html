@@ -7,14 +7,66 @@
       <h1 class="pg-content-title">Take a Test</h1>
       
       <div id="show-test-container" class="well">
+        <!-- Filter Container -->
+        <div class="row">
+          <div class="col-xs-6">
+          <!-- Category Filtering -->
+            <div class="form-group">
+              <span>
+                <label for="filterCategory">Category Filter: </label> 
+                <h3 class="test-category"><span class="label {{vm.filterData.catSelected.catClass}}"><i class="fa {{vm.filterData.catSelected.catIcon}}" aria-hidden="true"></i>  {{vm.filterData.catSelected.displayName}}</span></h3>
+              </span>
+              <div class="input-group" style="margin-top: -20px;">
+                <div class="input-group-btn">
+                  <button ng-click="vm.filterCategory('All')" type="button" class="btn btn-primary"> 
+                    <i class="fa fa-list-ol" aria-hidden="true"></i>
+                    All
+                  </button>
+                  <button ng-click="vm.filterCategory('Math')" type="button" class="btn btn-danger">
+                    <i class="fa fa-calculator" aria-hidden="true"></i> 
+                    Math
+                  </button>
+                  <button ng-click="vm.filterCategory('English')" type="button" class="btn btn-info">
+                    <i class="fa fa-book" aria-hidden="true"></i> 
+                    English
+                  </button>
+                  <button ng-click="vm.filterCategory('Social Studies')" type="button" class="btn btn-default">
+                    <i class="fa fa-globe" aria-hidden="true"></i> 
+                    Social Studies
+                  </button>
+                  <button ng-click="vm.filterCategory('Science')" type="button" class="btn btn-warning">
+                    <i class="fa fa-flask" aria-hidden="true"></i> 
+                    Science
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Search Filtering -->
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="filterSearch">Search Question Text:</label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Enter search..." ng-model="vm.filterData.searchText">
+                <span class="input-group-btn">
+                  <button class="btn btn-danger" type="button" ng-click="vm.clearSearch()">Clear</button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        <!-- Display available sessions -->
         <div id="shows-tests-container">
-          <h3 class="content-title">{{vm.tests.length}} available tests</h3>
-          <div class="test-question-container" ng-repeat="test in vm.tests">
+          <h3 class="content-title" style="margin-top: 15px; margin-bottom: 10px;">{{filteredData.length}} available </h3>
+          <div class="test-question-container" 
+               ng-repeat="test in vm.tests |
+                      filter: vm.filterData.catSelected.name |
+                      filter: vm.filterData.searchText as filteredData">
             <!-- Test Title -->
-            <p ng-click="showChoices = !showChoices" class="test-info-display">
+            <h3 ng-click="showChoices = !showChoices" class="test-info-display">
               <span class="label {{test.catClass}}"><i class="fa {{test.catIcon}}" aria-hidden="true"></i> {{test.category}}</span>
-              <a href="/tests/{{test._id}}">  {{test.title}}  </a>
+                {{test.title}}  
               <span class="badge">{{test.questions.length}} 
                 <ng-pluralize count="test.questions.length"
                               when="{'one': 'Q',
@@ -22,7 +74,7 @@
                   
                 </ng-pluralize>
               </span>
-            </p>
+            </h3>
             <button id="start-session-btn" type="button" class="btn btn-success" ng-click="vm.initiateTestSession(test._id, test.questions)">Start Test</button>
           </div>
         </div>

@@ -40,9 +40,12 @@
         } else if (category === "Social Studies") {
           location.catClass = "label-default"
           location.catIcon = "fa-globe"
-        } else {
+        } else if (category === "Science") {
           location.catClass = "label-warning"
           location.catIcon = "fa-flask"
+        } else {
+          location.catClass = "label-primary"
+          location.catIcon = "fa-list-ol"
         }
       }
 
@@ -52,6 +55,32 @@
       vm.tests.forEach((val) => {
         vm.setCatClass(val, val.category)
       })
+
+      vm.filterData = {
+        catSelected: {
+          name: "",
+          displayName: "All",
+          catClass: "label-primary",
+          catIcon: "fa-list-ol"
+        },
+        searchText: ""
+      }
+
+      vm.filterCategory = function(category) {
+        // Catch "All" edge case
+        if (category !== "All") {
+          vm.filterData.catSelected.name = category
+        } else {
+          // Ensure that the filter is nothing if "All" is selected
+          vm.filterData.catSelected.name = ""
+        }
+        vm.filterData.catSelected.displayName = category
+        vm.setCatClass(vm.filterData.catSelected, category)
+      }
+
+      vm.clearSearch = function() {
+        vm.filterData.searchText = ""
+      }
       
       vm.initiateTestSession = function(testId, questions) {
         console.log("A new session will be created for test ID... ", testId)

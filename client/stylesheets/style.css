@@ -274,10 +274,13 @@ label {
 .test-info-display {
   display: inline-block;
   width: 85%;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 #start-session-btn {
   width: 10%;
+  margin-bottom: 10px;
 }
 
 

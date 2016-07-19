@@ -48,7 +48,7 @@
             <!-- Search Filtering -->
             <div class="col-xs-6">
               <div class="form-group">
-                <label for="filterSearch">Search Question Text:</label>
+                <label for="filterSearch">Search Test Text:</label>
                 <div class="input-group">
                   <input type="text" class="form-control" placeholder="Enter search..." ng-model="vm.filterData.searchText">
                   <span class="input-group-btn">
@@ -60,7 +60,7 @@
           </div>
 
           <!-- Displayed Tests -->
-          <h2 class="content-title" style="margin-top: 15px;">{{filteredData.length}} available</h2>
+          <h2 class="content-title" style="margin-top: 15px; margin-bottom: 10px;">{{filteredData.length}} available</h2>
           <div class="test-question-container" 
             ng-repeat="test in vm.tests |
                       filter: vm.filterData.catSelected.name |
