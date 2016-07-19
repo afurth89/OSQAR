@@ -162,6 +162,10 @@ label {
   font-size: 2em;
 }
 
+.selected-category {
+  border: 2px solid black;
+}
+
 /* SHOW A TEST */
 .test-category {
   margin-top: 0;

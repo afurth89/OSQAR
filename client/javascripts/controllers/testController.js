@@ -224,14 +224,11 @@
       // within EditTestController in app.js
       vm.test = test.data
       console.log("The category for this test is...", vm.test.category)
-      // Categories for updating test
-      // TO-DO --> consolidate this with "NewTestController"
-      vm.availableCategories = [
-        {id: "1", name: "Math"},
-        {id: "2", name: "English"},
-        {id: "3", name: "Social Studies"},
-        {id: "4", name: "Science"}
-      ]
+      
+      vm.selectCategory = function(category) {
+        vm.test.category = category
+        console.log("vm.test.category: ", vm.test.category)
+      }
 
       vm.editTest = function(editedTest) {
         // See NewController for explanation of 'req' object formatting
@@ -245,7 +242,6 @@
 
         TestService.updateTest($route.current.params.id, req).then((res) => {
           console.log("The updated test is...", res)
-          alert("The test has been updated")
           $location.path('/tests')
         })
       }
