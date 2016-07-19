@@ -102,7 +102,9 @@
           controllerAs: 'vm',
           resolve: {
             session: getSessionById,
-            trackingData: getSessionTrackingData
+            trackingData: getSessionTrackingData,
+            chartOptions: getChartOptions,
+            chartData: getChartData
           }
         })
         .when('/sessions/:id/question/:qNum', {
