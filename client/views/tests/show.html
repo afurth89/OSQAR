@@ -38,7 +38,7 @@
 
         <!-- TEST QUESTIONS -->
         <div id="show-test-questions-container" ng-show="vm.display[0].val">
-          <h1 class="content-title">Questions ({{vm.test.questions.length}})</h1>
+          <h2 class="content-title">Questions ({{vm.test.questions.length}})</h2>
           <div class="test-question-container" ng-repeat="question in vm.test.questions" >
           <!-- Toggle Show/Hide Arrows -->
             <span ng-click="showChoices = !showChoices" class="toggle-icon-container"><i class="fa fa-caret-down fa-3x" aria-hidden="true" ng-hide="showChoices"></i><i class="fa fa-caret-up fa-3x" aria-hidden="true" ng-show="showChoices"></i></span>

@@ -7,11 +7,64 @@
       <h1 class="pg-content-title">Tests</h1>
       
       <div id="show-test-container" class="well">
-        <a id="add-test-btn" class="btn btn-success btn-md" href="/tests/new"><i class="fa fa-plus fa-2x" aria-hidden="true"></i>  New test</a>
+        <a id="add-test-btn" class="btn btn-success btn-lg" href="/tests/new"><i class="fa fa-plus fa-2x" aria-hidden="true"></i>  New test</a>
 
-        <div id="shows-tests-container">
-          <h3 class="content-title">{{vm.tests.length}} available tests</h3>
-          <div class="test-question-container" ng-repeat="test in vm.tests">
+        <div id="shows-tests-container" style="margin-top: 75px;">
+          <!-- Filter Container -->
+          <div class="row">
+            <div class="col-xs-6">
+            <!-- Category Filtering -->
+              <div class="form-group">
+                <span>
+                  <label for="filterCategory">Category Filter: </label> 
+                  <h3 class="test-category"><span class="label {{vm.filterData.catSelected.catClass}}"><i class="fa {{vm.filterData.catSelected.catIcon}}" aria-hidden="true"></i>  {{vm.filterData.catSelected.displayName}}</span></h3>
+                </span>
+                <div class="input-group" style="margin-top: -20px;">
+                  <div class="input-group-btn">
+                    <button ng-click="vm.filterCategory('All')" type="button" class="btn btn-primary"> 
+                      <i class="fa fa-list-ol" aria-hidden="true"></i>
+                      All
+                    </button>
+                    <button ng-click="vm.filterCategory('Math')" type="button" class="btn btn-danger">
+                      <i class="fa fa-calculator" aria-hidden="true"></i> 
+                      Math
+                    </button>
+                    <button ng-click="vm.filterCategory('English')" type="button" class="btn btn-info">
+                      <i class="fa fa-book" aria-hidden="true"></i> 
+                      English
+                    </button>
+                    <button ng-click="vm.filterCategory('Social Studies')" type="button" class="btn btn-default">
+                      <i class="fa fa-globe" aria-hidden="true"></i> 
+                      Social Studies
+                    </button>
+                    <button ng-click="vm.filterCategory('Science')" type="button" class="btn btn-warning">
+                      <i class="fa fa-flask" aria-hidden="true"></i> 
+                      Science
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Search Filtering -->
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="filterSearch">Search Question Text:</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Enter search..." ng-model="vm.filterData.searchText">
+                  <span class="input-group-btn">
+                    <button class="btn btn-danger" type="button" ng-click="vm.clearSearch()">Clear</button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Displayed Tests -->
+          <h2 class="content-title" style="margin-top: 15px;">{{filteredData.length}} available</h2>
+          <div class="test-question-container" 
+            ng-repeat="test in vm.tests |
+                      filter: vm.filterData.catSelected.name |
+                      filter: vm.filterData.searchText as filteredData">
             <span ng-click="showChoices = !showChoices" class="toggle-icon-container"><i class="fa fa-caret-down fa-3x" aria-hidden="true" ng-hide="showChoices"></i><i class="fa fa-caret-up fa-3x" aria-hidden="true" ng-show="showChoices"></i></span>
             <!-- Test Title -->
             <p ng-click="showChoices = !showChoices" class="test-question-text">
