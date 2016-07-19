@@ -48,8 +48,9 @@
           <h2 style="margin-bottom: 30px;" ng-click="showChoices = !showChoices" class="test-question-text"><span class="label {{vm.session.answers[vm.trackingData.qIdx]._question.catClass}}"><i class="fa {{vm.session.answers[vm.trackingData.qIdx]._question.catIcon}}" aria-hidden="true"></i></span>  {{vm.session.answers[vm.trackingData.qIdx]._question.text}}</h2>
 
           <!-- Question Choices -->
-          <div ng-repeat="choice in vm.session.answers[vm.trackingData.qIdx]._question.choices" class="answer-choice-container session-answer-choice" ng-click="vm.selectAnswer(choice)" 
+          <div ng-repeat="choice in vm.session.answers[vm.trackingData.qIdx]._question.choices" class="answer-choice-container" ng-click="vm.selectAnswer(choice)" 
           ng-class="{
+          'session-answer-choice': !vm.result.display,
           'session-chosen-answer': vm.uChoice === choice,
           'correct-answer': vm.result.display && choice.text === vm.session.answers[vm.trackingData.qIdx]._question.correct.text,
           'wrong-answer': vm.result.display && choice.text !== vm.session.answers[vm.trackingData.qIdx]._question.correct.text  
@@ -60,6 +61,7 @@
           <!-- <p>Chosen Answer: {{vm.uChoice}}</p> -->
           <div class="session-btn-container">
             <a ng-hide="vm.result.display" ng-click="vm.submitAnswer(vm.uChoice)" class="btn btn-block btn-success"><span id="submit-text">Submit</span></a>
+            <a ng-show="vm.result.display" ng-click="vm.nextQuestion()" class="btn btn-block btn-primary"><span id="submit-text">Next Question</span></a>
           </div>
         </div>
 
