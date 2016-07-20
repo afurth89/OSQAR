@@ -82,6 +82,15 @@
         //   sessionTrackingData.qIdx = questionNum - 1
         // }
         return new Promise((resolve) => {
+          sessionTrackingData = {
+            qIdx: 0,
+            qNum: 1,
+            uPerformance: {
+              total: 0,
+              correct: 0,
+              byQuestion: []
+            }
+          }
           resolve(sessionTrackingData)
         })
       }
@@ -140,6 +149,21 @@
         return new Promise((resolve) => {
           sessionTrackingData.qIdx += 1;
           sessionTrackingData.qNum += 1;
+          resolve(sessionTrackingData)
+        })
+      }
+
+      this.resetUserPerformance = () => {
+        return new Promise((resolve) => {
+          sessionTrackingData = {
+            qIdx: 0,
+            qNum: 1,
+            uPerformance: {
+              total: 0,
+              correct: 0,
+              byQuestion: []
+            }
+          }
           resolve(sessionTrackingData)
         })
       }

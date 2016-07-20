@@ -128,6 +128,7 @@
       console.log("Chart Options: ", vm.chartOptions)
       console.log("User data: ", vm.chartData)
 
+      
       vm.letters = {
         0: "A",
         1: "B",
@@ -217,6 +218,7 @@
 
       // Trigger next question
       vm.nextQuestion = function(qNum) {
+
         // Reset user choice
         vm.uChoice = null;
         // Hide result text
@@ -226,6 +228,7 @@
 
         // If not on last question
         if (qNum < vm.testLength) {
+          debugger
           // Change button text to be revealed after completing Q
           if ((qNum + 1) === vm.testLength) {
             vm.nextText = "See Report Card"
@@ -233,6 +236,7 @@
           SessionService.serveNextQuestion().then((res) => {
           })
         } else {
+          debugger
           // Test is over
           vm.testOver = true;
         }
@@ -240,11 +244,13 @@
 
       // End Session
       vm.endSession = function(command) {
-        if (command === "home") {
-          $location.path('/')
-        } else {
-          $location.path('/sessions/new')
-        }
+        SessionService.resetUserPerformance().then((res) => {
+          if (command === "home") {
+            $location.path('/')
+          } else {
+            $location.path('/sessions/new')
+          }
+        })
       }
 
 
