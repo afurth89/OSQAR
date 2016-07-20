@@ -164,6 +164,7 @@
       vm.result = {
         display: false
       }
+      vm.nextText = "Next Question"
       vm.testOver = false
 
       vm.selectAnswer = function(choice) {
@@ -209,26 +210,29 @@
           vm.result.text = "Sorry, incorrect"
           vm.result.correct = false;
         }
-        
-        // If this question is the final question
-        if (vm.trackingData.qNum === vm.testLength) {
-          vm.testOver = true;
-        } else {
-          // Display result text
-          vm.result.display = true;
-        }
+
+        // Display results 
+        vm.result.display = true;
       }
 
       // Trigger next question
-      vm.nextQuestion = function() {
+      vm.nextQuestion = function(qNum) {
         // Reset user choice
         vm.uChoice = null;
         // Hide result text
         vm.result = {
           display: false
         }
-        SessionService.serveNextQuestion().then((res) => {
-        })
+        
+        if (qNum < vm.testLength) {
+          if ((qNum + 1) === vm.testLength) {
+            vm.nextText = "See Report Card"
+          }
+          SessionService.serveNextQuestion().then((res) => {
+          })
+        } else {
+          vm.testOver = true;
+        }
       }
 
 
