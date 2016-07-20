@@ -164,7 +164,7 @@
       vm.result = {
         display: false
       }
-      vm.nextText = "Next Question"
+      vm.nextText = "Next Question";
       vm.testOver = false
 
       vm.selectAnswer = function(choice) {
@@ -223,7 +223,7 @@
         vm.result = {
           display: false
         }
-        
+
         if (qNum < vm.testLength) {
           if ((qNum + 1) === vm.testLength) {
             vm.nextText = "See Report Card"

@@ -20,7 +20,7 @@
               <div id="result-display-content" class="row">
                 <div class="col-xs-12 result-display-content-container">
                   <h2 id="result-display-text"><strong>{{vm.result.text}}</strong></h2>
-                  <button type="button" id="result-display-nxt-btn" ng-show="vm.result.display" ng-click="vm.nextQuestion(vm.trackingData.qNum)" class="btn btn-md btn-primary">{{vm.nextText}}</button> 
+                  <button type="button" id="result-display-nxt-btn" ng-show="vm.result.display" ng-click="vm.nextQuestion(vm.trackingData.qNum)" class="btn btn-md" ng-class="vm.trackingData.qNum === vm.testLength ? 'btn-info' : 'btn-primary'">{{vm.nextText}}</button> 
                 </div>
               </div>
             </div>
@@ -35,7 +35,7 @@
               </div>
             </div>
           </div>
-          
+
           <!-- Results Chart -->
           <div class="col-xs-6 on-load " ng-show="vm.trackingData.uPerformance.byQuestion.length === 0">
             <nvd3 options='vm.chartOptions' data='vm.chartData' ></nvd3>
