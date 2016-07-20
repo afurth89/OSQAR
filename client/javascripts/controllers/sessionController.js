@@ -167,7 +167,10 @@
       vm.testOver = false
 
       vm.selectAnswer = function(choice) {
-        vm.uChoice = choice
+        // Ensure that page has new question that hasn't been answered
+        if (!vm.testOver && !vm.result.display) {
+          vm.uChoice = choice
+        }
       }
 
       vm.submitAnswer = function(choice=null) {
