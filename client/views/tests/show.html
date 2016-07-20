@@ -191,7 +191,7 @@
         
 
           <!-- Existing Question List -->
-          <h2>{{filteredData.length}} available</h2>
+          <h2 class="content-title">{{filteredData.length}} available</h2>
           <div class="test-question-container" ng-repeat="question in vm.allQuestionsList |
           filter: vm.filterData.catSelected.name |
           filter: vm.filterData.searchText as filteredData" >
