@@ -25,15 +25,6 @@
               </div>
             </div>
 
-            <!-- Final Result display -->
-            <div id="final-result-display" ng-show="vm.testOver" class="alert alert-dismissible alert-warning">
-              <div class="row">
-                <div class="col-xs-12 result-display-content-container">
-                  <a type="button" href="/sessions/new" class="btn btn-lg btn-success final-result-btn">Take another test</a>
-                  <a type="button" href="/" class="btn btn-lg btn-primary final-result-btn">To Home</a>
-                </div>
-              </div>
-            </div>
           </div>
 
           <!-- Results Chart -->
@@ -69,8 +60,12 @@
         </div>
 
         <div id="report-card-container" class="test-question-container" ng-show="vm.testOver">
+          <!-- To Home Button -->
+          <button id="end-sesh-home" type="button"  ng-click="vm.endSession('home')" class="btn btn-lg btn-primary"><i class="fa fa-caret-left fa-2x" aria-hidden="true"></i><span class="report-card-btn">  To Home</span></button>
+          <!-- Take Another Test -->
+          <button id="end-sesh-new-test" type="button" ng-click="vm.endSession('test')" class="btn btn-lg btn-info"><span class="report-card-btn">Take Another Test  </span><i class="fa fa-caret-right fa-2x" aria-hidden="true"></i></button>
           <h1 class="report-card-text report-card-title" >REPORT CARD</h1>
-          <h2 class="report-card-text">{{(vm.trackingData.uPerformance.correct/vm.trackingData.uPerformance.total)*100}}%  ({{vm.trackingData.uPerformance.correct}} of {{vm.trackingData.uPerformance.total}})</h2>
+          <h1 class="report-card-text">{{(vm.trackingData.uPerformance.correct/vm.trackingData.uPerformance.total)*100}}%  ({{vm.trackingData.uPerformance.correct}} of {{vm.trackingData.uPerformance.total}})</h1>
           <div class="answer-choice-container" ng-repeat="question in vm.session.answers" ng-class="vm.trackingData.uPerformance.byQuestion[$index] ? 'correct-answer' : 'wrong-answer'">
             <p><strong>Q: </strong>{{question._question.text}}</p>
             <ul>

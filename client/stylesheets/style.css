@@ -426,6 +426,33 @@ g>text {
   position: relative;
 }
 
+#end-sesh-home {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  border-radius: 10px;
+}
+
+#end-sesh-new-test {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  border-radius: 10px;
+}
+
+.report-card-btn {
+  position: relative;
+  bottom: 5px;
+}
+
+#end-sesh-home>.report-card-btn {
+  left: 5px;
+}
+
+#end-sesh-new-test>.report-card-btn {
+  right: 5px;
+}
+
 .report-card-text {
   font-family: 'Permanent Marker', cursive;
   color: red !important;

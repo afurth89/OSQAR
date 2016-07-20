@@ -224,14 +224,26 @@
           display: false
         }
 
+        // If not on last question
         if (qNum < vm.testLength) {
+          // Change button text to be revealed after completing Q
           if ((qNum + 1) === vm.testLength) {
             vm.nextText = "See Report Card"
           }
           SessionService.serveNextQuestion().then((res) => {
           })
         } else {
+          // Test is over
           vm.testOver = true;
+        }
+      }
+
+      // End Session
+      vm.endSession = function(command) {
+        if (command === "home") {
+          $location.path('/')
+        } else {
+          $location.path('/sessions/new')
         }
       }
 
