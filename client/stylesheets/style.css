@@ -283,6 +283,12 @@ label {
   margin-bottom: 10px;
 }
 
+#begin-test-btn {
+  display: block;
+  margin: 0 auto;
+  width: 20%
+}
+
 
 /* TAKE A QUESTION */
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {

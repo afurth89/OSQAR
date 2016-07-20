@@ -18,8 +18,8 @@
         <span>Number of Questions: </span> 
         <span class="label label-primary">{{vm.session._test.questions.length}}</span>
       </h2>
-      <div>
-        <button type="button" href="/sessions/{{vm.session._id}}/question/1" class="btn btn-success btn-lg report-card-text">Start Test</button>
+      <div id="begin-test-btn">
+        <a href="/sessions/{{vm.session._id}}/question/1" class="btn btn-success btn-lg report-card-text">Start Test</a>
       </div>
     </div>
 
