@@ -285,9 +285,76 @@ label {
 
 
 /* TAKE A QUESTION */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+#session-data-container {
+  height: 215px;
+}
+
 .progress {
-  background-color: #ffffff;
+  background-color: rgba(243, 156, 18, 0.45);
   height: 40px;
+}
+
+
+#result-display, #final-result-display {
+  margin-top: -12px;
+  margin-bottom: 0px;
+}
+
+#result-display {
+  height: 87.5px;
+}
+
+/* ANIMATION - REVISIT */
+.animate-show,
+.animate-hide {
+  -webkit-transition:all linear 0.5s;
+  -moz-transition:all linear 0.5s;
+  -ms-transition:all linear 0.5s;
+  -o-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+
+.animate-show.ng-hide-remove,
+.animate-hide.ng-hide-add.ng-hide-add-active {
+  opacity: 0;
+  display: block !important;
+}
+
+.animate-hide.ng-hide-add,
+.animate-show.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1;
+  display: block !important;
+}
+
+
+#result-display-content {
+  margin: 0px;
+  margin-top: 10px;
+}
+
+#result-display-text {
+  display: inline-block;
+  margin-top: 0px;
+  text-align: center;
+}
+
+.result-display-content-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#result-display-nxt-btn {
+  display: inline-block;
+  position: relative;
+  bottom: 5px;
+}
+
+.on-load>nvd3>svg>g>g>.nv-pieWrap {
+  display: none;
 }
 
 .nvd3-svg {
@@ -308,51 +375,7 @@ g>circle {
 }
 
 g>text {
-  /*margin-left: 15px !important;*/
   font-size: 2em;
-}
-
-#result-display, #final-result-display {
-  margin-top: -12px;
-  margin-bottom: 0px;
-}
-
-/* ANIMATION - REVISIT */
-/*#result-display {
-  animation-name: fade-in;
-  animation-iteration-count: 1;
-  animation-duration: 2000ms;
-  animation-timing-function: ease-in-out;
-}
-
-@keyframes fade-in {
-  from{
-    opacity: 0%;
-  }
-  to{
-    opacity: 100%;
-  }
-}*/
-
-#result-display-content {
-  margin: 0px;
-}
-
-#result-display-text {
-  display: inline-block;
-  margin-top: 0px;
-  text-align: center;
-}
-
-.result-display-content-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-#result-display-nxt-btn {
-  display: inline-block;
-  position: relative;
-  bottom: 5px;
 }
 
 #final-result-display {
@@ -385,14 +408,6 @@ g>text {
   background-color: rgba(231, 76, 60, 0.4); 
 }
 
-.correct-answer-solid {
-  background-color: rgba(20, 156, 130, 1);
-}
-
-.wrong-answer-solid {
-  background-color: rgba(231, 76, 60, 1); 
-}
-
 .session-btn-container {
   margin-left: -15px;
 }
@@ -409,7 +424,6 @@ g>text {
     ),
     url("/assets/lined_paper_bg.jpg");
   position: relative;
-  text-align: center;
 }
 
 .report-card-text {
@@ -420,8 +434,4 @@ g>text {
 
 .report-card-title {
   text-decoration: underline;
-}
-
-.progress {
-  background-color: rgba(243, 156, 18, 0.45);
 }

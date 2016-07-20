@@ -1,6 +1,6 @@
 (function() {
   angular
-    .module('osqarApp', ['ngRoute', 'dndLists', 'nvd3'])
+    .module('osqarApp', ['ngRoute', 'dndLists', 'nvd3', 'ngAnimate'])
     .config(config)
 
     config.$inject = ['$routeProvider', '$locationProvider']
