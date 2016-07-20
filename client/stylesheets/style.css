@@ -453,12 +453,14 @@ g>text {
   right: 5px;
 }
 
-.report-card-text {
+.report-card-title {
   font-family: 'Permanent Marker', cursive;
   color: red !important;
-  text-align: center;
+  text-decoration: underline;
 }
 
-.report-card-title {
-  text-decoration: underline;
+.report-card-text {
+  display: block;
+  margin: 20px auto;
+  text-align: center;
 }
