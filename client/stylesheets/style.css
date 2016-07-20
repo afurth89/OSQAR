@@ -7,6 +7,11 @@ html, body {
   margin-bottom: 0px;
 }
 
+.navbar-brand {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1.7em;
+}
+
 #teacher-dropdown {
   background-color: #f39c12;
 }
