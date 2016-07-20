@@ -155,6 +155,8 @@
 
       this.resetUserPerformance = () => {
         return new Promise((resolve) => {
+          
+
           sessionTrackingData = {
             qIdx: 0,
             qNum: 1,
@@ -164,6 +166,12 @@
               byQuestion: []
             }
           }
+          // Set correct Num for data and display
+          chartData[0].key = 'Correct: 0'
+          chartData[0].y = 0
+          // Set incorrect Num for data and display
+          chartData[1].key = 'Incorrect: 0'
+          chartData[1].y = 0
           resolve(sessionTrackingData)
         })
       }
