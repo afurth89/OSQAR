@@ -4,51 +4,35 @@ var express = require('express')
     Promise = require("bluebird");
 
 router.route('/')
+  // Get all tests
   .get((req, res) => {
-    // Get all tests
     db.Test
     .find({}).populate('questions')
       .exec((err, tests) => {
         if (err) throw err;
-        
-        // Testing for correct response
-        // DELETE BEFORE PRODUCTION
-        console.log("TESTS: ", tests)
-        tests.forEach((test) => {
-          console.log("Title: ", test.title)
-          console.log("Category: ", test.category)
-          console.log("Questions: ", test.questions)
-          test.questions.forEach((question) => {
-            console.log("Question Id: ", question._id)
-          })
-        })
-
         res.send(tests)
       })
   })
+  // Create new test
   .post((req, res) => {
-    console.log("REQUEST OBJECT TO BE CREATED --> ", req.body.test)
     db.Test.create(req.body.test, (err, createdTest) => {
         if (err) throw err;
-        console.log("SUCCESSFUL CREATED TEST --> ", createdTest)
         res.send(createdTest)
       })
   })
 
 router.route('/:id')
+  // Get specific test
   .get((req, res) => {
-    console.log("ID of test to find is... ", req.params.id)
-    // Get a single test
     db.Test.findById(req.params.id).populate('questions')
       .exec((err, test) => {
         if (err) throw err;
-        console.log("Returned Test is... ", test)
         res.send(test)
       }) 
   })
+  // Update specific test
   .put((req, res) => {
-    console.log("ID of test to update is... ", req.params.id)    
-    // ADDING A QUESTION TO TEST
+    // ADDING A QUESTION
     if (req.body.qId) {
       // Add question ref to test
       addQuestionToTest(req.params.id, req.body.qId).then((test) => {
@@ -59,7 +43,7 @@ router.route('/:id')
         })
       }) 
 
-    // REMOVING A QUESTION FROM TEST 
+    // REMOVING A QUESTION
     } else if (req.body.qIdToDel){
       removeQuestionFromTest(req.params.id, req.body.qIdToDel).then((test) => {
         // Repopulate the test's questions
@@ -72,16 +56,15 @@ router.route('/:id')
     } else {
       db.Test.findByIdAndUpdate(req.params.id, req.body.test, (err, updatedTest) => {
         if (err) throw err;
-        console.log("SUCCESSFUL UPDATED TEST --> ", updatedTest)
         res.send(updatedTest)
       })
     }
   })
+  // Find the test and populate with questions
+  // Delete a test
   .delete((req, res) => {
-    console.log("ID of test to be deleted is... ", req.params.id)    
     db.Test.findByIdAndRemove(req.params.id, (err, deletedTest) => {
       if (err) throw err;
-      console.log("SUCCESSFUL DELETED TEST --> ", deletedTest)
       res.send(deletedTest)
     })
   })
@@ -96,7 +79,6 @@ router.route('/:id')
       db.Test.findById(testId, (err, foundTest) => {
         foundTest.questions.push(qId)
         foundTest.save()
-        console.log("Found Test after save...", foundTest)
         resolve(foundTest)
       })
     })
@@ -126,10 +108,10 @@ router.route('/:id')
 
   function populateTest(testId) {
     return new Promise((resolve) => {
+      // Find the test and populate with questions
       db.Test.findById(testId).populate('questions')
         .exec((err, populatedTest) => {
           if (err) throw err;
-          console.log("Returned Test is... ", populatedTest)
           resolve(populatedTest)
         })
     })
